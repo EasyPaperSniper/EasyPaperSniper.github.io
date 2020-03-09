@@ -20,12 +20,29 @@
 </div>
 <h2>Conference</h2>
 <table class="imgtable"><tr><td>
+<a href="160"><img src="./pub_pic/daisy_RSS.png" alt="alt text" height="160px" /></a>&nbsp;</td>
+<td align="left"><p><b>Planning Latent Actions for Legged Locomotion using Hierarchical Learning</b> <br />
+<b>Tianyu Li</b>, Deepak Pathak, Yuandong Tian, Roberto Calandra, Franziska Meier, Akshara Rai <br />
+Submitted to 2020 Robotics: Science and Systems <br /></p>
+<p>Learning locomotion skills on legged robots remains challenging for learning approaches. Recently, 
+hierarchical learning has been shown to be successful at learning sample-efficiently on walking robots. 
+However, the latent action used to communicate between different layers of the hierarchy is typically user-designed. 
+In this work, we present a fully-learned hierarchical framework, that jointly learns the low-level policy 
+and its latent input from the high-level policy. We also learn a center of mass dynamics model over one 
+cycle of the low-level policy and use it to plan over latent actions in a model-predictive control fashion. 
+This allows us to achieve multiple locomotion tasks on the Daisy hexapod robot, like velocity tracking, trajectory 
+following, as well as transition into a different gait. Our experiments compare a fully-learned latent space planner 
+with a structured footstep planner with inverse kinematics and present their relative advantages and disadvantages. 
+We show that latent space planning can transition into different gaits to improve velocity tracking performance while 
+minimizing the center of mass acceleration, though the footstep planner has a finer control of robot orientation.</p>
+</td></tr></table>
+<table class="imgtable"><tr><td>
 <a href="160"><img src="./pub_pic/daisy.jpg" alt="alt text" height="160px" /></a>&nbsp;</td>
-<td align="left"><p><b>Learning Generalizable Locomotion Skills with Hierarchical Reinforcement Learning</b> 
+<td align="left"><p><b>Learning Generalizable Locomotion Skills with Hierarchical Reinforcement Learning</b> <br />
 <b>Tianyu Li</b>, Nathan Lambert, Roberto Calandra, Franziska Meier, Akshara Rai <br />
 2020 IEEE International Conference on Robotics and Automation <br />
-[ <a href="https://arxiv.org/pdf/1909.12324.pdf">paper</a> ] 
-[<a href="https://scholar.googleusercontent.com/scholar.bib?q=info:a_YdIM3toZQJ:scholar.google.com/&amp;output=citation&amp;scisdr=CgXItN1PELrAg4DXfLg:AAGBfm0AAAAAXmXSZLgSHH7JEPUVpdg-Xc_0aMaBsv2J&amp;scisig=AAGBfm0AAAAAXmXSZDFazjMFXSV_Zyh-54fpoeu4_H8K&amp;scisf=4&amp;ct=citation&amp;cd=-1&amp;hl=en">bibtex</a>]</p>
+[<a href="https://arxiv.org/pdf/1909.12324.pdf">Paper</a>] 
+[<a href="https://scholar.googleusercontent.com/scholar.bib?q=info:a_YdIM3toZQJ:scholar.google.com/&amp;output=citation&amp;scisdr=CgXItN1PELrAg4DXfLg:AAGBfm0AAAAAXmXSZLgSHH7JEPUVpdg-Xc_0aMaBsv2J&amp;scisig=AAGBfm0AAAAAXmXSZDFazjMFXSV_Zyh-54fpoeu4_H8K&amp;scisf=4&amp;ct=citation&amp;cd=-1&amp;hl=en">Bibtex</a>]</p>
 <p>Learning to locomote to arbitrary goals on hardware remains a challenging problem for reinforcement learning. 
 In this paper, we present a hierarchical framework that improves sample-efficiency and generalizability of 
 learned locomotion skills on real-world robots. Our approach divides the problem of goal-oriented locomotion 
@@ -36,9 +53,49 @@ predictive control framework. This allows us to learn to walk to arbitrary goals
 hours of training from scratch on hardware. Our results on a Daisy hexapod hardware and simulation demonstrate the 
 efficacy of our approach at reaching distant targets, in different environments, and with sensory noise.</p>
 </td></tr></table>
+<table class="imgtable"><tr><td>
+<a href="160"><img src="./pub_pic/2019_corl.PNG" alt="alt text" height="160px" /></a>&nbsp;</td>
+<td align="left"><p><b>Bayesian optimization in Variational Latent Spaces with Dynamic Compression</b> <br />
+Rika Antonova*, Akshara Rai*, <b>Tianyu Li</b>, Danica Kragic <br />
+2019 Conference on Robot Learning <br />
+[<a href="https://arxiv.org/pdf/1907.04796.pdf">Paper</a>] 
+[<a href="https://scholar.googleusercontent.com/scholar.bib?q=info:bt-iFYLvwHsJ:scholar.google.com/&amp;output=citation&amp;scisdr=CgXItN1PELrAg4DSrBA:AAGBfm0AAAAAXmXXtBDwWrYV-zNwmytBFzBk1HjWB9IX&amp;scisig=AAGBfm0AAAAAXmXXtMzIRjgy8Wpv_yFaqZOHkkRJBfIx&amp;scisf=4&amp;ct=citation&amp;cd=-1&amp;hl=en">Bibtex</a>]</p>
+<p>Data-efficiency is crucial for autonomous robots to adapt to new tasks and environments. In this work we focus on robotics problems with a budget of only 10-20 trials.
+This is a very challenging setting even for data-efficient approaches like Bayesian optimization (BO), especially when optimizing higher-dimensional controllers. 
+Simulated trajectories can be used to construct informed kernels for BO. However, previous work employed supervised ways of extracting low-dimensional features for these. 
+We propose a model and architecture for a sequential variational autoencoder that embeds the space of simulated trajectories into a lower-dimensional space of latent paths in an 
+unsupervised way. We further compress the search space for BO by reducing exploration in parts of the state space that are undesirable, without requiring explicit constraints on controller 
+parameters. We validate our approach with hardware experiments on a Daisy hexapod robot and an ABB Yumi manipulator. We also present simulation experiments with further comparisons to several baselines 
+on Daisy and two manipulators. Our experiments indicate the proposed trajectory-based kernel with dynamic compression can offer ultra data-efficient optimization.</p>
+</td></tr></table>
+<table class="imgtable"><tr><td>
+<a href="160"><img src="./pub_pic/atrias_icra.png" alt="alt text" height="160px" /></a>&nbsp;</td>
+<td align="left"><p><b>Using Deep Reinforcement Learning to Learn High-level Policies on the Atrias Biped</b> <br />
+<b>Tianyu Li</b>, Hartmut Geyer, Chris Atkeson, Akshara Rai <br />
+2019 IEEE International Conference on Robotics and Automation <br />
+[<a href="https://ieeexplore.ieee.org/abstract/document/8793864">Paper</a>] 
+[<a href="https://scholar.googleusercontent.com/scholar.bib?q=info:M4sl9ZbmGm8J:scholar.google.com/&amp;output=citation&amp;scisdr=CgXItN1PELrAg4DRk1o:AAGBfm0AAAAAXmXUi1ovN8y7fEm363n-WhpM-YUYtsgX&amp;scisig=AAGBfm0AAAAAXmXUi8uSivg5ujVkXTYSE2JlPmv-sD21&amp;scisf=4&amp;ct=citation&amp;cd=-1&amp;hl=en">Bibtex</a>]</p>
+<p>Learning controllers for bipedal robots is a challenging problem, often requiring expert 
+knowledge and extensive tuning of parameters that vary in different situations. Recently, 
+deep reinforcement learning has shown promise at automatically learning controllers for complex 
+ystems in simulation. This has been followed by a push towards learning controllers that can be 
+transferred between simulation and hardware, primarily with the use of domain randomization. However, 
+domain randomization can make the problem of finding stable controllers even more challenging, 
+especially for underactuated bipedal robots. In this work, we explore whether policies learned in 
+simulation can be transferred to hardware with the use of high-fidelity simulators and structured controllers. 
+We learn a neural network policy which is a part of a more structured controller. While the neural network is 
+learned in simulation, the rest of the controller stays fixed, and can be tuned by the expert as needed. We 
+show that using this approach can greatly speed up the rate of learning in simulation, as well as enable 
+transfer of policies between simulation and hardware. We present our results on an ATRIAS robot and explore 
+the effect of action spaces and cost functions on the rate of transfer between simulation and hardware. Our results show 
+that structured policies can indeed be learned in simulation and implemented on hardware successfully. This has several advantages, 
+as the structure preserves the intuitive nature of the policy, and the neural network improves the performance of the hand-designed 
+policy. In this way, we propose a way of using neural networks to improve expert designed controllers, while maintaining
+ease of understanding.</p>
+</td></tr></table>
 <div id="footer">
 <div id="footer-text">
-Page generated 2020-03-08 22:12:34 PDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+Page generated 2020-03-08 22:43:08 PDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
 (<a href="publications.jemdoc">source</a>)
 </div>
 </div>
