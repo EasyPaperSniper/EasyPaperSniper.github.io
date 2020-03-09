@@ -5,7 +5,7 @@
 
 
 ~~~
-{}{img_left}{./pub_pic/daisy_RSS.png}{alt text}{258}{160}{}
+{}{img_left}{./pub_pic/daisy_RSS.png}{alt text}{210}{160}{}
 *Planning Latent Actions for Legged Locomotion using Hierarchical Learning* \n
 *Tianyu Li*, Deepak Pathak, Yuandong Tian, Roberto Calandra, Franziska Meier, Akshara Rai \n
 Submitted to 2020 Robotics: Science and Systems \n
@@ -27,7 +27,7 @@ minimizing the center of mass acceleration, though the footstep planner has a fi
 
 
 ~~~
-{}{img_left}{./pub_pic/daisy.jpg}{alt text}{258}{160}{}
+{}{img_left}{./pub_pic/daisy.jpg}{alt text}{210}{160}{}
 *Learning Generalizable Locomotion Skills with Hierarchical Reinforcement Learning* \n
 *Tianyu Li*, Nathan Lambert, Roberto Calandra, Franziska Meier, Akshara Rai \n
 2020 IEEE International Conference on Robotics and Automation \n
@@ -47,7 +47,7 @@ efficacy of our approach at reaching distant targets, in different environments,
 
 
 ~~~
-{}{img_left}{./pub_pic/2019_corl.png}{alt text}{258}{160}{}
+{}{img_left}{./pub_pic/2019_corl.png}{alt text}{210}{160}{}
 *Bayesian optimization in Variational Latent Spaces with Dynamic Compression* \n
 Rika Antonova\*, Akshara Rai\*, *Tianyu Li*, Danica Kragic \n
 2019 Conference on Robot Learning \n
@@ -65,7 +65,7 @@ on Daisy and two manipulators. Our experiments indicate the proposed trajectory-
 
 
 ~~~
-{}{img_left}{./pub_pic/atrias_icra.png}{alt text}{258}{160}{}
+{}{img_left}{./pub_pic/atrias_icra.png}{alt text}{210}{160}{}
 *Using Deep Reinforcement Learning to Learn High-level Policies on the Atrias Biped* \n
 *Tianyu Li*, Hartmut Geyer, Chris Atkeson, Akshara Rai \n
 2019 IEEE International Conference on Robotics and Automation \n
