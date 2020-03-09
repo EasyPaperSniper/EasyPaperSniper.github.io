@@ -1,13 +1,11 @@
-# jemdoc: menu{MENU}{publication.html}, showsource
+# jemdoc: menu{MENU}{publications.html}, showsource
 = Selected Publications
 
 
 ~~~
 {}{img_left}{./pub_pic/daisy.jpg}{alt text}{}{130}{130}
-*Learning Generalizable Locomotion Skills with Hierarchical Reinforcement Learning*
-
-*Tianyu Li*, Nathan Lambert, Roberto Calandra, Franziska Meier, Akshara Rai
-
-2020 IEEE International Conference on Robotics and Automation (2020 ICRA)
+*Learning Generalizable Locomotion Skills with Hierarchical Reinforcement Learning* \n
+*Tianyu Li*, Nathan Lambert, Roberto Calandra, Franziska Meier, Akshara Rai \n
+2020 IEEE International Conference on Robotics and Automation (2020 ICRA)\n
 
 ~~~
