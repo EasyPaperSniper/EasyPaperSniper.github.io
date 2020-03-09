@@ -1,16 +1,18 @@
 # jemdoc: menu{MENU}{index.html}, showsource
 = Tianyu Li -- EasyPaperSniper
-[Tianyu Li] ([bzdlity@gmail.com])
+Tianyu Li ([bzdlity@gmail.com])
+
+~~~
+{}{img_left}{avatar.jpg}{alt text}{}{}{}
 
 Tianyu Li is a Research Scientist at [https://ai.facebook.com/ Facebook AI Research]. 
 Previously, he was a master student at Carnegie Mellon University under the supervision of 
 [http://www.cs.cmu.edu/~cga/ Prof.Chris Atkeson] and [https://www.cs.cmu.edu/~hgeyer/ Prof.Hartmut Geyer].
-
-
-
 ~~~
-Version +0.7.3+ was released on 2012-11-27 with some small bug fixes.
-See the [revision.html release notes].
-~~~
+
+
+
+
+
 
 
