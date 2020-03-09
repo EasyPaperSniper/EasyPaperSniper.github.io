@@ -6,10 +6,11 @@
 
 ~~~
 {}{img_left}{./pub_pic/daisy.jpg}{alt text}{}{160}{160}
-*Learning Generalizable Locomotion Skills with Hierarchical Reinforcement Learning* [ [https://arxiv.org/pdf/1909.12324.pdf paper] ] \n
+*Learning Generalizable Locomotion Skills with Hierarchical Reinforcement Learning* 
 *Tianyu Li*, Nathan Lambert, Roberto Calandra, Franziska Meier, Akshara Rai \n
 2020 IEEE International Conference on Robotics and Automation \n
-[[https://arxiv.org/pdf/1909.12324.pdf paper]]
+\[ [https://arxiv.org/pdf/1909.12324.pdf paper] \] 
+\[[https://scholar.googleusercontent.com/scholar.bib?q=info:a_YdIM3toZQJ:scholar.google.com/&output=citation&scisdr=CgXItN1PELrAg4DXfLg:AAGBfm0AAAAAXmXSZLgSHH7JEPUVpdg-Xc_0aMaBsv2J&scisig=AAGBfm0AAAAAXmXSZDFazjMFXSV_Zyh-54fpoeu4_H8K&scisf=4&ct=citation&cd=-1&hl=en bibtex ]\]
 
 Learning to locomote to arbitrary goals on hardware remains a challenging problem for reinforcement learning. 
 In this paper, we present a hierarchical framework that improves sample-efficiency and generalizability of 
