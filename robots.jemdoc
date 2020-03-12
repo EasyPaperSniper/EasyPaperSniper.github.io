@@ -1,10 +1,10 @@
 # jemdoc: menu{MENU}{robots.html}, showsource
-- Robots that I have worked on (am working on)
+= Robots that I have worked on (am working on)
 
 
 ~~~
 {}{img_left}{./pub_pic/daisy.jpg}{alt text}{165}{120}{}
-*Daisy* (2019 - present): a hexapod(6 legs robots) developed by [https://www.hebirobotics.com/ HEBI Robotics].
+*Daisy* (2019 - present): A hexapod (6 legs robots) developed by [https://www.hebirobotics.com/ HEBI Robotics].
 ~~~
 
 ~~~
