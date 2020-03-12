@@ -3,12 +3,12 @@
 
 
 ~~~
-{}{img_left}{./pub_pic/daisy.jpg}{alt text}{220}{160}{}
+{}{img_left}{./pub_pic/daisy.jpg}{alt text}{165}{120}{}
 *Daisy* (2019 - present): a hexapod(6 legs robots) developed by [https://www.hebirobotics.com/ HEBI Robotics].
 ~~~
 
 ~~~
-{}{img_left}{./pub_pic/atrias_icra.png}{alt text}{220}{160}{}
+{}{img_left}{./pub_pic/atrias_icra.png}{alt text}{165}{120}{}
 *ATRIAS* (2017 - 2019):  [https://mime.oregonstate.edu/research/drl/atrias/ ATRIAS] is a series of prototype human-scale bipedal robots
 designed and built by the Oregon State University Dynamic Robotics Laboratory. They are 
 designed to test and demonstrate theoretical concepts for efficient and agile locomotion, 
@@ -16,7 +16,7 @@ ultimately aiming for walking and running outside in rough terrain.
 ~~~
 
 ~~~
-{}{img_left}{./pub_pic/dis_UAV.png}{alt text}{220}{160}{}
+{}{img_left}{./pub_pic/dis_UAV.png}{alt text}{165}{120}{}
 *DIS\-UAV* (2014 - 2017):  Self-designed fully-actuated UAV (Distributed Multi-vectored Thrusting System) 
 for research in centralized \& decentralized UAV control.
 ~~~
