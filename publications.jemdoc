@@ -11,6 +11,7 @@
 Submitted to 2020 Conference on Robot Learning \n
 \[[https://arxiv.org/pdf/2008.11867.pdf Paper]\] 
 \[[https://scholar.googleusercontent.com/scholar.bib?q=info:QXCjKrXrSZsJ:scholar.google.com/&output=citation&scisdr=CgXIccMaEK_Blq1ykmM:AAGBfm0AAAAAX1h3imOnLL9fdQwz9r8j2dLW2SQIX-lH&scisig=AAGBfm0AAAAAX1h3ipFpgyITGvuH3MjP4BCyDiP6lX3P&scisf=4&ct=citation&cd=-1&hl=en Bibtex ]\]
+
 Hierarchical learning has been successful at learning generalizable locomotion skills on walking 
 robots in a sample-efficient manner. However, the low-dimensional" latent" action used to communicate
 between different layers of the hierarchy is typically user-designed. In this work, we present a fully-learned hierarchical 
