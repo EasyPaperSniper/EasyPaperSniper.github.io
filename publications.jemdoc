@@ -6,21 +6,23 @@
 
 ~~~
 {}{img_left}{./pub_pic/daisy_RSS.png}{alt text}{220}{160}{}
-*Planning Latent Actions for Legged Locomotion using Hierarchical Learning* \n
-*Tianyu Li*, Deepak Pathak, Yuandong Tian, Roberto Calandra, Franziska Meier, Akshara Rai \n
-Submitted to 2020 Robotics: Science and Systems \n
-
-Learning locomotion skills on legged robots remains challenging for learning approaches. Recently, 
-hierarchical learning has been shown to be successful at learning sample-efficiently on walking robots. 
-However, the latent action used to communicate between different layers of the hierarchy is typically user-designed. 
-In this work, we present a fully-learned hierarchical framework, that jointly learns the low-level policy 
-and its latent input from the high-level policy. We also learn a center of mass dynamics model over one 
-cycle of the low-level policy and use it to plan over latent actions in a model-predictive control fashion. 
-This allows us to achieve multiple locomotion tasks on the Daisy hexapod robot, like velocity tracking, trajectory 
-following, as well as transition into a different gait. Our experiments compare a fully-learned latent space planner 
-with a structured footstep planner with inverse kinematics and present their relative advantages and disadvantages. 
-We show that latent space planning can transition into different gaits to improve velocity tracking performance while 
-minimizing the center of mass acceleration, though the footstep planner has a finer control of robot orientation.
+*Planning in Learned Latent Action Spaces for Generalizable Legged Locomotion* \n
+*Tianyu Li*, Roberto Calandra, Deepak Pathak, Yuandong Tian, Franziska Meier, Akshara Rai \n
+Submitted to 2020 Conference on Robot Learning \n
+\[[https://arxiv.org/pdf/2008.11867.pdf Paper]\] 
+\[[https://scholar.googleusercontent.com/scholar.bib?q=info:QXCjKrXrSZsJ:scholar.google.com/&output=citation&scisdr=CgXIccMaEK_Blq1ykmM:AAGBfm0AAAAAX1h3imOnLL9fdQwz9r8j2dLW2SQIX-lH&scisig=AAGBfm0AAAAAX1h3ipFpgyITGvuH3MjP4BCyDiP6lX3P&scisf=4&ct=citation&cd=-1&hl=en Bibtex ]\]
+Hierarchical learning has been successful at learning generalizable locomotion skills on walking 
+robots in a sample-efficient manner. However, the low-dimensional" latent" action used to communicate
+between different layers of the hierarchy is typically user-designed. In this work, we present a fully-learned hierarchical 
+framework, that is capable of jointly learning the low-level controller and the high-level action space. 
+Next, we plan over latent actions in a model-predictive control fashion, using a learned high-level dynamics model. 
+This framework is generalizable to multiple robots, and we present results on a Daisy hexapod simulation, 
+A1 quadruped simulation, and Daisy robot hardware. We compare a range of learned hierarchical approaches, 
+and show that our framework is more reliable, versatile and sample-efficient. In addition to learning approaches, 
+we also compare to an inverse-kinematics (IK) based footstep planner, and show that our fully-learned framework is 
+competitive in performance with IK under normal conditions, and outperforms it in adverse settings. 
+Our hardware experiments show the Daisy hexapod achieving multiple locomotion tasks, such as goal reaching,
+ trajectory and velocity tracking in an unstructured outdoor setting, with only 2000 hardware samples.
 ~~~
 
 
