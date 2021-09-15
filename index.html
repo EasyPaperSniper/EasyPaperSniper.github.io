@@ -14,12 +14,22 @@
   <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
     <tr style="padding:0px">
       <td style="padding:0px">
-
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr style="padding:0px">
+            <td style="padding:2.5%;width:35%;max-width:35%">
+              <a href="images/avatar.png"><img style="width:100%;max-width:100%" alt="profile photo" src="images/avatar.png" class="hoverZoomLink"></a>
+
+              <p style="text-align:center">
+                <a href="https://scholar.google.com.sg/citations?hl=en&user=LaPb8-YAAAAJ">Google Scholar</a> &nbsp/&nbsp
+                <a href="https://twitter.com/SniperPaper">Twitter</a> 
+              </p>
+            </td>
+
+
             <td style="padding:2.5%;width:63%;vertical-align:middle">
               <p style="text-align:center">
-                <name>Tianyu Li - 黎天宇</name>
+                <name>Tianyu Li - 黎天宇</name><br>
+                      <strong>email</strong>: bzdlity@gmail.com
               </p>
 
               <p>I am a research scientist at <a href="https://ai.facebook.com/"> Facebook AI Research</a>, where I am mentored by Akshara Rai. I am also an incoming Phd in CS at <a href="https://ic.gatech.edu/"> Georgia Tech</a> working with <a href="https://www.cc.gatech.edu/~sha9/" > Prof.Sehoon Ha</a>. 
@@ -29,11 +39,7 @@
                 My research interests generally lie at the intersection of <strong>Robotics</strong>, <strong>Reinforcement Learning</strong> and <strong>Optimal Control</strong> with a focus on 
                 learning for agile locomotion control. My long-term research goal is introducing legged robot to help people with real world tasks.
               </p>
-              <p style="text-align:center">
-                <a href="mailto:bzdlity@gmail.com">Email</a> &nbsp/&nbsp
-                <a href="https://scholar.google.com.sg/citations?hl=en&user=LaPb8-YAAAAJ">Google Scholar</a> &nbsp/&nbsp
-                <a href="https://twitter.com/SniperPaper">Twitter</a> 
-              </p>
+              
             </td>
             <td style="padding:2.5%;width:35%;max-width:35%">
               <a href="images/avatar.png"><img style="width:100%;max-width:100%" alt="profile photo" src="images/avatar.png" class="hoverZoomLink"></a>
@@ -45,189 +51,71 @@
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Research</heading>
+              <heading>Selected Research</heading>
             </td>
           </tr>
         </tbody></table>
 
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
+          <tr >
             <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='hypernerf_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/hypernerf_after.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/hypernerf_before.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function hypernerf_start() {
-                  document.getElementById('hypernerf_image').style.opacity = "1";
-                }
-
-                function hypernerf_stop() {
-                  document.getElementById('hypernerf_image').style.opacity = "0";
-                }
-                hypernerf_stop()
-              </script>
+              <img src="images/ral_2021.png" alt="PontTuset" width="160" style="border-style: none">
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://hypernerf.github.io/">
-                <papertitle>HyperNeRF: A Higher-Dimensional Representation
-for Topologically Varying Neural Radiance Fields</papertitle>
+              <a href= "https://arxiv.org/pdf/2008.11867.pdf"> 
+                <papertitle>Planning in learned latent action spaces for generalizable legged locomotion</papertitle>
               </a>
               <br>
-							<a href="https://keunhong.com">Keunhong Park</a>,
-							<a href="https://utkarshsinha.com">Utkarsh Sinha</a>, 
-							<a href="https://phogzone.com/">Peter Hedman</a>,
-              <strong>Jonathan T. Barron</strong>,
-							<a href="http://sofienbouaziz.com">Sofien Bouaziz</a>, <br>
-							<a href="https://www.danbgoldman.com">Dan B Goldman</a>,
-							<a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a>, 
-							<a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a>
+							<strong>Tianyu Li</strong>, Roberto Calandra, Deepak Pathak, Yuandong Tian, Franziska Meier, Akshara Rai
               <br>
-              <em>SIGGRAPH Asia</em>, 2021 
+              <em>RA-L</em>, 2021 
               <br>
-              <a href="https://hypernerf.github.io/">project page</a>
+              <a href="https://arxiv.org/pdf/2008.11867.pdf">arXiv</a>
               /
-              <a href="https://arxiv.org/abs/2106.13228">arXiv</a>
+              <a href="='https://www.youtube.com/watch?v=yopO26MF-HU">video</a>
               <p></p>
-              <p>Applying ideas from level set methods to NeRF lets you represent scenes that deform and change shape.</p>
             </td>
           </tr> 
 
-          <tr onmouseout="nerfactor_stop()" onmouseover="nerfactor_start()">
+          <tr >
             <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='nerfactor_image'>
-                  <img src='images/nerfactor_after.png' width="160"></div>
-                <img src='images/nerfactor_before.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function nerfactor_start() {
-                  document.getElementById('nerfactor_image').style.opacity = "1";
-                }
-
-                function nerfactor_stop() {
-                  document.getElementById('nerfactor_image').style.opacity = "0";
-                }
-                nerfactor_stop()
-              </script>
+              <img src="images/icra_2020.jpg" alt="PontTuset" width="160" style="border-style: none">
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://people.csail.mit.edu/xiuming/projects/nerfactor/">
-              <papertitle>NeRFactor: Neural Factorization of Shape and Reflectance<br>
-Under an Unknown Illumination</papertitle>
+              <a href= "https://arxiv.org/pdf/1909.12324.pdf"> 
+                <papertitle>Learning generalizable locomotion skills with hierarchical reinforcement learning</papertitle>
               </a>
               <br>
-              <a href="https://people.csail.mit.edu/xiuming/">Xiuming Zhang</a>,
-              <a href="https://pratulsrinivasan.github.io/">Pratul Srinivasan</a>,
-              <a href="https://boyangdeng.com/">Boyang Deng</a>,<br>
-              <a href="https://www.pauldebevec.com/">Paul Debevec</a>,
-              <a href="http://billf.mit.edu/">William T. Freeman</a>,
-							<strong>Jonathan T. Barron</strong>,
+							<strong>Tianyu Li</strong>, Nathan Lambert, Roberto Calandra, Franziska Meier, Akshara Rai
               <br>
-              <em>SIGGRAPH Asia</em>, 2021 
+              <em>ICRA</em>, 2020
               <br>
-              <a href="https://people.csail.mit.edu/xiuming/projects/nerfactor/">project page</a>
+              <a href="https://arxiv.org/pdf/1909.12324.pdf">arXiv</a> 
               /
-              <a href="https://arxiv.org/abs/2106.01970">arXiv</a>
-              /
-              <a href="https://www.youtube.com/watch?v=UUVSPJlwhPg">video</a>
+              <a href="https://www.youtube.com/watch?v=S7BdwYZQKHQ">video</a>
               <p></p>
-              <p>By placing priors on illumination and materials, we can recover NeRF-like models of the intrinsics of a scene from a single multi-image capture.</p>
-            </td>
-
-          <tr onmouseout="mipnerf_stop()" onmouseover="mipnerf_start()"  bgcolor="#ffffd0">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='mipnerf_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/mipnerf_ipe_yellow.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/mipnerf_ipe_yellow.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function mipnerf_start() {
-                  document.getElementById('mipnerf_image').style.opacity = "1";
-                }
-
-                function mipnerf_stop() {
-                  document.getElementById('mipnerf_image').style.opacity = "0";
-                }
-                mipnerf_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="http://jonbarron.info/mipnerf">
-                <papertitle>Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>,
-              <a href="https://bmild.github.io/">Ben Mildenhall</a>,
-              <a href="http://matthewtancik.com/">Matthew Tancik</a>, <br>
-              <a href="https://phogzone.com/">Peter Hedman</a>,
-              <a href="http://www.ricardomartinbrualla.com/">Ricardo Martin-Brualla</a>,
-              <a href="https://pratulsrinivasan.github.io/">Pratul Srinivasan</a>
-              <br>
-							<em>ICCV</em>, 2021 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-              <br>
-              <a href="http://jonbarron.info/mipnerf">project page</a>
-              /
-              <a href="https://arxiv.org/abs/2103.13415">arXiv</a>
-              /
-              <a href="https://youtu.be/EpH175PY1A0">video</a>
-							/
-              <a href="https://github.com/google/mipnerf">code</a>
-              <p></p>
-              <p>NeRF is aliased, but we can anti-alias it by casting cones and prefiltering the positional encoding function.</p>
             </td>
           </tr> 
 
-          <tr onmouseout="nerfbake_stop()" onmouseover="nerfbake_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='nerfbake_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/nerfbake_15.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/nerfbake_160.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function nerfbake_start() {
-                  document.getElementById('nerfbake_image').style.opacity = "1";
-                }
 
-                function nerfbake_stop() {
-                  document.getElementById('nerfbake_image').style.opacity = "0";
-                }
-                nerfbake_stop()
-              </script>
+          <tr >
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <img src="images/icra_2019.png" alt="PontTuset" width="160" style="border-style: none">
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="http://nerf.live">
-              <papertitle>Baking Neural Radiance Fields for Real-Time View Synthesis</papertitle>
+              <a href= "https://arxiv.org/pdf/1809.10811.pdf"> 
+                <papertitle>Using deep reinforcement learning to learn high-level policies on the atrias biped</papertitle>
               </a>
               <br>
-              <a href="https://phogzone.com/">Peter Hedman</a>,
-              <a href="https://pratulsrinivasan.github.io/">Pratul Srinivasan</a>,
-              <a href="https://bmild.github.io/">Ben Mildenhall</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="https://www.pauldebevec.com/">Paul Debevec</a>
+							<strong>Tianyu Li</strong>, Hartmut Geyer, Christopher G Atkeson, Akshara Rai
               <br>
-							<em>ICCV</em>, 2021 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
+              <em>ICRA</em>, 2019
               <br>
-              <a href="http://nerf.live">project page</a>
-              /
-              <a href="https://arxiv.org/abs/2103.14645">arXiv</a>
-              /
-              <a href="https://www.youtube.com/watch?v=5jKry8n5YO8">video</a>
-              /
-              <a href="https://nerf.live/#demos">demo</a>
+              <a href="https://arxiv.org/pdf/1809.10811.pdf">arXiv</a> 
               <p></p>
-              <p>Baking a trained NeRF into a sparse voxel grid of colors and features lets you render it in real-time in your browser.</p>
             </td>
+          </tr> 
 
 
         </tbody></table>
