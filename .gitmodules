@@ -1,0 +1,3 @@
+[submodule "nerfies"]
+	path = nerfies.github.io
+	url = git@github.com:EasyPaperSniper/nerfies.git
