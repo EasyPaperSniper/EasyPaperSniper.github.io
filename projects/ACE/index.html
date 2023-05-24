@@ -56,10 +56,13 @@
             <span class="author-block">
               <a href="">Jungdam Won</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="">Alexander Clegg</a><sup>2</sup>,
+              <a href="">Alexander Clegg</a><sup>3</sup>,
             </span>
             <span class="author-block">
-              <a href="">Akshara Rai</a><sup>2</sup>,
+              <a href="">Jeonghwan Kim</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Akshara Rai</a><sup>3</sup>,
             </span>
             <span class="author-block">
               <a href="">Sehoon Ha</a><sup>1</sup>,
@@ -69,14 +72,15 @@
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Georgia Institue of Technology,</span>
-            <span class="author-block"><sup>2</sup>META AI Research</span>
+            <span class="author-block"><sup>2</sup>Seoul National University,</span>
+            <span class="author-block"><sup>3</sup>META AI Research</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href=""
+                <a href="ACE_paper.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -155,16 +159,16 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Motion retargeting is a promising approach for generating natural and compelling motions for non-humanoid characters and robots. 
-            However, it is challenging to translate human motions into semantically equivalent motions for target characters with very different 
-            morphologies due to the ambiguous nature of the problem. This work presents a novel learning-based motion retargeting framework, 
-            Adversarial Correspondence Embedding (ACE), to retarget human motions onto robots with different body dimensions and structures. 
-            Our framework is designed to produce natural and feasible robot motions by leveraging generative-adversarial networks (GANs) while
-            preserving high-level motion semantics by introducing an additional feature loss. 
-            In addition, we pretrain a robot motion prior that can be controlled in a latent embedding space and seek to establish a compact 
-            correspondence from human motions to robot latent vectors. We demonstrate that the proposed framework can produce convincing retargeted 
-            motions for three different robot characters, a quadrupedal robot with a manipulator, a hexapod, and a wheeled manipulator. 
-            We further evaluate the design choices of our framework by conducting baseline comparisons and ablation studies.
+            Motion retargeting is a promising approach for generating natural and compelling animations for nonhuman characters. 
+            However, it is challenging to translate human movements into semantically equivalent motions for target characters with 
+            different morphologies due to the ambiguous nature of the problem. This work presents a novel learning-based motion retargeting 
+            framework, Adversarial Correspondence Embedding (ACE), to retarget human motions onto target characters with different body dimensions 
+            and structures. Our framework is designed to produce natural and feasible robot motions by leveraging generative-adversarial networks (GANs) 
+            hile preserving high-level motion semantics by introducing an additional feature loss. In addition, we pretrain a robot motion prior that can 
+            be controlled in a latent embedding space and seek to establish a compact correspondence. We demonstrate that the proposed framework can produce 
+            retargeted motions for three different characters -- a quadrupedal robot with a manipulator, a crab character, and a wheeled manipulator. 
+            We further validate the design choices of our framework by conducting baseline comparisons and a user study. We also showcase sim-to-real 
+            transfer of the retargeted motions by transferring them to a real Spot robot.
           </p>
         </div>
       </div>
