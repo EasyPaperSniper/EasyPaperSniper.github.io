@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="AAMDM: Accelerated Auto-regressive Motion Diffusion Model>
+  <meta name="keywords" content="Auto-regressive Motion Generation, Diffusion Model">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CrossLoco: Human Motion Driven Control of Legged Robots via Guided Unsupervised Reinforcement Learning</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+  <!-- add this when related work is done (e.g. digit ifm) -->
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://faculty.cc.gatech.edu/~sha9/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">CrossLoco: Human Motion Driven Control of Legged Robots via Guided Unsupervised Reinforcement Learning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://easypapersniper.github.io/">Tianyu Li</a>,</span>
+            <span class="author-block">
+              <a href="">Zhuhan Qiao</a>,</span>
+            <span class="author-block">
+              <a href="">Guanqiao Ren</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.sfu.ca/~kkyin/">KangKang Yin</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://faculty.cc.gatech.edu/~sha9/">Sehooon Ha</a>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Georgia Institute of Technology</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://ieeexplore.ieee.org/abstract/document/10268037"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>RA-L</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/html/2401.06146v1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/ZI2e9NG4wZ8"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Interactive motion synthesis is essential in creating immersive experiences in entertainment applications, 
+            such as video games and virtual reality. However, generating animations that are both high-quality and contextually 
+            responsive remains a challenge. Traditional techniques in the game industry can produce high-fidelity animations but 
+            suffer from high computational costs and poor scalability. Trained neural network models alleviate the memory and speed 
+            issues, yet fall short on generating diverse motions. Diffusion models offer diverse motion synthesis with low memory usage, 
+            but require expensive reverse diffusion processes. This paper introduces the Accelerated Auto-regressive Motion Diffusion Model (AAMDM), 
+            a novel motion synthesis framework designed to achieve quality, diversity, and efficiency all together. AAMDM integrates 
+            Denoising Diffusion GANs as a fast Generation Module, and an Auto-regressive Diffusion Model as a Polishing Module. 
+            Furthermore, AAMDM operates in a lower-dimensional embedded space rather than the full-dimensional pose space, which 
+            reduces the training complexity as well as further improves the performance. We show that AAMDM outperforms existing methods 
+            in motion quality, diversity, and runtime efficiency, through comprehensive quantitative analyses and visual comparisons. 
+            We also demonstrate the effectiveness of each algorithmic component through ablation studies.
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- learning framework -->       
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        
+        <h2 class="title is-3 has-text-centered">Learning Framework</h2>
+        
+        <div class="columns is-centered">          
+          <img id="learning-framework" src="static/images/Overview.png" width="80%" 
+          style="padding-top: 70px; padding-bottom: 20px;">
+        </div>
+        <!-- <h2 class="subtitle">
+          <strong>IFM</strong> framework consists of three stages: 
+        </h2> -->
+        <p class="has-text-justified">
+          We introduce the Accelerated Auto-regressive Motion Diffusion Model (AAMDM), 
+          a novel framework crafted to generate diverse high-fidelity motion sequences without 
+          the need for prolonged reverse diffusion. Diffusion-based transition models naturally 
+          produce diverse multi-modal motion would be too slow for interactive applications.
+          To overcome this challenge, our AAMDM framework mainly adopts two synergistic modules: a Generation Module, 
+          for rapid initial motion drafting using Denoising Diffusion GANs; and a Polishing Module, for quality 
+          improvements using an Auto-regressive Diffusion Model with just two additional denoising steps. 
+          Another distinctive feature of AAMDM is its operation in a learned lower-dimensional latent space 
+          rather than the traditional full pose space, further accelerating the training process.
+        </p>
+      </div>
+    </div>
+    <!-- /learning framework -->
+  </div>
+</section>    
+
+    
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code> Comming Soon!</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website has been modified from <a href="https://camp-nerf.github.io/"> CamP</a> and 
+            <a href="https://github.com/nerfies/nerfies.github.io"> Nerfies</a>. <br>
+            Last update: Oct.2023
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
