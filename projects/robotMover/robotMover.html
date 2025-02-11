@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="CrossLoco: Human Motion Driven Control of Legged Robots via Guided Unsupervised Reinforcement Learning">
+  <meta name="keywords" content="teleoperation, motion retargetting, legged robot, Quadrupedal, control, reinforcement learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CrossLoco: Human Motion Driven Control of Legged Robots via Guided Unsupervised Reinforcement Learning</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+  <!-- add this when related work is done (e.g. digit ifm) -->
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://faculty.cc.gatech.edu/~sha9/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">CrossLoco: Human Motion Driven Control of Legged Robots via Guided Unsupervised Reinforcement Learning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://easypapersniper.github.io/">Tianyu Li</a><sup>1*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.joannetruong.com/">Joanne Truong</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://sites.google.com/view/tyjimmyyang">Jimmy Yang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Alexander Clegg</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://akshararai.github.io/">Akshara Rai</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://faculty.cc.gatech.edu/~sha9/">Sehoon Ha</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.xavierpuigf.com/">Xavier Puig</a><sup>2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Georgia Institue of Technology, </span>
+            <span class="author-block"><sup>2</sup>FAIR, Meta</span><br>
+            <span class="author-block"><sup>*</sup>Work done during an internship at Fair, Meta </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://ieeexplore.ieee.org/abstract/document/10268037"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>RA-L</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="http://arxiv.org/abs/2502.05271"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://youtu.be/pPLy02LiGzY"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Moving large objects, such as furniture, is a critical capability for robots operating in human environments. 
+            This task presents significant challenges due to two key factors: the need to synchronize whole-body movements to prevent collisions 
+            between the robot and the object, and the under-actuated dynamics arising from the substantial size and weight of the objects. These 
+            challenges also complicate performing these tasks via teleoperation. In this work, we introduce RobotMover, a generalizable learning 
+            framework that leverages human-object interaction demonstrations to enable robots to perform large object manipulation tasks. 
+            Central to our approach is the Dynamic Chain, a novel representation that abstracts human-object interactions so that they can be 
+            retargeted to robotic morphologies. The Dynamic Chain is a spatial descriptor connecting the human and object root position via a 
+            chain of nodes, which encode the position and velocity of different interaction keypoints. We train policies in simulation using Dynamic-Chain-based 
+            imitation rewards and domain randomization, enabling zero-shot transfer to real-world settings without fine-tuning. Our approach outperforms both 
+            learning-based methods and teleoperation baselines across six evaluation metrics when tested on three distinct object types, both in simulation and on 
+            physical hardware. Furthermore, we successfully apply the learned policies to real-world tasks, such as moving a trash cart and rearranging chairs.
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- learning framework -->       
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        
+        <h2 class="title is-3 has-text-centered">Learning Framework</h2>
+        
+        <div class="columns is-centered">          
+          <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
+          style="padding-top: 70px; padding-bottom: 20px;">
+        </div>
+        <!-- <h2 class="subtitle">
+          <strong>IFM</strong> framework consists of three stages: 
+        </h2> -->
+        <p class="has-text-justified">
+          A robot control policy utilizes human motions and sensory information 
+          to generate robot actions for interacting with the environment. 
+          The Robot2Human-Mapper is then used to reconstruct the input human motion pose from the robot's pose. 
+          Lastly, the Human2Robot-Mapper is used to reconstruct the robot pose from the reconstructed human pose. 
+          Both mappers are trained via supervised learning using the difference between the real and reconstructed poses.
+          These differences are also utilized for constructing a correspondence reward function to train the robot control policy using PPO.
+        </p>
+      </div>
+    </div>
+    <!-- /learning framework -->
+  </div>
+</section>    
+<!-- simulation demo -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h1 class="title is-3">Motion Transfer Demo</h1>
+      </div>
+    </div>        
+    <div class="tabs-widget">
+    <!-- <div class="tabs is-toggle is-fullwidth"> -->
+      <div class="tabs is-centered">
+        <ul class="is-marginless">
+          <li class="is-active"><a>Dancing</a></li>
+          <li><a>Hopping</a></li>
+          <li><a>Running</a></li>
+        </ul>
+      </div>
+    
+      <!-- videos. -->
+      <div class="tabs-content">
+        <div row>
+          <div class="columns is-vcentered has-text-centered is-full-width">
+            <div class="column">
+              <h2 class="title is-5">Human Motion</h2>
+              <video controls autoplay muted preload loop>
+                <source src="static/videos/human_videos/h_motion_9.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <h2 class="title is-5">Robot Motion</h2>
+              <video controls autoplay muted preload loop>
+                <source src="static/videos/robot_videos/r_motion_9.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <!-- <p class="has-text-justified">
+            Description here
+          </p> -->
+        </div>
+
+        <div row>
+          <div class="columns is-vcentered has-text-centered is-full-width">
+            <div class="column">
+              <h2 class="title is-5" >Human Motion</h2>
+              <video controls autoplay muted preload loop>
+                <source src="static/videos/human_videos/h_motion_4.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <h2 class="title is-5">Robot Motion</h2>
+              <video controls autoplay muted preload loop>
+                <source src="static/videos/robot_videos/motion_4.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <!-- <p class="has-text-justified">
+            description here
+          </p> -->
+        </div>
+
+        <div row>
+          <div class="columns is-vcentered has-text-centered is-full-width">
+            <div class="column">
+              <h2 class="title is-5">Human Motion</h2>
+              <video controls autoplay muted preload loop>
+                <source src="static/videos/human_videos/h_motion_10.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <h2 class="title is-5">Robot Motion</h2>
+              <video controls autoplay muted preload loop>
+                <source src="static/videos/robot_videos/r_motion_10.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+    <!--/ videos. -->
+  </div>
+</section>
+<!-- /simulation demo -->  
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code> Comming Soon!</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website has been modified from <a href="https://camp-nerf.github.io/"> CamP</a> and 
+            <a href="https://github.com/nerfies/nerfies.github.io"> Nerfies</a>. <br>
+            Last update: Oct.2023
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
