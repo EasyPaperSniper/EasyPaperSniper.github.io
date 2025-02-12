@@ -241,7 +241,7 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         
-        <h2 class="title is-3 has-text-centered">Method</h2>
+        <h2 class="title is-3 has-text-centered">Method: Dynamic Chain</h2>
         
         <div class="columns is-centered">          
           <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
@@ -251,8 +251,9 @@
           <strong>IFM</strong> framework consists of three stages: 
         </h2> -->
         <p class="has-text-justified">
-          A robot control policy utilizes human motions and sensory information 
-          to generate robot actions for interacting with the environment. 
+          In this work, we introduce RobotMover, a learning-based approach that imitates human motion data to guide robots in learning to move large objects.
+
+
           The Robot2Human-Mapper is then used to reconstruct the input human motion pose from the robot's pose. 
           Lastly, the Human2Robot-Mapper is used to reconstruct the robot pose from the reconstructed human pose. 
           Both mappers are trained via supervised learning using the difference between the real and reconstructed poses.
@@ -337,21 +338,22 @@
       <div class="column is-full-width">
         
         <h2 class="title is-3 has-text-centered">Applications</h2>
-        
-        <div class="columns is-centered">          
-          <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
-          style="padding-top: 70px; padding-bottom: 20px;">
+        <div class="columns is-centered">
+          <video id="transbin-demo" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/trashBin.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="columns is-centered">
+          <video id="chair-demo" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/robotMover.mp4" type="video/mp4">
+          </video>
         </div>
         <!-- <h2 class="subtitle">
           <strong>IFM</strong> framework consists of three stages: 
         </h2> -->
         <p class="has-text-justified">
-          A robot control policy utilizes human motions and sensory information 
-          to generate robot actions for interacting with the environment. 
-          The Robot2Human-Mapper is then used to reconstruct the input human motion pose from the robot's pose. 
-          Lastly, the Human2Robot-Mapper is used to reconstruct the robot pose from the reconstructed human pose. 
-          Both mappers are trained via supervised learning using the difference between the real and reconstructed poses.
-          These differences are also utilized for constructing a correspondence reward function to train the robot control policy using PPO.
+          By combining our trained object manipulation policy with user commands, we demonstrate its applicability in real-world scenarios, 
+          such as moving large trash carts(Up) and automatic dinning chair rearrangement(bottom).
         </p>
       </div>
     </div>
