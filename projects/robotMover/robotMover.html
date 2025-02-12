@@ -201,73 +201,6 @@
 </section>
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <!-- learning framework -->       
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        
-        <h2 class="title is-3 has-text-centered">Large Object Manipultion: Motivation and Challnges</h2>
-        
-        <div class="columns is-centered">
-          <video id="challenges" autoplay muted loop playsinline height="100%">
-            <source src="./static/videos/challenges.mp4" type="video/mp4">
-          </video>
-        </div>
-        <!-- <h2 class="subtitle">
-          <strong>IFM</strong> framework consists of three stages: 
-        </h2> -->
-        <p class="has-text-justified">
-          Large objects, such as furniture, are essential in our social spaces. 
-          Can robots assist us in moving these large objects for workspace rearrangement or home relocation?
-          The large size of the object can cause it to collide with the robot, potentially limiting the robot's range of
-          motion and risking damage to both the object and the robot.
-          Large objects’ greater weight can cause the system to be under actuated. This requires the robot dynamically control 
-          the object to overcome ground friction and object’s momentum. 
-          Moving large objects requires precise synchronization of the robot's body and arm movements, making successful teleoperation challenging.
-        </p>
-      </div>
-    </div>
-    <!-- /learning framework -->
-  </div>
-</section>    
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <!-- learning framework -->       
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        
-        <h2 class="title is-3 has-text-centered">RobotMover</h2>
-        <!-- <h2 class="subtitle">
-          <strong>IFM</strong> framework consists of three stages: 
-        </h2> -->
-
-        <div class="columns is-centered">          
-          <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
-          style="padding-top: 70px; padding-bottom: 20px;">
-        </div>
-        <h3 class="subtitle">
-          Dynamic Chain 
-        </h3>
-        <p class="has-text-justified">
-          In this work, we introduce RobotMover, a learning-based approach that imitates human motion data to guide robots in learning to move large objects.
-
-
-          The Robot2Human-Mapper is then used to reconstruct the input human motion pose from the robot's pose. 
-          Lastly, the Human2Robot-Mapper is used to reconstruct the robot pose from the reconstructed human pose. 
-          Both mappers are trained via supervised learning using the difference between the real and reconstructed poses.
-          These differences are also utilized for constructing a correspondence reward function to train the robot control policy using PPO.
-        </p>
-      </div>
-    </div>
-    <!-- /learning framework -->
-  </div>
-</section>    
-
 
 
 <section class="section">
@@ -311,13 +244,23 @@
       <div class="column is-full-width">
         
         <h2 class="title is-3 has-text-centered">Applications</h2>
+        <p class="has-text-justified">
+          We demonstrate the capability of the learned policies to address complex real-world tasks by integrating them with high-level planners. 
+          Two applications are presented: Trash Cart Transportation and Chair Rearrangement. Trash cart transportation is a common task in 
+          office and residential environments where a loaded trash cart needs to be transported from one place to another. Chair rearrangement universally 
+          important task in various social and public settings, such as dining areas, meeting rooms, and event spaces. In our experiment, we integrate a 
+          learned object manipulation policy with a teleoperation-based high-level planner, we present interactive trash cart transportation. 
+          By integrating the policy with a heuristic object root velocity planner, we showcase automatic chair rearrangement. 
+        </p>
+
+
         <div class="columns is-centered">
           <video id="transbin-demo" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/trashBin.mp4" type="video/mp4">
           </video>
         </div>
         <p class="has-text-justified">
-          By combining our trained object manipulation policy with user commands, we demonstrate its applicability in real-world scenarios, such as moving large trash carts.
+          Trash Cart Transportation
         </p>
 
         <br>
@@ -328,10 +271,9 @@
           </video>
         </div>
         <p class="has-text-justified">
-          By combining our trained object manipulation policy with a heuristic planner, we showcase a automatic dinning chair rearrangement application.
+          Chair Rearrangement
         </p>
-
-
+        
       </div>
     </div>
     <!-- /learning framework -->
