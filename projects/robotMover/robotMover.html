@@ -211,22 +211,41 @@
       <div class="column is-full-width">
         
         <h2 class="title is-3 has-text-centered">Results</h2>
+
+
+
         
         <div class="columns is-centered">          
-          <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
-          style="padding-top: 70px; padding-bottom: 20px;">
+          <video id="chair-demo" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/chair_1.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered">
+            We show a trained policy moving a chair towards different directions in the real world.
+          </p>
+        </div>
+
+        <div class="columns is-centered">          
+          <video id="chair-demo" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/chair_2.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered">
+            Same policy can generalize to other chairs and objects with varying dynamic properties.
+          </p>
+        </div>
+
+
+        <div class="columns is-centered">          
+          <video id="chair-demo" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/chair_2.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered">
+            Our method generalizes to a diverse set of objects. Here we show results for a policy trained to move standing sticks(lamp and rack) and a policy trained to move tables.
+          </p>
         </div>
         <!-- <h2 class="subtitle">
           <strong>IFM</strong> framework consists of three stages: 
         </h2> -->
-        <p class="has-text-justified">
-          A robot control policy utilizes human motions and sensory information 
-          to generate robot actions for interacting with the environment. 
-          The Robot2Human-Mapper is then used to reconstruct the input human motion pose from the robot's pose. 
-          Lastly, the Human2Robot-Mapper is used to reconstruct the robot pose from the reconstructed human pose. 
-          Both mappers are trained via supervised learning using the difference between the real and reconstructed poses.
-          These differences are also utilized for constructing a correspondence reward function to train the robot control policy using PPO.
-        </p>
+       
       </div>
     </div>
     <!-- /learning framework -->
@@ -245,15 +264,13 @@
         
         <h2 class="title is-3 has-text-centered">Applications</h2>
         <div class="content has-text-justified">
-        <p class="has-text-justified">
-          We demonstrate the capability of the learned policies to address complex real-world tasks by integrating them with high-level planners. 
-          Two applications are presented: Trash Cart Transportation and Chair Rearrangement. Trash cart transportation is a common task in 
-          office and residential environments where a loaded trash cart needs to be transported from one place to another. Chair rearrangement universally 
-          important task in various social and public settings, such as dining areas, meeting rooms, and event spaces. In our experiment, we integrate a 
-          learned object manipulation policy with a teleoperation-based high-level planner, we present interactive trash cart transportation. 
-          By integrating the policy with a heuristic object root velocity planner, we showcase automatic chair rearrangement. Notably, we use the same low-level policy 
-          for both applications.
-        </p>
+          <p class="has-text-justified">
+            We demonstrate the capability of the learned policies to address complex real-world tasks by integrating them with high-level planners. 
+            Two applications are presented: Trash Cart Transportation and Chair Rearrangement.  In our experiment, we integrate a 
+            learned object manipulation policy with a teleoperation-based high-level planner, we present interactive trash cart transportation. 
+            By integrating the policy with a heuristic object root velocity planner, we showcase automatic chair rearrangement. Notably, we use the same low-level policy 
+            for both applications.
+          </p>
         </div>
 
         <div class="columns is-centered">
