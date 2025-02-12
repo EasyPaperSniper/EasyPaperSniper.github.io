@@ -164,8 +164,7 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
+        <source src="./static/videos/object_collect.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -209,7 +208,7 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         
-        <h2 class="title is-3 has-text-centered">Learning Framework</h2>
+        <h2 class="title is-3 has-text-centered">Motivation</h2>
         
         <div class="columns is-centered">          
           <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
@@ -231,89 +230,133 @@
     <!-- /learning framework -->
   </div>
 </section>    
-<!-- simulation demo -->
+
+
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-two-thirds">
-        <h1 class="title is-3">Motion Transfer Demo</h1>
-      </div>
-    </div>        
-    <div class="tabs-widget">
-    <!-- <div class="tabs is-toggle is-fullwidth"> -->
-      <div class="tabs is-centered">
-        <ul class="is-marginless">
-          <li class="is-active"><a>Dancing</a></li>
-          <li><a>Hopping</a></li>
-          <li><a>Running</a></li>
-        </ul>
-      </div>
-    
-      <!-- videos. -->
-      <div class="tabs-content">
-        <div row>
-          <div class="columns is-vcentered has-text-centered is-full-width">
-            <div class="column">
-              <h2 class="title is-5">Human Motion</h2>
-              <video controls autoplay muted preload loop>
-                <source src="static/videos/human_videos/h_motion_9.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="column">
-              <h2 class="title is-5">Robot Motion</h2>
-              <video controls autoplay muted preload loop>
-                <source src="static/videos/robot_videos/r_motion_9.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          <!-- <p class="has-text-justified">
-            Description here
-          </p> -->
-        </div>
 
-        <div row>
-          <div class="columns is-vcentered has-text-centered is-full-width">
-            <div class="column">
-              <h2 class="title is-5" >Human Motion</h2>
-              <video controls autoplay muted preload loop>
-                <source src="static/videos/human_videos/h_motion_4.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="column">
-              <h2 class="title is-5">Robot Motion</h2>
-              <video controls autoplay muted preload loop>
-                <source src="static/videos/robot_videos/motion_4.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          <!-- <p class="has-text-justified">
-            description here
-          </p> -->
+    <!-- learning framework -->       
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        
+        <h2 class="title is-3 has-text-centered">Method</h2>
+        
+        <div class="columns is-centered">          
+          <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
+          style="padding-top: 70px; padding-bottom: 20px;">
         </div>
-
-        <div row>
-          <div class="columns is-vcentered has-text-centered is-full-width">
-            <div class="column">
-              <h2 class="title is-5">Human Motion</h2>
-              <video controls autoplay muted preload loop>
-                <source src="static/videos/human_videos/h_motion_10.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="column">
-              <h2 class="title is-5">Robot Motion</h2>
-              <video controls autoplay muted preload loop>
-                <source src="static/videos/robot_videos/r_motion_10.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </div>
-  
+        <!-- <h2 class="subtitle">
+          <strong>IFM</strong> framework consists of three stages: 
+        </h2> -->
+        <p class="has-text-justified">
+          A robot control policy utilizes human motions and sensory information 
+          to generate robot actions for interacting with the environment. 
+          The Robot2Human-Mapper is then used to reconstruct the input human motion pose from the robot's pose. 
+          Lastly, the Human2Robot-Mapper is used to reconstruct the robot pose from the reconstructed human pose. 
+          Both mappers are trained via supervised learning using the difference between the real and reconstructed poses.
+          These differences are also utilized for constructing a correspondence reward function to train the robot control policy using PPO.
+        </p>
       </div>
     </div>
-    <!--/ videos. -->
+    <!-- /learning framework -->
   </div>
-</section>
-<!-- /simulation demo -->  
+</section>    
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- learning framework -->       
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        
+        <h2 class="title is-3 has-text-centered">Results</h2>
+        
+        <div class="columns is-centered">          
+          <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
+          style="padding-top: 70px; padding-bottom: 20px;">
+        </div>
+        <!-- <h2 class="subtitle">
+          <strong>IFM</strong> framework consists of three stages: 
+        </h2> -->
+        <p class="has-text-justified">
+          A robot control policy utilizes human motions and sensory information 
+          to generate robot actions for interacting with the environment. 
+          The Robot2Human-Mapper is then used to reconstruct the input human motion pose from the robot's pose. 
+          Lastly, the Human2Robot-Mapper is used to reconstruct the robot pose from the reconstructed human pose. 
+          Both mappers are trained via supervised learning using the difference between the real and reconstructed poses.
+          These differences are also utilized for constructing a correspondence reward function to train the robot control policy using PPO.
+        </p>
+      </div>
+    </div>
+    <!-- /learning framework -->
+  </div>
+</section>    
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- learning framework -->       
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        
+        <h2 class="title is-3 has-text-centered">Comparisons</h2>
+        
+        <div class="columns is-centered">          
+          <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
+          style="padding-top: 70px; padding-bottom: 20px;">
+        </div>
+        <!-- <h2 class="subtitle">
+          <strong>IFM</strong> framework consists of three stages: 
+        </h2> -->
+        <p class="has-text-justified">
+          A robot control policy utilizes human motions and sensory information 
+          to generate robot actions for interacting with the environment. 
+          The Robot2Human-Mapper is then used to reconstruct the input human motion pose from the robot's pose. 
+          Lastly, the Human2Robot-Mapper is used to reconstruct the robot pose from the reconstructed human pose. 
+          Both mappers are trained via supervised learning using the difference between the real and reconstructed poses.
+          These differences are also utilized for constructing a correspondence reward function to train the robot control policy using PPO.
+        </p>
+      </div>
+    </div>
+    <!-- /learning framework -->
+  </div>
+</section>   
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- learning framework -->       
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        
+        <h2 class="title is-3 has-text-centered">Applications</h2>
+        
+        <div class="columns is-centered">          
+          <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
+          style="padding-top: 70px; padding-bottom: 20px;">
+        </div>
+        <!-- <h2 class="subtitle">
+          <strong>IFM</strong> framework consists of three stages: 
+        </h2> -->
+        <p class="has-text-justified">
+          A robot control policy utilizes human motions and sensory information 
+          to generate robot actions for interacting with the environment. 
+          The Robot2Human-Mapper is then used to reconstruct the input human motion pose from the robot's pose. 
+          Lastly, the Human2Robot-Mapper is used to reconstruct the robot pose from the reconstructed human pose. 
+          Both mappers are trained via supervised learning using the difference between the real and reconstructed poses.
+          These differences are also utilized for constructing a correspondence reward function to train the robot control policy using PPO.
+        </p>
+      </div>
+    </div>
+    <!-- /learning framework -->
+  </div>
+</section>   
+
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
