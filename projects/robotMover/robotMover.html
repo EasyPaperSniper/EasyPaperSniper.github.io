@@ -241,7 +241,7 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         
-        <h2 class="title is-3 has-text-centered">Method: Dynamic Chain</h2>
+        <h2 class="title is-3 has-text-centered">RobotMover</h2>
         <!-- <h2 class="subtitle">
           <strong>IFM</strong> framework consists of three stages: 
         </h2> -->
@@ -250,9 +250,9 @@
           <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
           style="padding-top: 70px; padding-bottom: 20px;">
         </div>
-        <!-- <h2 class="subtitle">
-          <strong>IFM</strong> framework consists of three stages: 
-        </h2> -->
+        <h3 class="subtitle">
+          Dynamic Chain 
+        </h3>
         <p class="has-text-justified">
           In this work, we introduce RobotMover, a learning-based approach that imitates human motion data to guide robots in learning to move large objects.
 
@@ -302,36 +302,6 @@
 
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <!-- learning framework -->       
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        
-        <h2 class="title is-3 has-text-centered">Comparisons</h2>
-        
-        <div class="columns is-centered">          
-          <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
-          style="padding-top: 70px; padding-bottom: 20px;">
-        </div>
-        <!-- <h2 class="subtitle">
-          <strong>IFM</strong> framework consists of three stages: 
-        </h2> -->
-        <p class="has-text-justified">
-          A robot control policy utilizes human motions and sensory information 
-          to generate robot actions for interacting with the environment. 
-          The Robot2Human-Mapper is then used to reconstruct the input human motion pose from the robot's pose. 
-          Lastly, the Human2Robot-Mapper is used to reconstruct the robot pose from the reconstructed human pose. 
-          Both mappers are trained via supervised learning using the difference between the real and reconstructed poses.
-          These differences are also utilized for constructing a correspondence reward function to train the robot control policy using PPO.
-        </p>
-      </div>
-    </div>
-    <!-- /learning framework -->
-  </div>
-</section>   
-
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -347,8 +317,7 @@
           </video>
         </div>
         <p class="has-text-justified">
-          By combining our trained object manipulation policy with user commands, we demonstrate its applicability in real-world scenarios, 
-          such as moving large trash carts(Up) and automatic dinning chair rearrangement(bottom).
+          By combining our trained object manipulation policy with user commands, we demonstrate its applicability in real-world scenarios, such as moving large trash carts.
         </p>
 
         <br>
@@ -359,7 +328,7 @@
           </video>
         </div>
         <p class="has-text-justified">
-          By combining our trained object manipulation policy with user commands, we demonstrate its applicability in real-world scenarios, such as moving large trash carts.
+          By combining our trained object manipulation policy with a heuristic planner, we showcase a automatic dinning chair rearrangement application.
         </p>
 
 
