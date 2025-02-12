@@ -164,7 +164,7 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/object_collect.mp4" type="video/mp4">
+        <source src="./static/videos/robotMover.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -210,20 +210,22 @@
         
         <h2 class="title is-3 has-text-centered">Large Object Manipultion: Motivation and Challnges</h2>
         
-        <div class="columns is-centered">          
-          <img id="learning-framework" src="static/images/method_overview.png" width="80%" 
-          style="padding-top: 70px; padding-bottom: 20px;">
+        <div class="columns is-centered">
+          <video id="challenges" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/challenges.mp4" type="video/mp4">
+          </video>
         </div>
         <!-- <h2 class="subtitle">
           <strong>IFM</strong> framework consists of three stages: 
         </h2> -->
         <p class="has-text-justified">
-          A robot control policy utilizes human motions and sensory information 
-          to generate robot actions for interacting with the environment. 
-          The Robot2Human-Mapper is then used to reconstruct the input human motion pose from the robot's pose. 
-          Lastly, the Human2Robot-Mapper is used to reconstruct the robot pose from the reconstructed human pose. 
-          Both mappers are trained via supervised learning using the difference between the real and reconstructed poses.
-          These differences are also utilized for constructing a correspondence reward function to train the robot control policy using PPO.
+          Large objects, such as furniture, are essential in our social spaces. 
+          Can robots assist us in moving these large objects for workspace rearrangement or home relocation?
+          The large size of the object can cause it to collide with the robot, potentially limiting the robot's range of
+          motion and risking damage to both the object and the robot.
+          Large objects’ greater weight can cause the system to be under actuated. This requires the robot dynamically control 
+          the object to overcome ground friction and object’s momentum. 
+          Moving large objects requires precise synchronization of the robot's body and arm movements, making successful teleoperation challenging.
         </p>
       </div>
     </div>
