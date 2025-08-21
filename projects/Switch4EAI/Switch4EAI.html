@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+1        content="Switch4EAI: Leveraging Console Game Platform for Benchmarking Robotic Athletics">
+  <meta name="keywords" content="Whole-body Control, Reinforcement Learning, Human-robot Interaction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Switch4EAI: Leveraging Console Game Platform for Benchmarking Robotic Athletics</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+  <!-- add this when related work is done (e.g. digit ifm) -->
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://faculty.cc.gatech.edu/~sha9/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Switch4EAI: Leveraging Console Game Platform for Benchmarking Robotic Athletics</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a >Tianyu Li</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a >Jeonghwan Kim</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a >Wontaek Kim</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a >Donghoon Baek</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a >Seungeun Rho</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a >Sehoon Ha</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Georgia Institute of Technology</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://ieeexplore.ieee.org/abstract/document/10268037"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>RA-L</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="http://arxiv.org/abs/2508.13444"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://youtu.be/pPLy02LiGzY"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/Switch4EAI_compressed.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+			Recent advances in whole-body robot control have enabled humanoid and legged robots to execute increasingly agile and coordinated movements. However, standardized benchmarks for evaluating robotic athletic performance in real-world settings and in direct comparison to humans remain scarce. We present Switch4EAI(Switch-for-Embodied-AI), a low-cost and easily deployable pipeline that leverages motion-sensing console games to evaluate whole-body robot control policies. Using Just Dance on the Nintendo Switch as a representative example, our system captures, reconstructs, and retargets in-game choreography for robotic execution. We validate the system on a Unitree G1 humanoid with an open-source whole-body controller, establishing a quantitative baseline for the robot's performance against a human player. In the paper, we discuss these results, which demonstrate the feasibility of using commercial games platform as physically grounded benchmarks and motivate future work to for benchmarking embodied AI.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method overview -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Framework Overview</h2>
+        <div class="content has-text-justified">
+			<img src="./static/images/method_overview.png" alt="method_overview"/>
+			<p> The Switch4EAI pipeline captures gameplay from a Nintendo Switch, feeding the video stream into a MoCap module that reconstructs the dancer's 3D pose. This pose is then mapped to the robot's body via the Motion Retargeting Module. The Robot Whole-body Controller executes the motion, and the robot's performance is scored in-game. We thank the authors of the following open-source projects: </p>
+			<p>1. Motion tracking - <a href="https://github.com/Arthur151/ROMP/tree/master">ROMP</a></p>
+			<p>2. Motion Retargeting - <a href="https://github.com/YanjieZe/GMR?tab=readme-ov-file">GMR</a></p>
+        </div>
+      </div>
+    </div>
+    <!--/ Method overview. -->
+
+  </div>
+</section>
+
+
+
+
+
+   
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Demos</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content has-text-centered">
+          <video id="demo2" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/demo2.mp4" type="video/mp4">
+          </video>
+          <p>Hear of Glass</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content has-text-centered">
+          <video id="demo3" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/demo3.mp4" type="video/mp4">
+          </video>
+          <p>Old Town Road</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{li2025switch4eai,
+      title={Switch4EAI: Leveraging Console Game Platform for Benchmarking Robotic Athletics}, 
+      author={Tianyu Li and Jeonghwan Kim and Wontaek Kim and Donghoon Baek and Seungeun Rho and Sehoon Ha},
+      year={2025},
+      eprint={2508.13444},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website has been modified from <a href="https://camp-nerf.github.io/"> CamP</a> and 
+            <a href="https://github.com/nerfies/nerfies.github.io"> Nerfies</a>. <br>
+            Last update: Oct.2023
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
