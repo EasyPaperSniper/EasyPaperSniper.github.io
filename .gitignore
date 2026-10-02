@@ -1,0 +1,6 @@
+# Internal Lark exports saved next to blog posts (research logs, spending, internal links).
+# This repo is public and served by GitHub Pages: never commit these.
+projects/blog_post/*/experiment_data.md
+projects/blog_post/*/experiment_data_media/
+projects/blog_post/*/full_version.md
+projects/blog_post/*/full_version_media/
