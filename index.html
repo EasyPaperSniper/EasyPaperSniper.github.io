@@ -114,6 +114,13 @@
     .toggle-btn:not(.active) {
       color: rgba(45, 45, 45, 0.5);
     }
+    .pub-row[hidden] {
+      display: none;
+    }
+    .toggle-btn:focus-visible {
+      outline: 2px solid #4A90D9;
+      outline-offset: 2px;
+    }
     .logo-img {
       width: 48px;
       height: 48px;
@@ -143,7 +150,7 @@
         Tianyu Li <span class="font-normal text-on-surface/40">黎天宇</span>
       </h1>
       <p class="text-base md:text-lg text-on-surface/80 leading-relaxed max-w-2xl mb-6">
-        I am a Founding Research Scientist at Dexmate. I earned my Ph.D. in Computer Science from Georgia Tech.
+        I am a Founding Scientist at Dexmate. I earned my Ph.D. in Computer Science from Georgia Tech.
         My research focuses on Agentic Robotics and Robot Whole-body Control.
       </p>
       <p class="text-sm text-on-surface/60 mb-6">
@@ -180,7 +187,7 @@
           <div class="flex items-start gap-4">
             <img src="images/logos/dexmate.jpeg" alt="Dexmate" class="logo-img rounded-full bg-black p-1 flex-shrink-0" />
             <div>
-              <h4 class="font-headline font-bold text-on-surface text-sm">Founding Research Scientist</h4>
+              <h4 class="font-headline font-bold text-on-surface text-sm">Founding Scientist</h4>
               <p class="text-xs text-on-surface/60 font-medium">Dexmate</p>
               <p class="text-[10px] text-on-surface/40 uppercase tracking-wider mt-1">2025 — Present</p>
             </div>
@@ -239,17 +246,30 @@
     </div>
   </section>
 
-  <!-- ==================== RESEARCH ==================== -->
+  <!-- ==================== PUBLICATIONS ==================== -->
   <section class="floating-card" id="research">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-      <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-surface">Research</h2>
-      <div class="flex bg-primary-container/10 p-1 rounded-lg" role="group">
-        <button onclick="filterPubs('highlights')" class="toggle-btn active px-6 py-2 text-xs font-semibold rounded-md transition-all focus:outline-none">Highlights</button>
-        <button onclick="filterPubs('all')" class="toggle-btn px-6 py-2 text-xs font-medium rounded-md transition-all focus:outline-none">All Publications</button>
+      <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-surface">Publications</h2>
+      <div class="flex flex-wrap bg-primary-container/10 p-1 rounded-lg" role="group" aria-label="Publication categories">
+        <button type="button" onclick="filterPubs('highlights')" data-filter="highlights" aria-pressed="true" aria-controls="pub-list" class="toggle-btn active px-4 py-2 text-xs font-semibold rounded-md transition-all">Highlights</button>
+        <button type="button" onclick="filterPubs('blog')" data-filter="blog" aria-pressed="false" aria-controls="pub-list" class="toggle-btn px-4 py-2 text-xs font-medium rounded-md transition-all">Blog Post</button>
+        <button type="button" onclick="filterPubs('papers')" data-filter="papers" aria-pressed="false" aria-controls="pub-list" class="toggle-btn px-4 py-2 text-xs font-medium rounded-md transition-all">Research Paper</button>
       </div>
     </div>
 
     <div id="pub-list" class="space-y-8">
+
+      <!-- Blog posts -->
+      <article class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-category="blog" data-highlight="false" hidden>
+        <div class="flex-grow">
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/40 mb-1 block">Blog Post · <time datetime="2026-10-01">October 1, 2026</time></span>
+          <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
+            <a href="projects/blog_post/the_unstoppable_robot/the_unstoppable_robot.html">The Unstoppable Robot</a>
+          </h3>
+          <p class="text-sm text-on-surface/60 mb-3">How does a robot know when it’s done?</p>
+          <a class="zen-underline text-secondary text-sm font-semibold" href="projects/blog_post/the_unstoppable_robot/the_unstoppable_robot.html">Read Post</a>
+        </div>
+      </article>
 
       <!-- Switch-JustDance (Highlighted) -->
       <div class="pub-row highlighted group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="true">
@@ -672,32 +692,20 @@
 <!-- ==================== TOGGLE JS ==================== -->
 <script>
   function filterPubs(mode) {
-    const rows = document.querySelectorAll('.pub-row');
-    const buttons = document.querySelectorAll('.toggle-btn');
+    const rows = document.querySelectorAll('#pub-list .pub-row');
+    const buttons = document.querySelectorAll('#research .toggle-btn');
 
-    buttons.forEach(btn => btn.classList.remove('active'));
-    if (mode === 'highlights') {
-      buttons[0].classList.add('active');
-    } else {
-      buttons[1].classList.add('active');
-    }
+    buttons.forEach(btn => {
+      const active = btn.dataset.filter === mode;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', String(active));
+    });
 
     rows.forEach(row => {
-      if (mode === 'highlights' && row.dataset.highlight !== 'true') {
-        row.style.maxHeight = '0px';
-        row.style.opacity = '0';
-        row.style.overflow = 'hidden';
-        row.style.padding = '0';
-        row.style.margin = '0';
-        row.style.transition = 'all 0.4s ease';
-      } else {
-        row.style.maxHeight = '600px';
-        row.style.opacity = '1';
-        row.style.overflow = 'visible';
-        row.style.padding = '';
-        row.style.margin = '';
-        row.style.transition = 'all 0.4s ease';
-      }
+      const category = row.dataset.category || 'papers';
+      row.hidden = mode === 'highlights'
+        ? row.dataset.highlight !== 'true'
+        : category !== mode;
     });
   }
 
