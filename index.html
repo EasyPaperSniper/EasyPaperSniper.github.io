@@ -8,8 +8,11 @@
   <link rel="icon" type="image/png" href="images/avatar_2.jpg" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/home.css" />
+  <script>try { const theme = localStorage.getItem("theme"); if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme; } catch (_) {}</script>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -18,15 +21,15 @@
       theme: {
         extend: {
           colors: {
-            "on-surface": "#2D2D2D",
-            "primary-container": "#d4a853",
-            "primary": "#7b5804",
-            "secondary": "#4A90D9",
-            "surface": "#F5F5F4",
+            "on-surface": "rgb(var(--site-ink) / <alpha-value>)",
+            "primary-container": "rgb(var(--site-ink) / <alpha-value>)",
+            "primary": "rgb(var(--site-ink) / <alpha-value>)",
+            "secondary": "rgb(var(--site-ink) / <alpha-value>)",
+            "surface": "var(--ds-paper-2)",
           },
           fontFamily: {
-            headline: ["Manrope", "sans-serif"],
-            body: ["Inter", "sans-serif"],
+            headline: ["Geist", "sans-serif"],
+            body: ["Geist", "sans-serif"],
           },
           borderRadius: {
             card: "1.5rem",
@@ -45,121 +48,38 @@
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
-  <style>
-    body {
-      background-color: #F5F5F4;
-      background-image: radial-gradient(rgba(212, 168, 83, 0.15) 1px, transparent 0);
-      background-size: 40px 40px;
-      color: #2D2D2D;
-    }
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      vertical-align: middle;
-    }
-    .floating-card {
-      background-color: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 1.5rem;
-      border: 1px solid rgba(212, 168, 83, 0.2);
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.03), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-      padding: 3rem;
-      margin-bottom: 3rem;
-    }
-    .zen-underline {
-      position: relative;
-    }
-    .zen-underline::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 1px;
-      bottom: -2px;
-      left: 50%;
-      background-color: #4A90D9;
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
-    }
-    .zen-underline:hover::after {
-      width: 100%;
-    }
-    .pub-row {
-      transition: all 0.3s ease;
-    }
-    .pub-row:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
-    }
-    .pub-row.highlighted {
-      background-color: rgba(255, 255, 255, 0.4);
-      border-left: 4px solid rgba(212, 168, 83, 0.6);
-      border-radius: 0 0.75rem 0.75rem 0;
-    }
-    .pub-row.highlighted:hover {
-      background-color: rgba(212, 168, 83, 0.12);
-      border-left-color: rgba(212, 168, 83, 1);
-    }
-    .pub-row:not(.highlighted) {
-      background-color: transparent;
-      border-radius: 0.75rem;
-    }
-    .pub-row:not(.highlighted):hover {
-      background-color: rgba(74, 144, 217, 0.08);
-    }
-    .toggle-btn.active {
-      background-color: white;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      color: #2D2D2D;
-    }
-    .toggle-btn:not(.active) {
-      color: rgba(45, 45, 45, 0.5);
-    }
-    .pub-row[hidden] {
-      display: none;
-    }
-    .toggle-btn:focus-visible {
-      outline: 2px solid #4A90D9;
-      outline-offset: 2px;
-    }
-    .logo-img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      border-radius: 0.5rem;
-    }
-    @media (max-width: 640px) {
-      .floating-card { padding: 1.5rem; }
-    }
-  </style>
+
 </head>
 
 <body class="font-body selection:bg-primary-container/30">
-<main class="max-w-5xl mx-auto px-6 md:px-8 pt-16 pb-20">
+<a class="skip-link" href="#about">Skip to content</a>
+<main class="site-main">
 
   <!-- ==================== HERO ==================== -->
   <section class="floating-card grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center" id="about">
-    <div class="md:col-span-3">
+    <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch theme"><span class="theme-icon" aria-hidden="true"></span><span id="theme-label">Theme</span></button>
+    <div class="portrait">
       <img
         alt="Tianyu Li"
         class="w-full max-w-[180px] mx-auto rounded-lg shadow-sm"
         src="images/avatar_2.jpg"
       />
     </div>
-    <div class="md:col-span-9 flex flex-col justify-center">
+    <div class="hero-copy">
       <h1 class="font-headline font-extrabold tracking-tight text-on-surface mb-4 leading-[1.1] text-2xl md:text-4xl">
-        Tianyu Li <span class="font-normal text-on-surface/40">黎天宇</span>
+        Tianyu Li <span class="chinese-name">黎天宇</span>
       </h1>
-      <p class="text-base md:text-lg text-on-surface/80 leading-relaxed max-w-2xl mb-6">
+      <p class="bio">
         I am a Founding Scientist at Dexmate. I earned my Ph.D. in Computer Science from Georgia Tech.
         My research focuses on Agentic Robotics and Robot Whole-body Control.
       </p>
-      <p class="text-sm text-on-surface/60 mb-6">
+      <p class="name-note">
         There are a few folks that own the same name, such as
         <a href="https://tli2.github.io/" class="text-secondary hover:underline">Tianyu Li@MIT</a> and
         <a href="http://imtianyuli.com/" class="text-secondary hover:underline">Tianyu Li@UPENN</a>,
         please make sure you contact the correct Tianyu Li.
       </p>
-      <div class="flex flex-wrap gap-6 items-center">
+      <div class="contact-links flex flex-wrap gap-6 items-center">
         <a class="flex items-center gap-2 group" href="mailto:bzdlity@gmail.com">
           <span class="material-symbols-outlined text-primary-container text-xl">mail</span>
           <span class="text-sm font-medium border-b border-transparent group-hover:border-primary-container transition-all">bzdlity@gmail.com</span>
@@ -183,65 +103,77 @@
       <!-- Employment -->
       <div>
         <h3 class="text-xs uppercase tracking-[0.2em] text-on-surface/40 font-semibold mb-8">Employment</h3>
-        <div class="space-y-8">
-          <div class="flex items-start gap-4">
+        <ol class="experience-timeline" role="list">
+          <li class="timeline-item is-current">
+            <div class="timeline-entry">
             <img src="images/logos/dexmate-logomark-black.svg" alt="Dexmate" class="logo-img p-1 flex-shrink-0" />
             <div>
-              <h4 class="font-headline font-bold text-on-surface text-sm">Founding Scientist</h4>
-              <p class="text-xs text-on-surface/60 font-medium">Dexmate</p>
-              <p class="text-[10px] text-on-surface/40 uppercase tracking-wider mt-1">2025 — Present</p>
+              <h4>Dexmate</h4>
+              <p class="timeline-role">Founding Scientist</p>
+              <p class="timeline-date">2025 — Present</p>
             </div>
-          </div>
-          <div class="flex items-start gap-4">
+            </div>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-entry">
             <img src="images/logos/meta.png" alt="Meta" class="logo-img flex-shrink-0" />
             <div>
-              <h4 class="font-headline font-bold text-on-surface text-sm">Researcher</h4>
-              <p class="text-xs text-on-surface/60 font-medium">FAIR @ Meta</p>
-              <p class="text-[10px] text-on-surface/40 uppercase tracking-wider mt-1">2024</p>
+              <h4>FAIR @ Meta</h4>
+              <p class="timeline-role">Researcher</p>
+              <p class="timeline-date">2024</p>
             </div>
-          </div>
-          <div class="flex items-start gap-4">
+            </div>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-entry">
             <img src="images/logos/facebook.png" alt="Facebook" class="logo-img flex-shrink-0" />
             <div>
-              <h4 class="font-headline font-bold text-on-surface text-sm">Research Scientist</h4>
-              <p class="text-xs text-on-surface/60 font-medium">FAIR @ Facebook</p>
-              <p class="text-[10px] text-on-surface/40 uppercase tracking-wider mt-1">2019 — 2021</p>
+              <h4>FAIR @ Facebook</h4>
+              <p class="timeline-role">Research Scientist</p>
+              <p class="timeline-date">2019 — 2021</p>
             </div>
-          </div>
-        </div>
+            </div>
+          </li>
+        </ol>
       </div>
       <!-- Education -->
       <div>
         <h3 class="text-xs uppercase tracking-[0.2em] text-on-surface/40 font-semibold mb-8">Education</h3>
-        <div class="space-y-8">
-          <div class="flex items-start gap-4">
+        <ol class="experience-timeline" role="list">
+          <li class="timeline-item">
+            <div class="timeline-entry">
             <img src="images/logos/gatech.png" alt="Georgia Tech" class="logo-img rounded-full flex-shrink-0" />
             <div>
-              <h4 class="font-headline font-bold text-on-surface text-sm">Ph.D. in Computer Science</h4>
-              <p class="text-xs text-on-surface/60 font-medium">Georgia Tech</p>
+              <h4>Georgia Tech</h4>
+              <p class="timeline-role">Ph.D. in Computer Science</p>
               <p class="text-xs text-on-surface/50 mt-1">Advisor: <a href="https://www.cc.gatech.edu/~sha9/" class="text-secondary hover:underline">Prof. Sehoon Ha</a></p>
               <p class="text-xs text-on-surface/50">Thesis: Cross-Embodiment Whole-Body Skill Imitation</p>
-              <p class="text-[10px] text-on-surface/40 uppercase tracking-wider mt-1">2022 — 2025</p>
+              <p class="timeline-date">2022 — 2025</p>
             </div>
-          </div>
-          <div class="flex items-start gap-4">
+            </div>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-entry">
             <img src="images/logos/cmu.png" alt="CMU" class="logo-img rounded-full flex-shrink-0" />
             <div>
-              <h4 class="font-headline font-bold text-on-surface text-sm">M.S. in Computational Science</h4>
-              <p class="text-xs text-on-surface/60 font-medium">Carnegie Mellon University</p>
+              <h4>Carnegie Mellon University</h4>
+              <p class="timeline-role">M.S. in Computational Science</p>
               <p class="text-xs text-on-surface/50 mt-1">Advisors: Prof. Hartmut Geyer, Prof. Chris Atkeson</p>
-              <p class="text-[10px] text-on-surface/40 uppercase tracking-wider mt-1">2017 — 2018</p>
+              <p class="timeline-date">2017 — 2018</p>
             </div>
-          </div>
-          <div class="flex items-start gap-4">
+            </div>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-entry">
             <img src="images/logos/beihang.png" alt="Beihang University" class="logo-img rounded-full flex-shrink-0" />
             <div>
-              <h4 class="font-headline font-bold text-on-surface text-sm">B.E. in Energy and Power Engineering</h4>
-              <p class="text-xs text-on-surface/60 font-medium">Beihang University</p>
-              <p class="text-[10px] text-on-surface/40 uppercase tracking-wider mt-1">2013 — 2017</p>
+              <h4>Beihang University</h4>
+              <p class="timeline-role">B.E. in Energy and Power Engineering</p>
+              <p class="timeline-date">2013 — 2017</p>
             </div>
-          </div>
-        </div>
+            </div>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
@@ -250,10 +182,10 @@
   <section class="floating-card" id="research">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
       <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-surface">Publications</h2>
-      <div class="flex flex-wrap bg-primary-container/10 p-1 rounded-lg" role="group" aria-label="Publication categories">
+      <div class="publication-filters" role="group" aria-label="Publication categories">
         <button type="button" onclick="filterPubs('highlights')" data-filter="highlights" aria-pressed="true" aria-controls="pub-list" class="toggle-btn active px-4 py-2 text-xs font-semibold rounded-md transition-all">Highlights</button>
         <button type="button" onclick="filterPubs('blog')" data-filter="blog" aria-pressed="false" aria-controls="pub-list" class="toggle-btn px-4 py-2 text-xs font-medium rounded-md transition-all">Blog Post</button>
-        <button type="button" onclick="filterPubs('papers')" data-filter="papers" aria-pressed="false" aria-controls="pub-list" class="toggle-btn px-4 py-2 text-xs font-medium rounded-md transition-all">Research Paper</button>
+        <button type="button" onclick="filterPubs('papers')" data-filter="papers" aria-pressed="false" aria-controls="pub-list" class="toggle-btn px-4 py-2 text-xs font-medium rounded-md transition-all">Research Papers</button>
       </div>
     </div>
 
@@ -262,10 +194,10 @@
       <!-- Blog posts -->
       <article class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-category="blog" data-highlight="false" hidden>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-on-surface/40 mb-1 block">Blog Post · <time datetime="2026-10-01">October 1, 2026</time></span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
             <a href="projects/blog_post/the_unstoppable_robot/the_unstoppable_robot.html">The Unstoppable Robot</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/40 mb-1 block">Blog Post · <time datetime="2026-10-01">October 1, 2026</time></span>
           <p class="text-sm text-on-surface/60 mb-3">How does a robot know when it’s done?</p>
           <a class="zen-underline text-secondary text-sm font-semibold" href="projects/blog_post/the_unstoppable_robot/the_unstoppable_robot.html">Read Post</a>
         </div>
@@ -275,16 +207,16 @@
       <div class="pub-row highlighted group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="true">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <video aria-label="Switch-JustDance: Benchmarking Whole-Body Motion Tracking Policies Using a Commercial Console Game video" poster="assets/posters/switch-justdance.jpg" controls muted playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700">
               <source src="https://switch-justdance.github.io/static/videos/teaser.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-primary-container mb-1 block font-bold">CVPR Findings, 2026</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-primary transition-colors">
             <a href="https://switch-justdance.github.io">Switch-JustDance: Benchmarking Whole-Body Motion Tracking Policies Using a Commercial Console Game</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-primary-container mb-1 block font-bold">CVPR Findings, 2026</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             Jeonghwan Kim*, Wontaek Kim*, Yidan Lu*, Jin Cheng*, Fatemeh Zargarbashi*, Zicheng Zeng*, Zekun Qi*,
             Zhiyang Dou, Nitish Sontakke, Donghoon Baek, Sehoon Ha, <span class="text-on-surface font-semibold">Tianyu Li</span>
@@ -300,16 +232,16 @@
       <div class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="false">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <video aria-label="MoReFlow: Motion Retargeting Learning through Unsupervised Flow Matching video" controls muted playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700" poster="assets/posters/MoReFlow-moreflow.jpg">
               <source src="images/MoReFlow/moreflow.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">arXiv, 2025</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
             <a href="https://dnjsxor999.github.io/projects/MoReFlow/MoReFlow.html">MoReFlow: Motion Retargeting Learning through Unsupervised Flow Matching</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">arXiv, 2025</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             Wontaek Kim, <span class="text-on-surface font-semibold">Tianyu Li*</span>, Sehoon Ha*
           </p>
@@ -324,16 +256,16 @@
       <div class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="false">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <video aria-label="Switch4EAI: Leveraging Console Game Platform for Benchmarking Robotic Athletics video" controls muted playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700" poster="assets/posters/Switch4EAI-Switch4EAI_short.jpg">
               <source src="images/Switch4EAI/Switch4EAI_short.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">CoRL Workshop, 2025</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
             <a href="projects/Switch4EAI/Switch4EAI.html">Switch4EAI: Leveraging Console Game Platform for Benchmarking Robotic Athletics</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">CoRL Workshop, 2025</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             <span class="text-on-surface font-semibold">Tianyu Li</span>, Jeonghwan Kim, Wontaek Kim, Donghoon Baek, Seungeun Rho, Sehoon Ha
           </p>
@@ -348,16 +280,16 @@
       <div class="pub-row highlighted group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="true">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <video aria-label="Learning Physical Interaction Skills from Human Demonstrations video" controls muted playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700" poster="assets/posters/buddyImitation-buddyImitation.jpg">
               <source src="images/buddyImitation/buddyImitation.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-primary-container mb-1 block font-bold">Arxiv, 2025</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-primary transition-colors">
             <a href="http://arxiv.org/abs/2507.20445">Learning Physical Interaction Skills from Human Demonstrations</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-primary-container mb-1 block font-bold">Arxiv, 2025</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             <span class="text-on-surface font-semibold">Tianyu Li</span>, Hengbo Ma, Sehoon Ha, Kwonjoon Lee
           </p>
@@ -371,16 +303,16 @@
       <div class="pub-row highlighted group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="true">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <video aria-label="RobotMover: Learning to Move Large Objects by Imitating the Dynamic Chain video" controls muted playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700" poster="assets/posters/robotMover-robotMover_short.jpg">
               <source src="images/robotMover/robotMover_short.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-primary-container mb-1 block font-bold">IEEE Transactions on Robotics, 2026</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-primary transition-colors">
             <a href="projects/robotMover/robotMover.html">RobotMover: Learning to Move Large Objects by Imitating the Dynamic Chain</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-primary-container mb-1 block font-bold">IEEE Transactions on Robotics, 2026</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             <span class="text-on-surface font-semibold">Tianyu Li</span>, Joanne Truong, Jimmy Yang, Alexander Clegg, Akshara Rai, Sehoon Ha, Xavier Puig
           </p>
@@ -395,16 +327,16 @@
       <div class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="false">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <video aria-label="Language Guided Skill Discovery video" controls muted playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700" poster="assets/posters/LGSD-LGSD.jpg">
               <source src="images/LGSD/LGSD.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">ICLR, 2025</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
             Language Guided Skill Discovery
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">ICLR, 2025</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             Seungeun Rho, Laura Smith, <span class="text-on-surface font-semibold">Tianyu Li</span>, Sergey Levine, Xue Bin Peng, Sehoon Ha
           </p>
@@ -418,16 +350,16 @@
       <div class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="false">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <video aria-label="AAMDM: Accelerated Auto-regressive Motion Diffusion Model video" controls muted playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700" poster="assets/posters/AAMDM-AAMDM.jpg">
               <source src="images/AAMDM/AAMDM.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">CVPR, 2024</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
             <a href="projects/AAMDM/AAMDM.html">AAMDM: Accelerated Auto-regressive Motion Diffusion Model</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">CVPR, 2024</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             <span class="text-on-surface font-semibold">Tianyu Li</span>, Zhuhan Qiao, Guanqiao Ren, KangKang Yin, Sehoon Ha
           </p>
@@ -443,16 +375,16 @@
       <div class="pub-row highlighted group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="true">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <video aria-label="CrossLoco: Human Motion Driven Control of Legged Robots via Guided Unsupervised Reinforcement Learning video" controls muted playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700" poster="assets/posters/CrossLoco-CrossLoco.jpg">
               <source src="images/CrossLoco/CrossLoco.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-primary-container mb-1 block font-bold">ICLR, 2024</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-primary transition-colors">
             <a href="projects/crossloco/crossloco.html">CrossLoco: Human Motion Driven Control of Legged Robots via Guided Unsupervised Reinforcement Learning</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-primary-container mb-1 block font-bold">ICLR, 2024</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             <span class="text-on-surface font-semibold">Tianyu Li</span>, Hyunyoung Jung, Matthew Gombolay, Yong Kwon Cho, Sehoon Ha
           </p>
@@ -469,16 +401,16 @@
       <div class="pub-row highlighted group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="true">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <video aria-label="ACE: Adversarial Correspondence Embedding for Cross Morphology Motion Retargeting from Human to Nonhuman Characters video" controls muted playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700" poster="assets/posters/ACE-ACE.jpg">
               <source src="images/ACE/ACE.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-primary-container mb-1 block font-bold">SIGGRAPH ASIA, 2023</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-primary transition-colors">
             <a href="projects/ACE/index.html">ACE: Adversarial Correspondence Embedding for Cross Morphology Motion Retargeting from Human to Nonhuman Characters</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-primary-container mb-1 block font-bold">SIGGRAPH ASIA, 2023</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             <span class="text-on-surface font-semibold">Tianyu Li</span>, Jungdam Won, Alexander Clegg, Jeonghwan Kim, Akshara Rai, Sehoon Ha
           </p>
@@ -495,14 +427,14 @@
       <div class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="false">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <img src="images/TWiLR/domain.jpeg" alt="TWiLR" class="thumb w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src="images/TWiLR/domain.jpeg" alt="TWiLR" class="thumb w-full h-full object-cover transition-transform duration-700" />
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">RSS, 2023</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
             <a href="https://sites.google.com/berkeley.edu/twirl">Learning and Adapting Agile Locomotion Skills by Transferring Experience</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">RSS, 2023</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             Laura Smith, J Chase Kew, <span class="text-on-surface font-semibold">Tianyu Li</span>, Linda Luu, Xue Bin Peng, Sehoon Ha, Jie Tan, Sergey Levine
           </p>
@@ -517,16 +449,16 @@
       <div class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="false">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <video aria-label="ARMP: Autoregressive Motion Planning for Quadruped Locomotion and Navigation in Complex Indoor Environment video" controls muted playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700" poster="assets/posters/ARMP-kim2023armp.jpg">
               <source src="images/ARMP/kim2023armp.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">IROS, 2023</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
             <a href="https://armp.jhkim.me/">ARMP: Autoregressive Motion Planning for Quadruped Locomotion and Navigation in Complex Indoor Environment</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">IROS, 2023</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             Jeonghwan Kim, <span class="text-on-surface font-semibold">Tianyu Li</span>, Sehoon Ha
           </p>
@@ -542,14 +474,14 @@
       <div class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="false">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <img src="images/icra_2022.png" alt="FastMimic" class="thumb w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src="images/icra_2022.png" alt="FastMimic" class="thumb w-full h-full object-cover transition-transform duration-700" />
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">Robotics, 2023</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
             <a href="http://arxiv.org/abs/2109.13362">FastMimic: Model-based Motion Imitation for Agile, Diverse and Generalizable Quadrupedal Locomotion</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">Robotics, 2023</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             <span class="text-on-surface font-semibold">Tianyu Li</span>, Jungdam Won, Sehoon Ha, Akshara Rai
           </p>
@@ -564,14 +496,14 @@
       <div class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="false">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <img src="images/ral_2021.png" alt="RA-L" class="thumb w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src="images/ral_2021.png" alt="RA-L" class="thumb w-full h-full object-cover transition-transform duration-700" />
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">RA-L, 2021</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
             <a href="https://arxiv.org/pdf/2008.11867.pdf">Planning in Learned Latent Action Spaces for Generalizable Legged Locomotion</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">RA-L, 2021</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             <span class="text-on-surface font-semibold">Tianyu Li</span>, Roberto Calandra, Deepak Pathak, Yuandong Tian, Franziska Meier, Akshara Rai
           </p>
@@ -586,14 +518,14 @@
       <div class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="false">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <img src="images/icra_2020.jpg" alt="ICRA 2020" class="thumb w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src="images/icra_2020.jpg" alt="ICRA 2020" class="thumb w-full h-full object-cover transition-transform duration-700" />
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">ICRA, 2020</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
             <a href="https://arxiv.org/pdf/1909.12324.pdf">Learning Generalizable Locomotion Skills with Hierarchical Reinforcement Learning</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">ICRA, 2020</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             <span class="text-on-surface font-semibold">Tianyu Li</span>, Nathan Lambert, Roberto Calandra, Franziska Meier, Akshara Rai
           </p>
@@ -608,14 +540,14 @@
       <div class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="false">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <img src="images/iros_2020.png" alt="IROS 2020" class="thumb w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src="images/iros_2020.png" alt="IROS 2020" class="thumb w-full h-full object-cover transition-transform duration-700" />
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">IROS, 2020</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
             <a href="https://arxiv.org/pdf/2011.12255.pdf">Learning Navigation Skills for Legged Robots with Learned Robot Embeddings</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">IROS, 2020</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             Joanne Truong, Denis Yarats, <span class="text-on-surface font-semibold">Tianyu Li</span>, Franziska Meier, Sonia Chernova, Dhruv Batra, Akshara Rai
           </p>
@@ -629,14 +561,14 @@
       <div class="pub-row group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="false">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <img src="images/Corl_2019.png" alt="CoRL 2019" class="thumb w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src="images/Corl_2019.png" alt="CoRL 2019" class="thumb w-full h-full object-cover transition-transform duration-700" />
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">CoRL, 2019</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-secondary transition-colors">
             <a href="http://proceedings.mlr.press/v100/antonova20a/antonova20a.pdf">Bayesian Optimization in Variational Latent Spaces with Dynamic Compression</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-on-surface/30 mb-1 block">CoRL, 2019</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             Rika Antonova, Akshara Rai, <span class="text-on-surface font-semibold">Tianyu Li</span>, Danica Kragic
           </p>
@@ -650,14 +582,14 @@
       <div class="pub-row highlighted group flex flex-col md:flex-row gap-6 p-5 md:p-6" data-highlight="true">
         <div class="md:w-[240px] flex-shrink-0">
           <div class="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
-            <img src="images/icra_2019.png" alt="ATRIAS" class="thumb w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src="images/icra_2019.png" alt="ATRIAS" class="thumb w-full h-full object-cover transition-transform duration-700" />
           </div>
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] uppercase tracking-widest text-primary-container mb-1 block font-bold">ICRA, 2019</span>
           <h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-snug group-hover:text-primary transition-colors">
             <a href="https://arxiv.org/pdf/1809.10811.pdf">Using Deep Reinforcement Learning to Learn High-Level Policies on the ATRIAS Biped</a>
           </h3>
+          <span class="text-[10px] uppercase tracking-widest text-primary-container mb-1 block font-bold">ICRA, 2019</span>
           <p class="text-sm text-on-surface/60 mb-3 font-medium">
             <span class="text-on-surface font-semibold">Tianyu Li</span>, Hartmut Geyer, Christopher G Atkeson, Akshara Rai
           </p>
@@ -671,20 +603,6 @@
   </section>
 
 </main>
-
-<!-- ==================== FOOTER ==================== -->
-<footer class="bg-primary-container/5 backdrop-blur-sm py-10 border-t border-primary-container/10">
-  <div class="flex flex-col md:flex-row justify-between items-center gap-6 px-8 max-w-5xl mx-auto">
-    <div class="flex flex-col gap-1">
-      <div class="font-headline font-bold text-on-surface tracking-tight">Tianyu Li</div>
-    </div>
-    <div class="flex flex-wrap justify-end items-center gap-8 text-xs tracking-widest uppercase font-semibold">
-      <a class="text-on-surface/40 hover:text-primary-container transition-colors" href="mailto:bzdlity@gmail.com">Email</a>
-      <a class="text-on-surface/40 hover:text-primary-container transition-colors" href="https://scholar.google.com.sg/citations?hl=en&user=LaPb8-YAAAAJ">Google Scholar</a>
-      <a class="text-on-surface/40 hover:text-primary-container transition-colors" href="https://twitter.com/SniperPaper">Twitter</a>
-    </div>
-  </div>
-</footer>
 
 <!-- ==================== TOGGLE JS ==================== -->
 <script>
@@ -703,6 +621,7 @@
       row.hidden = mode === 'highlights'
         ? row.dataset.highlight !== 'true'
         : category !== mode;
+      if (row.hidden) row.querySelectorAll('video').forEach(video => video.pause());
     });
   }
 
@@ -712,5 +631,6 @@
   });
 </script>
 
+<script src="assets/home.js"></script>
 </body>
 </html>
