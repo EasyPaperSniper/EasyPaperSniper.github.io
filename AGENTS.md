@@ -1,7 +1,20 @@
 # Personal website maintenance
 
 This is Tianyu Li's static GitHub Pages website. The current homepage is
-`index.html`, using Tailwind CDN and inline styles. No build step is required.
+`index.html`, using Tailwind CDN with `assets/css/home.css` and `assets/home.js`.
+No build step is required.
+
+## Visual style
+
+- Follow EPS_toolsets `skills/design_style`: local Geist fonts, monochrome
+  tokens in `assets/css/tokens.css`, fine borders, and generous spacing.
+- Keep the floating section cards and subtle hover lift, as explicitly requested.
+- Do not number the homepage section headings.
+- Keep the homepage free of a page header and footer. Put the light/dark switch
+  inside the first card; default to the system theme and remember manual choices.
+- Experience uses separate Employment and Education timelines within its floating card.
+- Support matching light/dark layouts and reduced-motion preferences.
+- Keep publication videos click-to-play, with static posters in `assets/posters/`.
 
 ## CV
 
@@ -23,7 +36,7 @@ This is Tianyu Li's static GitHub Pages website. The current homepage is
 
 ## Publications
 
-- Keep the category controls in this order: Highlights, Blog Post, Research Paper.
+- Keep the category controls in this order: Highlights, Blog Post, Research Papers.
 - Highlights shows entries explicitly marked with `data-highlight="true"`.
 - Blog posts live in `projects/blog_post/<slug>/` and are linked from the homepage
   with `data-category="blog"`. Existing paper entries default to the paper category.
