@@ -72,9 +72,6 @@ a,button { -webkit-tap-highlight-color:transparent; }
 .pub-row .zen-underline { font-size:12px; font-weight:500; color:var(--ds-ink); position:relative; }
 .zen-underline::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--ds-ink); transition:width .2s; }
 .zen-underline:hover::after { width:100%; }
-.pub-row[data-category="blog"] { padding:34px 24px!important; background:var(--ds-paper-2); border-radius:12px!important; border:1px solid var(--ds-line)!important; }
-.pub-row[data-category="blog"] h3 { font-size:28px; }
-.pub-row[data-category="blog"] p { font-size:17px; }
 .reveal-pending { opacity:0; transform:translateY(24px); }
 .reveal-ready { animation:section-reveal .6s cubic-bezier(.48,0,.34,.99) both; }
 @keyframes section-reveal { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
