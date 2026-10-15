@@ -36,11 +36,13 @@ a:hover{text-decoration-color:var(--ink)}
 :focus-visible{outline:1.5px solid var(--ink);outline-offset:3px}
 strong{color:var(--ink);font-weight:600}
 code{font-family:var(--mono);font-size:.82em;background:var(--paper-2);padding:.1em .35em;border-radius:3px}
-.top{max-width:var(--rail);margin:0 auto;display:flex;justify-content:flex-end;align-items:center;
+.top{max-width:var(--rail);margin:0 auto;display:flex;justify-content:space-between;align-items:center;
   padding-block:22px;font:500 var(--aux)/1 var(--mono);letter-spacing:.055em;text-transform:uppercase;color:var(--muted)}
 .theme{font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--ink);background:none;border:1px solid var(--line-strong);
   border-radius:999px;padding:8px 14px;cursor:pointer;display:flex;gap:8px;align-items:center;transition:border-color .2s}
 .theme:hover{border-color:var(--ink)}
+.home{color:var(--ink);text-decoration:none;border:1px solid var(--line-strong);border-radius:999px;padding:8px 14px;transition:border-color .2s}
+.home:hover{border-color:var(--ink)}
 .theme i{width:10px;height:10px;border-radius:50%;border:1px solid var(--ink);background:linear-gradient(90deg,var(--ink) 50%,transparent 50%)}
 .hero{max-width:var(--rail);margin:0 auto;position:relative;padding-block:var(--major) 0}
 .hero>*{max-width:var(--reading);margin-inline:auto}
@@ -219,6 +221,7 @@ td.num{white-space:nowrap}
 </head>
 <body>
 <header class="top" id="top">
+<a class="home" href="/">← Home</a>
 <button class="theme" id="theme" type="button" aria-label="Switch theme"><i></i><span>Dark</span></button></header>
 <div class="hero">
 <h1>The Unstoppable Robot</h1>
