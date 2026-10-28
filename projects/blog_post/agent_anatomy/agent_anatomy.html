@@ -923,12 +923,9 @@ main{counter-reset:sn}
       if(button.getAttribute('aria-pressed')==='true')return;
       var key=button.dataset.safetyClip;
       video.pause();video.dataset.safetyVideo=key;video.poster=key+'.jpg';
-      video.querySelector('source').src=key+'.mp4';video.setAttribute('aria-label',title+': '+button.textContent);video.load();
+      video.querySelector('source').src=key+'.mp4';video.setAttribute('aria-label',title+': '+button.textContent);video.load();var q=video.play();if(q)q.catch(function(){});
       buttons.forEach(function(b){b.setAttribute('aria-pressed',b===button?'true':'false');});
     });});
-    video.addEventListener('play',function(){
-      document.querySelectorAll('#safety-results video').forEach(function(other){if(other!==video)other.pause();});
-    });
   });
 })();
 </script>
@@ -957,7 +954,6 @@ document.querySelectorAll('[data-walk]').forEach(function(panel){
  }
  buttons.forEach(function(b,i){b.addEventListener('click',function(){video.pause();video.currentTime=data[i].start;paint();});});
  video.addEventListener('timeupdate',paint);video.addEventListener('seeked',paint);video.addEventListener('loadedmetadata',paint);
- video.addEventListener('play',function(){videos.forEach(function(other){if(other!==video)other.pause();});});
  paint();
 });
 var selectors=Array.from(document.querySelectorAll('[data-view]'));
@@ -984,8 +980,18 @@ function paint(){var index=0;steps.forEach(function(s,i){if(video.currentTime>=s
 }
 buttons.forEach(function(button){button.addEventListener('click',function(){video.pause();video.currentTime=Number(button.dataset.rehearsalTime);paint();});});
 video.addEventListener('timeupdate',paint);video.addEventListener('seeked',paint);video.addEventListener('loadedmetadata',paint);
-video.addEventListener('play',function(){document.querySelectorAll('video').forEach(function(other){if(other!==video)other.pause();});});
 paint();
 })();</script>
+<script id="video-autoplay">
+/* Every video outside the task slider plays muted and looped while it is on screen, and pauses when it leaves (skipped for reduced motion) */
+(function(){
+  var vids=[].slice.call(document.querySelectorAll('main video')).filter(function(v){return !v.closest('#slider');});
+  vids.forEach(function(v){v.muted=true;v.loop=true;v.setAttribute('playsinline','');});
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
+    if(e.isIntersecting){var q=v.play();if(q)q.catch(function(){});}else if(!v.paused)v.pause();});},{threshold:.4});
+  vids.forEach(function(v){io.observe(v);});
+})();
+</script>
 </body>
 </html>
