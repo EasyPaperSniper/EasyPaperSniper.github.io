@@ -171,8 +171,8 @@ window.DECK_NOTES = {
     },
     "22": {
       "title": "Safety needs a local response",
-      "target": "0:45",
-      "clock": "19:00",
+      "target": "0:50",
+      "clock": "19:05",
       "tags": "",
       "markdown": "Second, reliability and safety. A coding agent works in a sandbox. If it breaks something, you throw the sandbox away or git revert. Mistakes are cheap and caught before they matter.\n\n`[click]` A robot has no undo. In our runs, the agent noticed high force, pushed forward again anyway, and only asked to retract 48 seconds later; another time the operator had to stop the robot. An angle in degrees instead of radians is a 57-times larger rotation. Stopping has to happen within milliseconds, and it can't wait for the model to reply.",
       "builds": 1
@@ -180,7 +180,7 @@ window.DECK_NOTES = {
     "23": {
       "title": "Plans depend on reliable motor skills",
       "target": "0:45",
-      "clock": "19:45",
+      "clock": "19:50",
       "tags": "",
       "markdown": "Third, motor skills. A coding agent has elementary skills that are precise and composable: write a file, run a command, run the tests. Decades of tools sit underneath them.\n\n`[click]` A robot's motor skills are continuous, contact-rich, and few of them are mature. In our runs, the agent had to build its own geometry helpers, discover a 45-degree waypoint after a refused rotation, and it never solved the bowl task with the original tools. A stronger model can plan better, but it can't produce a reliable grasp by reasoning alone.",
       "builds": 1
@@ -188,7 +188,7 @@ window.DECK_NOTES = {
     "24": {
       "title": "Also different: input and checking",
       "target": "0:40",
-      "clock": "20:25",
+      "clock": "20:30",
       "tags": "",
       "markdown": "Two more differences. Input: a coding agent reads text, complete and exact. A robot reads cameras, depth and joint states: partial, noisy, and at different rates.\n\n`[click]` And knowing you're right: a coding agent has tests, type checks and exit codes. A robot has no built-in \"done\"; the agent has to judge success itself, and in our completion study the best judge was right 86 percent of the time and took 4 seconds per check.",
       "builds": 1
@@ -196,23 +196,23 @@ window.DECK_NOTES = {
     "25": {
       "title": "We need an AI-native robot system",
       "target": "0:35",
-      "clock": "21:00",
+      "clock": "21:05",
       "tags": "",
       "markdown": "So robotics tasks are fundamentally different from coding tasks. A large model alone is not enough; we need a whole system that supports the model and makes the robot work.\n\nThat's what I call an AI-native robot system: a robot built around the large model, so that each stronger model can solve more robotics tasks, while the system handles what must be fast, safe, and physically skilled.",
       "builds": 0
     },
     "26": {
       "title": "An AI-native robot system",
-      "target": "2:00",
-      "clock": "23:00",
+      "target": "2:05",
+      "clock": "23:10",
       "tags": "",
-      "markdown": "*(Diagram builds: cloud and device; then each middle level with its purpose and rate; then the brain's links to every level; then what's inside; then memory is highlighted.)*\n\nHere is the shape of the system we are building at Dexmate. Start with the two ends. On the cloud, a robot brain: a large model that understands the task and plans subtasks. On the robot, a robot service that drives the hardware safely. The brain sends requests down; the service sends state back up.\n\n`[click]` But a large model can't talk to the motors directly; it is too slow, as we saw. So we add levels on the device. Take motion as the example. First, task execution and grounding: it plans the motion, at about 0.5 to 10 hertz.\n\n`[click]` Then motion tracking: it tracks the motion with reusable, general policies, at about 20 to 100 hertz. Fast loops close on the robot; the brain never waits inside them.\n\n`[click]` And the brain is not only at the top of a chain. It can reach every level directly: ask the planner, call a policy, read the robot's state.\n\n`[click]` Here is what's inside. The brain: a large model, from OpenAI, Anthropic, Google or Muse, with memory and task tracking. Task execution and grounding: a small skill selector, VLAs, motion and navigation planners, and a task monitor. Motion tracking: whole-body control and interactive policies. And the robot service: a local motion planner and collision avoidance, the last thing between any command and the motors.\n\n`[click]` We have started studying pieces of this system. First, memory.",
+      "markdown": "*(Diagram builds: cloud and device; then each middle level with its purpose and rate; then the brain's links to every level; then what's inside; then memory is highlighted.)*\n\nHere is the shape of the system we are building at Dexmate. Start with the two ends. On the cloud, a robot brain: a large model that understands the task and plans subtasks. On the robot, a robot service that drives the hardware safely. The brain sends requests down; the service sends state back up.\n\n`[click]` But a large model can't talk to the motors directly; it is too slow, as we saw. So we add levels on the device. Take motion as the example. First, task execution and grounding: it plans the motion, at about 0.5 to 10 hertz.\n\n`[click]` Then motion tracking: it tracks the motion with reusable, general policies, at about 20 to 100 hertz. Fast loops close on the robot; the brain never waits inside them.\n\n`[click]` And the brain is not only at the top of a chain. It can reach every level directly: ask the planner, call a policy, read the robot's state.\n\n`[click]` Here is what's inside. The brain: a large model, such as GPT, Claude, Gemini or Muse, with memory and task tracking. Task execution and grounding: a small skill selector, VLAs, motion and navigation planners, and a task monitor. Motion tracking: whole-body control and interactive policies. And the robot service: a local motion planner and collision avoidance, the last thing between any command and the motors.\n\n`[click]` We have started studying pieces of this system. First, memory.",
       "builds": 5
     },
     "27": {
       "title": "What should a robot remember?",
       "target": "0:50",
-      "clock": "23:50",
+      "clock": "24:00",
       "tags": "",
       "markdown": "*(Video: real robot, memory demo. Reference on the slide.)*\n\nIn MeMoREval, a robot first walks through a building and sees things happen, without knowing what it will be asked. Later, a fresh agent has to answer and act using only its memory.\n\nThe short answer: keep the camera frames, not text descriptions of them. Frames reached 70 percent task success against about 60 for the best descriptions, and frames plus a scene graph reached 75. Frames were also cheaper to write. A description has to decide what matters before the question is known, and it drops exactly the details you later need.\n\n*(Notes: MeMoREval, arXiv 2610.12561; Gemini 3.7 Flash, 53 simulated tasks, 5 memory backends × 3 seeds; descriptions 56 / 59 / 60% at 64 / 256 / 1024 tokens; write cost $9.30 vs $11.08–12.09 per 1,000 steps. Mostly simulation; real robot: two demonstrations.)*",
       "builds": 0
@@ -220,7 +220,7 @@ window.DECK_NOTES = {
     "28": {
       "title": "An AI-native robot system",
       "target": "0:15",
-      "clock": "24:05",
+      "clock": "24:15",
       "tags": "",
       "markdown": "*(The same diagram, settled; now the task monitor and task tracking are highlighted.)*\n\nBack to the system. The second piece we studied is task tracking: the part that decides whether the task is done.",
       "builds": 0
@@ -228,26 +228,34 @@ window.DECK_NOTES = {
     "29": {
       "title": "How does a robot know it’s done?",
       "target": "1:00",
-      "clock": "25:05",
+      "clock": "25:15",
       "tags": "",
       "markdown": "*(Video: red mug, the VLA reaches the goal and keeps moving. Reference on the slide.)*\n\nToday's robot models don't know when to stop. This is π0.5 in simulation, with automatic stopping turned off: it puts the mug upright, and keeps going. So we need a model that tracks the task's progress and says when it's done.\n\n`[click]` How well can models do that? The high-end models are accurate but slow and expensive: GPT-6 Astra was right 86 percent of the time, but took 4 seconds and about 22 dollars per thousand checks. Gemini 3.8 Flash: 81 percent, 5 and a half seconds. The low-tier, fast models are not reliable: around 50 to 60 percent, close to guessing.\n\n*(Notes: The Unstoppable Robot; RoboLab with π0.5, 500 moments from 150 runs; balanced accuracy. GPT-6 Astra direct 86.0% at 4.01 s, $22.54 per 1,000 checks (50-case subset); Gemini 3.8 Flash 81.4% at 5.50 s, $4.50/1k; DeepSeek V4.1 Flash 51.2% at 2.13 s; GPT-6 Luna 49.8% at 0.28 s; Jev 1.14 59.2% at 0.49 s; Perplexity Decider 64.2% at 0.77 s. With simulator facts instead of images, Astra 98.0%, Gemini 94.8%. Offline, in simulation.)*",
       "builds": 1
     },
     "30": {
+      "title": "A renaissance of robotics problems",
+      "target": "0:55",
+      "clock": "26:10",
+      "tags": "",
+      "markdown": "*(Discussion slide. Two sides: what large models now take on, and the robotics problems that come back.)*\n\nLet me end with a feeling more than a result. For years, much of the excitement was about getting robots to understand: language, tasks, scenes. Large models are now taking on much of that semantic side: understanding the request, planning, and judging what to do next.\n\n`[click]` And that brings us back to the classic robotics problems. How do we build a reliable system around a model that is slow and sometimes wrong? How do we learn motor skills that are general and dependable? And how do we execute fast and safely, every time?\n\nI think this is a renaissance of robotics problems. The model handles the semantics; the hard work is, again, robotics.",
+      "builds": 1
+    },
+    "31": {
       "title": "Thanks",
       "target": "0:15",
-      "clock": "25:20",
+      "clock": "26:25",
       "tags": "",
       "markdown": "Thanks to Yi Wu, Junxiang Wang, Yuchen Liu, and everyone at Dexmate. My email and website are here. Happy to take questions, or catch me at the coffee break.",
       "builds": 0
     }
   },
   "panels": {
-    "Timing summary": "Computed at 140 words/min, plus ~4 s per slide change or click and short pauses inside videos: **25:20**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.\n\n| Part | Slides | Time | Clock at end |\n|---|---|---:|---:|\n| Open: can tackle, but unreliable | 1–3 | 1:50 | 1:50 |\n| Anatomy: setup + results | 4–5 | 2:40 | 4:30 |\n| Agent behavior | 6–10 | 5:35 | 10:05 |\n| What we learned so far | 11–11 | 0:40 | 10:45 |\n| More tools | 12–15 | 2:30 | 13:15 |\n| Simulation | 16–19 | 2:45 | 16:00 |\n| Three issues → need an AI-native system | 20–25 | 5:00 | 21:00 |\n| AI-native system + memory + task tracking | 26–29 | 4:05 | 25:05 |\n| Thanks | 30–30 | 0:15 | 25:20 |",
-    "Cut plan": "- **Cut A — to about 23:55 (−1:25):** hide slide 17 (scene building) and 19 (other simulation findings).\n- **Cut B — to about 22:45 (cut A plus −1:10):** slide 8 → drop the fixed-sleep click (−0:25); slide 10 → drop the click with the three other patterns (−0:20); slide 9 → drop the reuse click (−0:15); slide 5 → drop the learning-cost sentence (−0:10).\n- **Never cut:** 2, 3, 4, 7, 8 (first part), 10 (first part), 11, 14, 15, 18, 20, 21, 22, 23, 25, 26, 27.\n- In presenter view, press `H` to hide/unhide the current slide. Hidden slides are skipped.",
+    "Timing summary": "Computed at 140 words/min, plus ~4 s per slide change or click and short pauses inside videos: **26:25**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.\n\n| Part | Slides | Time | Clock at end |\n|---|---|---:|---:|\n| Open: can tackle, but unreliable | 1–3 | 1:50 | 1:50 |\n| Anatomy: setup + results | 4–5 | 2:40 | 4:30 |\n| Agent behavior | 6–10 | 5:35 | 10:05 |\n| What we learned so far | 11–11 | 0:40 | 10:45 |\n| More tools | 12–15 | 2:30 | 13:15 |\n| Simulation | 16–19 | 2:45 | 16:00 |\n| Three issues → need an AI-native system | 20–25 | 5:05 | 21:05 |\n| AI-native system + memory + task tracking | 26–29 | 4:10 | 25:15 |\n| Discussion + thanks | 30–31 | 1:10 | 26:25 |",
+    "Cut plan": "- **Cut A — to about 25:00 (−1:25):** hide slide 17 (scene building) and 19 (other simulation findings).\n- **Cut B — to about 23:50 (cut A plus −1:10):** slide 8 → drop the fixed-sleep click (−0:25); slide 10 → drop the click with the three other patterns (−0:20); slide 9 → drop the reuse click (−0:15); slide 5 → drop the learning-cost sentence (−0:10).\n- **Never cut:** 2, 3, 4, 7, 8 (first part), 10 (first part), 11, 14, 15, 18, 20, 21, 22, 23, 25, 26, 27.\n- In presenter view, press `H` to hide/unhide the current slide. Hidden slides are skipped.",
     "Checkpoints (presenter timer)": "| Reach slide | Full | Cut A | If late by > 45 s |\n|---|---:|---:|---|\n| 4 Setup | 1:50 | 1:50 | Skip slide 5's click (scale table) |\n| 12 More tools | 10:45 | 10:45 | Skip slide 14's click (tool usage) |\n| 20 What our experiments show | 16:00 | 14:35 | Skip slide 24 |\n| 26 AI-native robot system | 21:00 | 19:35 | Keep 27 and 29 to the TL;DR line each |",
     "Rehearsal plan (talk is Thu Nov 12)": "- **Mon Nov 9 evening:** read the full script aloud once with the deck. Record the time at each checkpoint. Mark any sentence that feels unnatural and rewrite it in your own words.\n- **Tue Nov 10:** two full runs standing up, with the presenter timer. Run 1 full length. Run 2 with cut A. Note where you speed up; add a pause mark there.\n- **Wed Nov 11:** confirm with the organizers whether Q&A is inside the 20 minutes. One full run on the laptop and display adapter you'll use. Check videos play from the local folder with Wi-Fi off. Then one run of only slides 20–28 (the densest part).\n- **Thu Nov 12 morning:** one relaxed run with the cut that matches the slot. Don't change content after this run.\n- **On stage:** if you're nervous, you'll speak faster. The full version at nervous speed runs about 10% shorter. Watch the timer at slide 20; that's the decision point."
   },
   "source": "../script.md",
-  "sha256": "f6daa43cd2dd4029001714e3137cdbde94cdb59a1d16cff9e78294178db94106"
+  "sha256": "770bead60b31ba25550b51f2b1aeef2f162d96e3e6f6e62eeba31b8966936634"
 };

@@ -65,3 +65,11 @@
 
 /* Distinguish reciprocal latency from commanded/policy rates without moving the data. */
 .rate-legend{font-size:24px;line-height:1.35;letter-spacing:-.015em;white-space:nowrap}
+
+/* Discussion: two spacious parts with one restrained reveal. */
+.renaissance-statement{font-size:44px;line-height:1.4;letter-spacing:-.025em}
+.renaissance-semantic-items{font-size:32px;line-height:1.4;color:var(--ds-muted);letter-spacing:-.015em}
+.renaissance-rule{border-top:1px solid var(--ds-line-strong)}
+.renaissance-heading{font-size:48px;font-weight:550;line-height:1.2;letter-spacing:-.025em}
+.renaissance-item{display:flex;align-items:baseline;gap:36px;font-size:38px;line-height:1.4;letter-spacing:-.02em}
+.renaissance-item>.mono{font-size:26px;color:var(--ds-muted);width:44px;flex:none}
