@@ -77,11 +77,17 @@
  }
  function architectureFocus(slide,step){
   const n=slide.dataset.slide;
-  if(!((n==='26'&&step===5)||n==='28'))return;
+  if(!((n==='26'&&[5,6].includes(step))||n==='28'))return;
   if(n==='28'){if(played.has(slide))return;played.add(slide);}
   const svg=slide.querySelector('.ai-architecture'),target=getComputedStyle(svg).color;
   const ink=getComputedStyle(document.documentElement).getPropertyValue('--ds-ink').trim();
   animate(svg,[{color:ink},{color:target}]);
+  if(n==='26'&&step===5){
+   svg.querySelectorAll('.ai-failure-marker').forEach(el=>animate(el,[{opacity:0,transform:'translateY(24px)'},{opacity:1,transform:'translateY(0)'}],(Number(el.dataset.failureOrder)-1)*500));
+   const groups=[['[data-module="avoidance"]',0],['[data-module="selector"],[data-module="monitor"]',500],['#system-brain>.ai-band,#system-brain>.ai-title,.ai-arrow-pair[data-step="1"] path:nth-of-type(2),.ai-arrow-pair[data-step="1"] text:last-child,#system-escalation-arrow path',1000]];
+   for(const [selector,delay] of groups)svg.querySelectorAll(selector).forEach(el=>animate(el,[{color:target},{color:ink}],delay));
+   return;
+  }
   svg.querySelectorAll('.ai-highlight .ai-module-box').forEach(box=>animate(box,[{transform:'scale(1)',strokeWidth:'1.3',strokeOpacity:.45},{transform:'scale(1.04)',strokeWidth:'2.6',strokeOpacity:1}]));
  }
  // Completion is current, never latched: exact half-open intervals from the blog.
