@@ -1,0 +1,52 @@
+/* Scoped to the rebuilt second half; earlier and closing slides are unchanged. */
+.second-half h2{margin:0;font-weight:550;letter-spacing:-.025em}
+.finding-intro{font-size:38px;line-height:1.35;letter-spacing:-.015em}
+.finding-bridge{font-size:34px;color:var(--ds-muted)}
+.finding-item{display:flex;gap:38px;align-items:flex-start}
+.finding-item>span{font-size:28px;color:var(--ds-muted);padding-top:10px}
+.finding-item h2{font-size:52px;line-height:1.15}
+.finding-item p{margin:9px 0 0;font-size:30px;color:var(--ds-muted)}
+.finding-close{font-size:38px;letter-spacing:-.02em}
+.response-chart .time-grid{stroke:var(--ds-line);stroke-width:1}
+.response-chart .model-point{fill:var(--ds-ink)}
+.response-chart .agent-point,.response-chart .policy-point{fill:var(--ds-paper);stroke:var(--ds-ink);stroke-width:2}
+.time-comparison h2{font-size:36px;margin-bottom:15px}
+.time-comparison p{font-size:30px;line-height:1.4;max-width:820px;margin:0}
+.issue-column h2{font-size:42px;line-height:1.2;margin-bottom:53px}
+.issue-column ul{list-style:none;margin:0;padding:0;font-size:36px;line-height:1.4}
+.issue-column li{margin-bottom:27px}
+.coding-side{color:var(--ds-muted)}
+.robot-side{color:var(--ds-ink)}
+.safety-emphasis{font-size:42px;line-height:1.35;letter-spacing:-.02em}
+.issue-column .skill-list{font-size:35px;line-height:1.45;margin:0 0 25px}
+.issue-column .skill-qualifier{font-size:30px;line-height:1.4;color:var(--ds-muted);margin:0}
+.issue-column .skill-evidence{margin-top:62px;font-size:32px}
+.issue-column .skill-evidence li{margin-bottom:26px}
+.matrix-heading{font-size:42px;font-weight:550;letter-spacing:-.02em}
+.matrix-row-label{font-size:30px;font-weight:550;line-height:1.4}
+.matrix-cell{font-size:38px;line-height:1.5;letter-spacing:-.01em}
+.system-statement{font-size:44px;line-height:1.45;letter-spacing:-.025em;color:var(--ds-muted)}
+.system-definition{font-size:44px;color:var(--ds-ink);line-height:1.43;max-width:1670px}
+.system-definition strong{font-weight:600}
+.ai-diagram>svg{width:100%;height:100%;overflow:visible}
+.system-single-line{font-size:40px;white-space:nowrap}
+
+.study-tldr{font-size:32px;line-height:1.4;letter-spacing:-.025em;white-space:nowrap}
+.study-fact{font-size:32px;line-height:1.4;letter-spacing:-.02em}
+.study-muted{font-size:30px;line-height:1.4;color:var(--ds-muted)}
+.study-track{fill:var(--ds-line)}
+.study-bar{fill:var(--ds-ink)}
+
+/* Only the named chip boxes grow; labels keep their native glyph geometry. */
+.slide[data-slide="26"][data-current-step="5"] .ai-memory-callout,.ai-architecture.ai-task-callout{color:color-mix(in srgb,var(--ds-ink) 35%,var(--ds-paper))}
+.slide[data-slide="26"][data-current-step="5"] .ai-highlight,.ai-task-callout .ai-highlight{color:var(--ds-ink)}
+.slide[data-slide="26"][data-current-step="5"] .ai-highlight .ai-module-box,.ai-task-callout .ai-highlight .ai-module-box{stroke-width:2.6;stroke-opacity:1;transform-box:fill-box;transform-origin:center;transform:scale(1.04)}
+.study-reference{font-size:16px;line-height:1.5;color:var(--ds-muted);white-space:nowrap}
+.task-check-tldr{font-size:32px;line-height:1.65;letter-spacing:-.025em;white-space:nowrap}
+.task-check-table{width:100%;border-collapse:collapse;font-size:26px;line-height:1.5;letter-spacing:-.02em}
+.task-check-table tr{border-top:1px solid var(--ds-line-strong)}
+.task-check-table tr:last-child{border-bottom:1px solid var(--ds-line-strong)}
+.task-check-table th{font-size:28px;font-weight:500;text-align:left;vertical-align:top;padding:20px 20px 20px 0;line-height:1.35}
+.task-check-table td{padding:20px 0 20px 24px;vertical-align:top}
+.task-check-table p{margin:0}
+.task-check-table .check-claim{font-size:28px;margin-bottom:12px}
