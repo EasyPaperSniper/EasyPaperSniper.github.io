@@ -50,3 +50,18 @@
 .task-check-table td{padding:20px 0 20px 24px;vertical-align:top}
 .task-check-table p{margin:0}
 .task-check-table .check-claim{font-size:28px;margin-bottom:12px}
+
+/* Slide 29: evidence UI stays below the original, uncropped video field. */
+.mug-readout{display:flex;justify-content:space-between;align-items:baseline;font-size:28px;line-height:1.4}
+.mug-status{color:var(--ds-muted)}
+.mug-status[data-finished="true"]{color:var(--ds-ink)}
+.mug-clock{font-size:24px;color:var(--ds-muted);font-variant-numeric:tabular-nums}
+.mug-track-base{fill:var(--ds-line)}
+.mug-finished-interval{fill:var(--ds-ink)}
+.mug-tick{stroke:var(--ds-line-strong);stroke-width:1}
+.mug-playhead{stroke:var(--ds-ink);stroke-width:3}
+.mug-player[data-static="true"] .mug-playhead{visibility:hidden}
+.mug-caption{font-size:30px;line-height:1.4;letter-spacing:-.02em}
+
+/* Distinguish reciprocal latency from commanded/policy rates without moving the data. */
+.rate-legend{font-size:24px;line-height:1.35;letter-spacing:-.015em;white-space:nowrap}

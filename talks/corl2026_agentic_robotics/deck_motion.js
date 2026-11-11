@@ -84,6 +84,20 @@
   animate(svg,[{color:ink},{color:target}]);
   svg.querySelectorAll('.ai-highlight .ai-module-box').forEach(box=>animate(box,[{transform:'scale(1)',strokeWidth:'1.3',strokeOpacity:.45},{transform:'scale(1.04)',strokeWidth:'2.6',strokeOpacity:1}]));
  }
+ // Completion is current, never latched: exact half-open intervals from the blog.
+ function paintMug(panel,poster=false){
+  const video=panel.querySelector('video');if(!video)return;
+  const t=Math.max(0,Math.min(60,poster?Number(panel.dataset.posterTime):video.currentTime));
+  const intervals=JSON.parse(panel.dataset.finishedIntervals);
+  const finished=intervals.some(([a,b])=>t+1e-6>=a&&t+1e-6<b);
+  const status=panel.querySelector('.mug-status'),head=panel.querySelector('.mug-playhead');
+  const label='Simulator: '+(finished?'Finished':'Unfinished');
+  if(status.textContent!==label)status.textContent=label;
+  status.dataset.finished=String(finished);
+  panel.querySelector('.mug-clock').textContent=t.toFixed(1)+' / 60 s';
+  head.setAttribute('x1',880*t/60);head.setAttribute('x2',880*t/60);
+  panel.dataset.time=String(t);panel.dataset.static=String(poster||mq.matches);
+ }
  function clock(t,kind){if(kind==='alignment'){const n=Math.max(0,Math.round(t));return Math.floor(n/60)+':'+String(n%60).padStart(2,'0');}return t.toFixed(1)+' s';}
  function paint(panel,all=false){
   const video=panel.querySelector('video');if(!video)return;
@@ -104,14 +118,15 @@
   });
   const readout=panel.querySelector('.progress-readout');if(readout)readout.textContent=clock(time,'alignment')+' / 2:16';
  }
- function settleClone(container){if(container.dataset.slide==='7')setBarLayout(container,+container.dataset.currentStep===1);finalNumbers(container);container.querySelectorAll('.replay-state').forEach(p=>paint(p,true));}
+ function settleClone(container){if(container.dataset.slide==='7')setBarLayout(container,+container.dataset.currentStep===1);finalNumbers(container);container.querySelectorAll('.replay-state').forEach(p=>paint(p,true));container.querySelectorAll('.mug-player').forEach(p=>paintMug(p,true));}
  function apply(slide,step,reduce=false,force=false){
   const next=slide.dataset.slide+':'+step,previous=position;
   if(next!==position||force){cancel();position=next;if(slide.dataset.slide==='7'){if(reduce)setBarLayout(slide,step===1);else chart(slide,step,previous);}else if(!reduce){toolsAndSimulation(slide);architectureFocus(slide,step);}}
   if(reduce){owned.forEach(a=>a.finish());finalNumbers(slide);}
   if(slide.dataset.slide==='8')slide.querySelectorAll('.replay-state').forEach(p=>paint(p,reduce));
+  slide.querySelectorAll('.mug-player').forEach(p=>paintMug(p,['render','preview','presenter'].some(k=>query.get(k)==='1')));
  }
- function frame(){const panel=document.querySelector('#slide-8.active .replay-state[data-visible="true"]');if(panel)paint(panel,settled());requestAnimationFrame(frame);}
+ function frame(){const panel=document.querySelector('#slide-8.active .replay-state[data-visible="true"]');if(panel)paint(panel,settled());const mug=document.querySelector('#slide-29.active .mug-player');if(mug)paintMug(mug,['render','preview','presenter'].some(k=>query.get(k)==='1'));requestAnimationFrame(frame);}
  mq.addEventListener('change',()=>{const slide=document.querySelector('.slide.active');if(slide)apply(slide,Number(slide.dataset.currentStep),settled(),true);});
  window.DECK_MOTION={apply,settleClone,paint,options};requestAnimationFrame(frame);
 })();

@@ -14,7 +14,7 @@ window.DECK_NOTES = {
       "target": "1:00",
       "clock": "1:20",
       "tags": "",
-      "markdown": "*(Video: the door segment from the blog teaser, with Claude Code's agent log on the right; captions removed. Loops.)*\n\nCoding agents can tackle robotics tasks. Here is a real trial. The prompt is one sentence: \"Open the door in front of you and enter the room.\" The agent is Claude Code. On the right is its log: what it asks for, the camera images it gets back, and what it decides. It has no door detector and no motion planner. It can look through the cameras, move a hand, turn the head, open the gripper, and step the base. That's it.\n\nIt finds the handle in the image, moves its hand in front of it, presses down, pushes the door wider, and drives through. It worked. But this clip is sped up, and the real run took several minutes.",
+      "markdown": "*(Video: the door segment from the blog teaser, with Claude Code's agent log on the right; captions removed. Loops.)*\n\nCoding agents can tackle robotics tasks. Here is a real trial. The prompt is one sentence: \"Open the door in front of you and enter the room.\" The agent is Claude Code. On the right is its log: what it asks for, the camera images it gets back, and what it decides. It has no door detector and no scene-aware obstacle planner. It can look through the cameras, move a hand, turn the head, open the gripper, and step the base. That's it.\n\nIt finds the handle in the image, moves its hand in front of it, presses down, pushes the door wider, and drives through. It worked. But this clip is sped up, and the real run took several minutes.",
       "builds": 0
     },
     "3": {
@@ -34,7 +34,7 @@ window.DECK_NOTES = {
       "builds": 1
     },
     "5": {
-      "title": "Overall results",
+      "title": "Successful execution still takes minutes",
       "target": "1:15",
       "clock": "4:30",
       "tags": "",
@@ -58,7 +58,7 @@ window.DECK_NOTES = {
       "builds": 1
     },
     "8": {
-      "title": "Between two actions",
+      "title": "126 seconds for a 6.5 cm correction",
       "target": "1:10",
       "clock": "7:40",
       "tags": "",
@@ -66,7 +66,7 @@ window.DECK_NOTES = {
       "builds": 1
     },
     "9": {
-      "title": "What agents save",
+      "title": "Saved skills still need model judgment",
       "target": "1:05",
       "clock": "8:45",
       "tags": "",
@@ -78,7 +78,7 @@ window.DECK_NOTES = {
       "target": "1:20",
       "clock": "10:05",
       "tags": "",
-      "markdown": "*(Videos: the door contact, head and wrist; on click, the other three failures as looping clips.)*\n\nThat judgment matters most for safety. In this trial, the agent writes that there is high force on the arm and that it should retract. Sixteen seconds later, it asks for another 15 centimeters forward and calls the arm a \"bumper\". It asks to retract 48 seconds after it first noticed the risk.\n\n`[click]` We saw three other patterns. Table contact during a grasp that the agent never mentioned. Pushing on a latched door and calling it progress. And intervention that came too late: the arm hit the rack, and the operator had to stop the robot. Those motions all reported normal completion.\n\nSo task success and normal motion feedback do not tell you the run was safe.\n\nOne more, from a session outside these logs: the agent output an angle in degrees where the tool expected radians. On a robot, a unit slip like that is not a typo; it is a rotation about 57 times larger than intended.\n\n*(Notes: the unit error was observed by the speaker during the experiments; it is not in the analysed logs. 57× is just the unit ratio, 1 rad ≈ 57.3°.)*",
+      "markdown": "*(Videos: the door contact, head and wrist; on click, the other three failures as looping clips.)*\n\nThat judgment matters most for safety. In this trial, the agent writes that there is high force on the arm and that it should retract. Sixteen seconds later, it asks for another 15 centimeters forward and calls the arm a \"bumper\". It asks to retract 48 seconds after it first noticed the risk.\n\n`[click]` We saw three other patterns. Table contact during a grasp that the agent never mentioned. Pushing on a latched door and calling it progress. And intervention that came too late: the arm hit the rack, and the operator had to stop the robot. Those motions reported normal completion.\n\nSo task success and normal motion feedback do not tell you the run was safe.\n\nOne more, from a session outside these logs: the agent output an angle in degrees where the tool expected radians. On a robot, a unit slip like that is not a typo; it is a rotation about 57 times larger than intended.\n\n*(Notes: the unit error was observed by the speaker during the experiments; it is not in the analysed logs. 57× is just the unit ratio, 1 rad ≈ 57.3°.)*",
       "builds": 1
     },
     "11": {
@@ -106,7 +106,7 @@ window.DECK_NOTES = {
       "builds": 1
     },
     "14": {
-      "title": "More tools: results",
+      "title": "More tools did not consistently help",
       "target": "0:45",
       "clock": "12:25",
       "tags": "",
@@ -114,7 +114,7 @@ window.DECK_NOTES = {
       "builds": 1
     },
     "15": {
-      "title": "More tools, more checking",
+      "title": "Added tools shifted effort into checking",
       "target": "0:50",
       "clock": "13:15",
       "tags": "",
@@ -138,7 +138,7 @@ window.DECK_NOTES = {
       "builds": 0
     },
     "18": {
-      "title": "Iterating in simulation",
+      "title": "Rehearsal changes the grasp strategy",
       "target": "0:55",
       "clock": "15:05",
       "tags": "",
@@ -146,7 +146,7 @@ window.DECK_NOTES = {
       "builds": 1
     },
     "19": {
-      "title": "What else we saw in simulation",
+      "title": "Simulation assumptions can hide failures",
       "target": "0:55",
       "clock": "16:00",
       "tags": "[CUT-A]",
@@ -162,7 +162,7 @@ window.DECK_NOTES = {
       "builds": 0
     },
     "21": {
-      "title": "Issue 1: time",
+      "title": "Model latency cannot set the control rate",
       "target": "1:25",
       "clock": "18:15",
       "tags": "",
@@ -170,15 +170,15 @@ window.DECK_NOTES = {
       "builds": 2
     },
     "22": {
-      "title": "Issue 2: reliability and safety",
+      "title": "Safety needs a local response",
       "target": "0:45",
       "clock": "19:00",
       "tags": "",
-      "markdown": "Second, reliability and safety. A coding agent works in a sandbox. If it breaks something, you throw the sandbox away or git revert. Mistakes are cheap and caught before they matter.\n\n`[click]` A robot has no undo. In our runs, the agent noticed high force and kept pushing for 48 seconds; another time the operator had to stop the robot. An angle in degrees instead of radians is a 57-times larger rotation. Stopping has to happen within milliseconds, and it can't wait for the model to reply.",
+      "markdown": "Second, reliability and safety. A coding agent works in a sandbox. If it breaks something, you throw the sandbox away or git revert. Mistakes are cheap and caught before they matter.\n\n`[click]` A robot has no undo. In our runs, the agent noticed high force, pushed forward again anyway, and only asked to retract 48 seconds later; another time the operator had to stop the robot. An angle in degrees instead of radians is a 57-times larger rotation. Stopping has to happen within milliseconds, and it can't wait for the model to reply.",
       "builds": 1
     },
     "23": {
-      "title": "Issue 3: motor skills",
+      "title": "Plans depend on reliable motor skills",
       "target": "0:45",
       "clock": "19:45",
       "tags": "",
@@ -249,5 +249,5 @@ window.DECK_NOTES = {
     "Rehearsal plan (talk is Thu Nov 12)": "- **Mon Nov 9 evening:** read the full script aloud once with the deck. Record the time at each checkpoint. Mark any sentence that feels unnatural and rewrite it in your own words.\n- **Tue Nov 10:** two full runs standing up, with the presenter timer. Run 1 full length. Run 2 with cut A. Note where you speed up; add a pause mark there.\n- **Wed Nov 11:** confirm with the organizers whether Q&A is inside the 20 minutes. One full run on the laptop and display adapter you'll use. Check videos play from the local folder with Wi-Fi off. Then one run of only slides 20–28 (the densest part).\n- **Thu Nov 12 morning:** one relaxed run with the cut that matches the slot. Don't change content after this run.\n- **On stage:** if you're nervous, you'll speak faster. The full version at nervous speed runs about 10% shorter. Watch the timer at slide 20; that's the decision point."
   },
   "source": "../script.md",
-  "sha256": "a8f9d014d0ae8e7115f68b17b5e2467c414adc042b9b452b67fb49643232dc6a"
+  "sha256": "f6daa43cd2dd4029001714e3137cdbde94cdb59a1d16cff9e78294178db94106"
 };
