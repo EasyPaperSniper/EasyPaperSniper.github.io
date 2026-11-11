@@ -8,7 +8,8 @@
 .finding-item p{margin:9px 0 0;font-size:30px;color:var(--ds-muted)}
 .finding-close{font-size:38px;letter-spacing:-.02em}
 .response-chart .time-grid{stroke:var(--ds-line);stroke-width:1}
-.response-chart .model-point{fill:var(--ds-ink)}
+.response-chart .vlm-point,.response-chart .decider-point{fill:var(--ds-ink)}
+.response-chart .rate-group{fill:var(--ds-muted);font-weight:550}
 .response-chart .agent-point,.response-chart .policy-point{fill:var(--ds-paper);stroke:var(--ds-ink);stroke-width:2}
 .time-comparison h2{font-size:36px;margin-bottom:15px}
 .time-comparison p{font-size:30px;line-height:1.4;max-width:820px;margin:0}
@@ -73,3 +74,6 @@
 .renaissance-heading{font-size:48px;font-weight:550;line-height:1.2;letter-spacing:-.025em}
 .renaissance-item{display:flex;align-items:baseline;gap:36px;font-size:38px;line-height:1.4;letter-spacing:-.02em}
 .renaissance-item>.mono{font-size:26px;color:var(--ds-muted);width:44px;flex:none}
+
+/* Requested OpenRouter source, below the unchanged coding/robot comparison. */
+.latency-reference{font-size:16px;line-height:1.5;color:var(--ds-muted);white-space:nowrap}
