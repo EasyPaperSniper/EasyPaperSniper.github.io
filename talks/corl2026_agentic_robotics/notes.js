@@ -155,16 +155,16 @@ window.DECK_NOTES = {
     },
     "20": {
       "title": "Model latency cannot set the control rate",
-      "target": "0:35",
-      "clock": "11:15",
+      "target": "0:50",
+      "clock": "11:30",
       "tags": "",
-      "markdown": "*(Chart: one frequency axis in hertz. Large models from OpenRouter on the left, robot policies on the right.)*\n\nFirst, time. Large models take seconds to respond, and one agent step takes even longer.\n\n`[click]` On the right are the policies people actually run on robots, which update many times per second, so the models that can reason about a scene are orders of magnitude too slow.\n\n`[click]` A coding task can wait while the model thinks, but for a robot, the world keeps moving.\n\n*(Notes: model latencies are OpenRouter's average end-to-end latency for the best provider over the past week (the per-provider figures OpenRouter labels 'Avg'), read Nov 11, 2026 (openrouter.ai/<model>/performance; data in deck/data/openrouter_latency_2026-11-11.json). On the chart but not read aloud: GPT-6 Astra 7.4 s, Gemini 4 Carbon 24.3 s, DeepSeek V4.1 Flash 0.96 s, GPT-6 Luna Decisions 0.26 s, Jev 1.14 0.11 s. They reflect OpenRouter's general traffic, not our robot prompts; reasoning models' end-to-end time depends on output length. VLM = vision-language model; decider = structured decision model. Agent steps from the Anatomy runs: Opus 5.6 s, Astra 12.1 s. π0.5: \"at 50 Hz (with action chunking)\" (arXiv 2504.16054); SONIC: \"The policy loop runs at 50 Hz\" (arXiv 2511.07820); Fast-WAM: 190 ms inference latency (arXiv 2603.16666), ~5 Hz is our conversion.)*",
+      "markdown": "*(Chart: one frequency axis in hertz. Large models from OpenRouter on the left, robot policies on the right.)*\n\nFirst, time. Here, one call to a large model takes a few seconds. But in our runs, a full agent loop, where the agent reads the image, thinks, and sends the next command, took even longer, so the robot only got a new command every several seconds.\n\n`[click]` On the right are the policies people actually run on robots, which update many times per second, so the models that can reason about a scene are orders of magnitude too slow.\n\n`[click]` A coding task can wait while the model thinks, but for a robot, the world keeps moving.\n\n*(Notes: model latencies are OpenRouter's average end-to-end latency for the best provider over the past week (the per-provider figures OpenRouter labels 'Avg'), read Nov 11, 2026 (openrouter.ai/<model>/performance; data in deck/data/openrouter_latency_2026-11-11.json). On the chart but not read aloud: GPT-6 Astra 7.4 s, Gemini 4 Carbon 24.3 s, DeepSeek V4.1 Flash 0.96 s, GPT-6 Luna Decisions 0.26 s, Jev 1.14 0.11 s. They reflect OpenRouter's general traffic, not our robot prompts; reasoning models' end-to-end time depends on output length. VLM = vision-language model; decider = structured decision model. Full agent loop = mean time from an observation to the next tool call in the Anatomy runs (input handling, reasoning, response, latency): Opus 5.6 s, Astra 12.1 s. π0.5: \"at 50 Hz (with action chunking)\" (arXiv 2504.16054); SONIC: \"The policy loop runs at 50 Hz\" (arXiv 2511.07820); Fast-WAM: 190 ms inference latency (arXiv 2603.16666), ~5 Hz is our conversion.)*",
       "builds": 2
     },
     "21": {
       "title": "Safety needs a local response",
       "target": "0:20",
-      "clock": "11:35",
+      "clock": "11:50",
       "tags": "",
       "markdown": "Second, safety. When a coding agent makes a mistake, you can simply revert it.\n\n`[click]` A robot has no undo, so stopping must happen within milliseconds, without waiting for the model.",
       "builds": 1
@@ -172,7 +172,7 @@ window.DECK_NOTES = {
     "22": {
       "title": "Plans depend on reliable motor skills",
       "target": "0:20",
-      "clock": "11:55",
+      "clock": "12:10",
       "tags": "",
       "markdown": "Third, motor skills. A coding agent has precise building blocks, like writing files and running tests.\n\n`[click]` A robot's skills are continuous and contact-rich, and very few of them are mature yet.",
       "builds": 1
@@ -180,7 +180,7 @@ window.DECK_NOTES = {
     "23": {
       "title": "Also different: input and checking",
       "target": "0:20",
-      "clock": "12:15",
+      "clock": "12:30",
       "tags": "",
       "markdown": "A coding agent also reads exact text, while a robot reads noisy sensors.\n\n`[click]` And a coding agent has tests to know when it's done, while a robot has no such signal.",
       "builds": 1
@@ -188,7 +188,7 @@ window.DECK_NOTES = {
     "24": {
       "title": "We need an AI-native robot system",
       "target": "0:25",
-      "clock": "12:40",
+      "clock": "12:55",
       "tags": "",
       "markdown": "So a large model alone is not enough, and we need an AI-native robot system around it. Its goal is to let the large model drive the robot to finish tasks reliably and efficiently.",
       "builds": 0
@@ -196,7 +196,7 @@ window.DECK_NOTES = {
     "25": {
       "title": "An AI-native robot system",
       "target": "1:10",
-      "clock": "13:50",
+      "clock": "14:05",
       "tags": "",
       "markdown": "*(Diagram builds top-down: the robot brain in the cloud with its contents and rate; then each device level with its purpose, contents and rate: task execution & grounding, primitive skills, robot service (with the brain's direct-access links); then memory is highlighted.)*\n\nThis is the system we are building at Dexmate. In the cloud, the robot brain is an agent system with a large model at its core and a harness for memory, context, and task tracking, and it turns the user's task into a plan at less than 0.5 hertz.\n\n`[click]` On the device, task execution and grounding turns each subtask into motor-skill commands at 1 to 10 hertz, using VLAs and planners, while a subtask monitor tracks progress.\n\n`[click]` Below it, primitive skills solve local tasks such as motion tracking at 20 to 100 hertz.\n\n`[click]` And the robot service keeps the hardware safe, with collision avoidance at 200 to 1000 hertz.\n\n`[click]` We have started studying parts of this system, beginning with memory.",
       "builds": 4
@@ -204,7 +204,7 @@ window.DECK_NOTES = {
     "26": {
       "title": "What should a robot remember?",
       "target": "0:50",
-      "clock": "14:40",
+      "clock": "14:55",
       "tags": "",
       "markdown": "*(Video: real robot, memory demo, with two captions: what the robot saw earlier, and what it is asked later. Reference on the slide.)*\n\nIn MeMoREval, the robot sees things happen before it knows the question, like moving a lemon and later being asked for the apple that was next to it. We found that keeping camera frames works clearly better than text descriptions, and adding a scene graph helps a bit more. The reason is that a description has to decide what matters before the question is known, and it often drops exactly the detail you need later.\n\n*(Notes: MeMoREval, arXiv 2610.12561; Gemini 3.7 Flash, 53 simulated tasks, 5 memory backends × 3 seeds; descriptions 56 / 59 / 60% at 64 / 256 / 1024 tokens; write cost $9.30 vs $11.08–12.09 per 1,000 steps. Mostly simulation; real robot: two demonstrations.)*",
       "builds": 0
@@ -212,7 +212,7 @@ window.DECK_NOTES = {
     "27": {
       "title": "An AI-native robot system",
       "target": "0:15",
-      "clock": "14:55",
+      "clock": "15:10",
       "tags": "",
       "markdown": "*(The same diagram, settled; now task tracking and the subtask monitor are highlighted.)*\n\nThe second part we studied is task tracking, which decides when the task is done.",
       "builds": 0
@@ -220,7 +220,7 @@ window.DECK_NOTES = {
     "28": {
       "title": "How does a robot know it’s done?",
       "target": "1:00",
-      "clock": "15:55",
+      "clock": "16:10",
       "tags": "",
       "markdown": "*(Video: red mug at 2×; the track marks when the task is first done and when the robot undoes it. Reference on the slide.)*\n\nToday's robot models don't know when to stop. Here the policy puts the mug upright, which finishes the task, but then keeps moving and knocks it over.\n\n`[click]` So we tested how well current models can judge completion. The best one was right most of the time, but each check took several seconds and was expensive, while the fast, cheap models were close to guessing.\n\n`[click]` With the simulator's facts instead of images, it became almost perfect, so the hard part is seeing the scene, not judging it.\n\n*(Notes: The Unstoppable Robot; RoboLab with π0.5, 500 moments from 150 runs; balanced accuracy. GPT-6 Astra direct 86.0% at 4.01 s, $22.54 per 1,000 checks (50-case subset); Gemini 3.8 Flash 81.4% at 5.50 s, $4.50/1k; DeepSeek V4.1 Flash 51.2% at 2.13 s; GPT-6 Luna 49.8% at 0.28 s; Jev 1.14 59.2% at 0.49 s; Perplexity Decider 64.2% at 0.77 s. With simulator facts instead of images, Astra 98.0%, Gemini 94.8%: a changed-evidence diagnostic, not a deployable judge. Offline, in simulation.)*",
       "builds": 2
@@ -228,7 +228,7 @@ window.DECK_NOTES = {
     "29": {
       "title": "A renaissance of robotics problems",
       "target": "0:40",
-      "clock": "16:35",
+      "clock": "16:50",
       "tags": "",
       "markdown": "*(Discussion slide. Two sides: what large models now take on, and the robotics problems that come back.)*\n\nTo close, large models now handle much of the semantic side of robotics, like understanding requests and planning.\n\n`[click]` That brings us back to the classic problems: how to build reliable systems around slow models, how to perceive the scene correctly, how to design clear interfaces between modules, and how to get dependable motor skills and fast, safe execution.",
       "builds": 1
@@ -236,18 +236,18 @@ window.DECK_NOTES = {
     "30": {
       "title": "Thanks",
       "target": "0:10",
-      "clock": "16:45",
+      "clock": "17:00",
       "tags": "",
       "markdown": "Thank you to all my collaborators on these studies. I'm happy to continue the discussion after the talk.",
       "builds": 0
     }
   },
   "panels": {
-    "Timing summary": "Computed at a calm 130 words/min, plus ~4 s per slide change or click and short pauses inside videos: **16:45**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.\n\n| Part | Slides | Time | Clock at end |\n|---|---|---:|---:|\n| Open: can tackle, but unreliable | 1–3 | 1:25 | 1:25 |\n| Anatomy: setup + results | 4–5 | 1:30 | 2:55 |\n| Agent behavior | 6–10 | 3:45 | 6:40 |\n| What we learned so far | 11–11 | 0:20 | 7:00 |\n| More tools | 12–15 | 1:35 | 8:35 |\n| Simulation | 16–18 | 1:50 | 10:25 |\n| Three issues, compared with coding → need an AI-native system | 19–24 | 2:15 | 12:40 |\n| AI-native system + memory + task tracking | 25–28 | 3:15 | 15:55 |\n| Discussion + thanks | 29–30 | 0:50 | 16:45 |",
-    "Cut plan": "- **Cut A — to about 16:25 (−0:20):** hide slide 17 (scene building).\n- **Cut B — not needed:** the full script fits the 20-minute slot with room for pauses and a few questions.\n- **Never cut:** 2, 3, 4, 7, 8 (first part), 10 (first part), 11, 14, 15, 18, 19, 20, 21, 22, 24, 25, 26, 28, 29.\n- In presenter view, press `H` to hide/unhide the current slide. Hidden slides are skipped.",
-    "Checkpoints (presenter timer)": "| Reach slide | Full | Cut A | If late by > 45 s |\n|---|---:|---:|---|\n| 4 Setup | 1:25 | 1:25 | Skip slide 5's click (scale table) |\n| 12 More tools | 7:00 | 7:00 | Skip slide 14's click (tool usage) |\n| 19 What our experiments show | 10:25 | 10:05 | Skip slide 23 |\n| 25 AI-native robot system | 12:40 | 12:20 | Keep 26 and 28 to the TL;DR line each |",
+    "Timing summary": "Computed at a calm 130 words/min, plus ~4 s per slide change or click and short pauses inside videos: **17:00**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.\n\n| Part | Slides | Time | Clock at end |\n|---|---|---:|---:|\n| Open: can tackle, but unreliable | 1–3 | 1:25 | 1:25 |\n| Anatomy: setup + results | 4–5 | 1:30 | 2:55 |\n| Agent behavior | 6–10 | 3:45 | 6:40 |\n| What we learned so far | 11–11 | 0:20 | 7:00 |\n| More tools | 12–15 | 1:35 | 8:35 |\n| Simulation | 16–18 | 1:50 | 10:25 |\n| Three issues, compared with coding → need an AI-native system | 19–24 | 2:30 | 12:55 |\n| AI-native system + memory + task tracking | 25–28 | 3:15 | 16:10 |\n| Discussion + thanks | 29–30 | 0:50 | 17:00 |",
+    "Cut plan": "- **Cut A — to about 16:40 (−0:20):** hide slide 17 (scene building).\n- **Cut B — not needed:** the full script fits the 20-minute slot with room for pauses and a few questions.\n- **Never cut:** 2, 3, 4, 7, 8 (first part), 10 (first part), 11, 14, 15, 18, 19, 20, 21, 22, 24, 25, 26, 28, 29.\n- In presenter view, press `H` to hide/unhide the current slide. Hidden slides are skipped.",
+    "Checkpoints (presenter timer)": "| Reach slide | Full | Cut A | If late by > 45 s |\n|---|---:|---:|---|\n| 4 Setup | 1:25 | 1:25 | Skip slide 5's click (scale table) |\n| 12 More tools | 7:00 | 7:00 | Skip slide 14's click (tool usage) |\n| 19 What our experiments show | 10:25 | 10:05 | Skip slide 23 |\n| 25 AI-native robot system | 12:55 | 12:35 | Keep 26 and 28 to the TL;DR line each |",
     "Rehearsal plan (talk is Thu Nov 12)": "- **Mon Nov 9 evening:** read the full script aloud once with the deck. Record the time at each checkpoint. Mark any sentence that feels unnatural and rewrite it in your own words.\n- **Tue Nov 10:** two full runs standing up, with the presenter timer. Run 1 full length. Run 2 with cut A. Note where you speed up; add a pause mark there.\n- **Wed Nov 11:** confirm with the organizers whether Q&A is inside the 20 minutes. One full run on the laptop and display adapter you'll use. Check videos play from the local folder with Wi-Fi off. Then one run of only slides 19–28 (the densest part; practise slide 26 top-down, one level per click).\n- **Thu Nov 12 morning:** one relaxed run with the cut that matches the slot. Don't change content after this run.\n- **On stage:** if you're nervous, you'll speak faster. The full version at nervous speed runs about 10% shorter, which is why the calm target is 18 minutes. Watch the timer at slide 19; that's the decision point."
   },
   "source": "../script.md",
-  "sha256": "427c47a772b7dbdc90bc9e77a8ec4c2480be857a655ecd6bc059c7b439c17ba5"
+  "sha256": "faa70b5e7dadad27f056a5eec16a5c55e68723c99ed6c4fa5baab98fc744b1a5"
 };
