@@ -89,8 +89,7 @@
 .memory-captions p+p{margin-top:14px}
 .mug-event-tick{stroke:var(--ds-ink);stroke-width:1}
 .task-check-diagnostic{font-size:28px;line-height:1.4;letter-spacing:-.025em}
-.task-diagnostic-claim{white-space:nowrap}
-.task-diagnostic-reading{margin-top:18px;color:var(--ds-muted)}
+.task-diagnostic-heading{margin:0 0 14px;color:var(--ds-muted);white-space:nowrap}
 
 /* Reveal the dashed rail from the brain downward in the house 0.6s beat. */
 .ai-direct-access.revealing{animation-name:ai-rail-draw}

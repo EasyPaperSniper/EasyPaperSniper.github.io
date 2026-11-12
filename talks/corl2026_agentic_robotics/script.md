@@ -2,37 +2,37 @@
 
 Speaker: Tianyu Li (Dexmate). Slot: Nov 12, 2026, 15:45–16:05 (20 min, listed as a 20-minute invited talk; Q&A not stated). Last talk before the coffee break.
 
-Target: about 20:15 at a calm pace (~130 words/min), video time included; timing is a guide, not a hard limit. Cut plan and rehearsal plan at the end.
+Target: about 17:30 at a calm pace (~130 words/min), video time included; timing is a guide, not a hard limit. Cut plan and rehearsal plan at the end.
 
 Markers: **[CUT-A]** = first to cut. **[CUT-B]** = cut next if Q&A must fit inside 20 min. `[click]` = advance a build step inside the slide.
 
 ---
 
-## 1 · Title — 0:25 (clock 0:25)
+## 1 · Title — 0:20 (clock 0:20)
 
-Hi everyone, I'm Tianyu, founding scientist at Dexmate. Today I'll share what we found when we let coding agents control a real robot, what they do well, where they struggle, and how that led to the design of our AI-native robot system.
+Hi everyone, I'm Tianyu, founding scientist at Dexmate. Today I'll share what we learned from letting coding agents control a real robot, and how it shaped our AI-native robot system.
 
-## 2 · Coding agents can tackle robotics tasks — 0:55 (clock 1:20)
+## 2 · Coding agents can tackle robotics tasks — 0:45 (clock 1:05)
 
 *(Video: the door segment from the blog teaser, with Claude Code's agent log on the right; captions removed. Loops.)*
 
-Coding agents can already tackle robotics tasks. Here we simply ask Claude Code to open the door and enter the room, and without any door detector or planner, it uses the cameras and our robot control service to find the handle, open the door, and drive in. It works, although this video is sped up, and the real run took several minutes. What I find interesting is that nobody wrote a door-opening program here; the agent figured out the steps by itself from the camera images.
+Coding agents can already tackle robotics tasks. Here we simply ask Claude Code to open the door and enter the room, and without any door detector or planner, it uses the cameras and our robot control service to find the handle, open the door, and drive in. It works, although this video is sped up, and the real run took several minutes.
 
-## 3 · But they can also be unreliable — 0:30 (clock 1:50)
+## 3 · But they can also be unreliable — 0:20 (clock 1:25)
 
 *(Video: the three-panel segment from the blog teaser: long pauses, unsafe contact, precision failures; captions removed. Loops.)*
 
-But these agents can also be quite unreliable. They sometimes think for over a minute before moving, collide with the environment, or miss a precise placement. So the question for us was not whether coding agents can control a robot, but what is actually going on inside these runs, and where the time and the risk come from.
+But these agents can also be quite unreliable. They sometimes think for over a minute before moving, collide with the environment, or miss a precise placement, so we wanted to look closely at what is going on inside these runs.
 
-## 4 · So we investigate how coding agents address robotics tasks — 1:25 (clock 3:15)
+## 4 · So we investigate how coding agents address robotics tasks — 0:55 (clock 2:20)
 
 *(Videos: the three task clips from the blog, played at speeds that give each about 40 s, looping.)*
 
-We tested Claude Code with Opus and Codex with GPT-6 Astra on three tasks: putting fruit into a basket, placing a bowl on a rack, and going through a door. The agent controls the robot only through a few basic MCP tools, such as taking a picture with depth, moving a hand, turning the head, using the gripper, and stepping the base, and every motion goes through our control service, which solves the inverse kinematics and checks joint limits and self-collision. There is no object detector and no scene-aware planner, so the agent has to find objects in the image and compute the poses by itself.
+We tested Claude Code with Opus and Codex with GPT-6 Astra on three tasks: putting fruit into a basket, placing a bowl on a rack, and going through a door. The agent controls the robot only through a few basic MCP tools, and every motion goes through our control service.
 
-`[click]` In the learning stage, the agent solves the task for the first time and saves the skills that worked. In the operating stage, a fresh session uses those saved skills to do the task again, once in the same scene and once after we move the objects around, so we can see what the agent actually reuses.
+`[click]` We considered two parts of the agent stage, learning and operating. In the learning stage, the agent solves the task for the first time and saves the skills that worked. In the operating stage, a fresh session uses those saved skills to do the task again.
 
-## 5 · Successful execution still takes minutes — 0:45 (clock 4:00)
+## 5 · Successful execution still takes minutes — 0:45 (clock 3:05)
 
 *(Chart: mean time and cost per run, learning vs execution, both models.)*
 
@@ -40,39 +40,39 @@ Here is an overview of the results. Both agents succeeded in every fruit and doo
 
 `[click]` The problem is that execution, which you pay for every time, is also slow, so clearing a table full of objects would take close to an hour with Opus, and several hours with Astra.
 
-## 6 · Observe-think-act — 0:45 (clock 4:45)
+## 6 · Observe-think-act — 0:35 (clock 3:40)
 
 *(Video: the teaser's observe–think–act section, fruit task, third-person and head camera with the loop tracker. Loops.)*
 
-Inside a run, the agent works in a loop: it observes the camera image, thinks about what to do next, and acts. This is the classic ReAct-style loop. But sending a command doesn't guarantee the result, and in this case the move doesn't reach its target, so the agent looks again, checks what happened, and retries. The question is where the time goes in this loop.
+Inside a run, the agent works in a loop: it observes the camera image, thinks about what to do next, and acts. When a move doesn't reach its target, it looks again and retries, so the question is where the time goes.
 
-## 7 · Thinking Time > Action Time — 0:40 (clock 5:25)
+## 7 · Thinking Time > Action Time — 0:35 (clock 4:15)
 
 *(Chart animates in: the split of task time per model, then what fills the think time. Successful fruit and door runs, original tools, 12 runs per model.)*
 
 The answer is that the robot is moving only a small part of the time, and most of the rest is the model thinking between steps.
 
-`[click]` Most of that thinking ends with deciding the next action, and the rest goes to re-checking results, writing geometry code, or deciding to wait. So the pace is set by the model's thinking, not by the robot's motion, and that is true for both models, even in runs that already had a saved plan.
+`[click]` Most of that thinking ends with deciding the next action, and the rest goes to re-checking results, writing geometry code, or deciding to wait. So the pace is set by the model's thinking, not by the robot's motion.
 
 *(Notes, not for the slide: this tags each pause by the next step, so it includes harness latency and output writing. Astra logs tool start and end together, so its code run time sits inside these pauses; its think share is an upper bound. Small sample: 6 runs per task and model.)*
 
-## 8 · 126 seconds for a 6.5 cm correction — 0:55 (clock 6:20)
+## 8 · 126 seconds for a 6.5 cm correction — 0:45 (clock 5:00)
 
 *(Video: the 126-second check at 8×, with the agent's log appearing line by line and a progress bar filling from 0:00 to 2:16.)*
 
 Here is one of those pauses. With the hand already above the basket, the agent checks sizes, fits the basket rim, and crops the image again, and after more than two minutes it asks for a correction of just a few centimeters.
 
-`[click]` *(Video: fixed sleep from motion start, real time, with the log and a motion · sleep · response bar.)* Waiting also wastes time. After it starts a motion, the agent has to guess how long to sleep, and here the motion has already finished, but the agent is still waiting, and the next command only comes several seconds later.
+`[click]` *(Video: fixed sleep from motion start, real time, with the log and a motion · sleep · response bar.)* Waiting also wastes time, because the agent often keeps sleeping after the motion has already finished.
 
-## 9 · Saved skills still need model judgment — 0:55 (clock 7:15)
+## 9 · Saved skills still need model judgment — 0:45 (clock 5:45)
 
 *(Video: saved skill files and helpers.)*
 
 The agents build and save their own tools, like geometry helpers, planners, and skill files. But the model still makes the key decisions: where to aim, how to make contact, and how to react to feedback, for example retrying when a lift fails, or finding the basket again from a newer image.
 
-`[click]` Reusing saved skills helps, especially for Opus, which became noticeably faster in the operating stage. Astra gained less, because its reuse runs still re-did a lot of geometry checks from scratch. So saving code is not the same as saving judgment.
+`[click]` Reusing saved skills helps, especially for Opus, but each run still needs a lot of fresh thinking.
 
-## 10 · Seeing danger is not stopping — 1:05 (clock 8:20)
+## 10 · Seeing danger is not stopping — 1:05 (clock 6:50)
 
 *(Videos: the door contact, head and wrist; on click, the other three failures as looping clips.)*
 
@@ -84,17 +84,17 @@ We even saw the agent send an angle in degrees where the tool expected radians, 
 
 *(Notes: the unit error was observed by the speaker during the experiments; it is not in the analysed logs. 57× is just the unit ratio, 1 rad ≈ 57.3°.)*
 
-## 11 · What we learned so far — 0:30 (clock 8:50)
+## 11 · What we learned so far — 0:20 (clock 7:10)
 
-Let me summarize what we have seen so far. The agent runs an observe, think, and act loop, and it spends most of its time thinking rather than moving. It builds and saves helpers, but it keeps the key judgments for itself. And it can make unsafe moves, even when it recognizes the risk.
+To sum up, the agent runs an observe, think, and act loop, spends most of its time thinking, keeps the key judgments for itself, and can make unsafe moves even when it sees the risk.
 
-## 12 · What if we empower the coding agent? — 0:15 (clock 9:05)
+## 12 · What if we empower the coding agent? — 0:15 (clock 7:25)
 
 *(Section slide: what if we empower the coding agent? 1. Give it more tools. 2. Ask it to build a simulation.)*
 
 So we asked whether more help would fix this, and we tried two things: giving the agent more robotics tools, and letting it rehearse in simulation.
 
-## 13 · What we added — 0:20 (clock 9:25)
+## 13 · What we added — 0:20 (clock 7:45)
 
 *(Diagram: the original MCP tools and control service, then the four added capabilities.)*
 
@@ -102,7 +102,7 @@ Originally, the agent only had basic tools to look, move, and grip.
 
 `[click]` We added segmentation, a reachable-pose search, waypoint collision checks, and a whole-body motion planner.
 
-## 14 · More tools did not consistently help — 0:30 (clock 9:55)
+## 14 · More tools did not consistently help — 0:30 (clock 8:15)
 
 *(Table: success, mean time and mean cost, original vs expanded tools, per model; then tool usage.)*
 
@@ -110,7 +110,7 @@ From the results, the extra tools didn't help as much as we expected. Astra's su
 
 `[click]` And this is not because the agents ignored the tools, since almost every run used them.
 
-## 15 · Added tools shifted effort into checking — 0:30 (clock 10:25)
+## 15 · Added tools shifted effort into checking — 0:30 (clock 8:45)
 
 *(Chart: share of task time, original vs expanded tools: act, deciding the next action, and checking · querying · computing.)*
 
@@ -118,19 +118,19 @@ The time just moved. With more tools, the agent spent much more time checking an
 
 *(Notes: successful fruit/door runs; original n = 24, expanded n = 22. "Checking · querying · computing" = all think time that did not end in an action decision, plus the run time of observe/check/query calls. Part of the time before a waypoint check is really motion design; counted that way, the shift is smaller but still there.)*
 
-## 16 · Build a simulation first — 0:20 (clock 10:45)
+## 16 · Build a simulation first — 0:20 (clock 9:05)
 
 *(Section slide with the added instruction.)*
 
 The second thing we tried was simulation. For the bowl task, we told the agent it could build a physics simulation of the scene and rehearse its solution there first.
 
-## 17 · How the agent builds the scene — 0:30 (clock 11:15) [CUT-A]
+## 17 · How the agent builds the scene — 0:20 (clock 9:25) [CUT-A]
 
 *(Video: the agent's Isaac Sim scene, full rim-pinch rehearsal.)*
 
-The agents built the scene themselves. They fitted the table from depth and measured the rack from depth and images, and we provided the robot model. But everything about contact, like the bowl's mass, the friction, and the gripper strength, they had to guess.
+The agents built the scene themselves from depth and images, but everything about contact, like mass and friction, they had to guess.
 
-## 18 · Rehearsal changes the grasp strategy — 1:10 (clock 12:25)
+## 18 · Rehearsal changes the grasp strategy — 1:10 (clock 10:35)
 
 *(Videos: three rehearsals side by side: no lift, slip, success, one in focus at a time; on the last click, the simulated rim pinch next to the real-robot run.)*
 
@@ -141,11 +141,11 @@ In this run, the agent first grasps the bowl across its diameter, and the bowl n
 `[click]` After a long time of trying, it switches to a rim pinch, and the bowl finally lifts, so it moves on to the real robot.
 
 `[click]` On the real robot, the same rim pinch works, and the robot lifts the bowl and places it on the rack. But getting there took most of an hour in simulation for a couple of minutes on the real robot, and only one of four standard runs succeeded.
-## 19 · What our experiments show — 0:30 (clock 12:55)
+## 19 · What our experiments show — 0:15 (clock 10:50)
 
-So what do our experiments show? Coding agents can really do some robotics tasks, and that part is real. But three issues remain: time, because every step waits for the model; safety, because the agent can see danger and still not stop; and motor skills, because there are no reliable skills to call. Let me compare each one quickly with coding.
+So coding agents can really do some robotics tasks, but three issues remain: time, safety, and motor skills. Let me compare each one quickly with coding.
 
-## 20 · Model latency cannot set the control rate — 0:50 (clock 13:45)
+## 20 · Model latency cannot set the control rate — 0:50 (clock 11:40)
 
 *(Chart: one frequency axis in hertz. Large models from OpenRouter on the left, robot policies on the right.)*
 
@@ -157,29 +157,29 @@ First, time. Here, one call to a large model takes a few seconds. But in our run
 
 *(Notes: model latencies are OpenRouter's average end-to-end latency for the best provider over the past week (the per-provider figures OpenRouter labels 'Avg'), read Nov 11, 2026 (openrouter.ai/<model>/performance; data in deck/data/openrouter_latency_2026-11-11.json). On the chart but not read aloud: GPT-6 Astra 7.4 s, Gemini 4 Carbon 24.3 s, DeepSeek V4.1 Flash 0.96 s, GPT-6 Luna Decisions 0.26 s, Jev 1.14 0.11 s. They reflect OpenRouter's general traffic, not our robot prompts; reasoning models' end-to-end time depends on output length. VLM = vision-language model; decider = structured decision model. Full agent loop = mean time from an observation to the next tool call in the Anatomy runs (input handling, reasoning, response, latency): Opus 5.6 s, Astra 12.1 s. π0.5: "at 50 Hz (with action chunking)" (arXiv 2504.16054); SONIC: "The policy loop runs at 50 Hz" (arXiv 2511.07820); Fast-WAM: 190 ms inference latency (arXiv 2603.16666), ~5 Hz is our conversion.)*
 
-## 21 · Safety needs a local response — 0:30 (clock 14:15)
+## 21 · Safety needs a local response — 0:25 (clock 12:05)
 
 Second, safety. When a coding agent makes a mistake, you can simply revert it.
 
-`[click]` A robot has no undo. Remember the bumper example: the agent noticed the high force, but only asked to retract almost a minute later. Stopping has to happen within milliseconds, without waiting for the model.
+`[click]` A robot has no undo. Remember the bumper example: the agent noticed the high force but kept pushing. Stopping must happen within milliseconds, without waiting for the model.
 
-## 22 · Plans depend on reliable motor skills — 0:30 (clock 14:45)
+## 22 · Plans depend on reliable motor skills — 0:20 (clock 12:25)
 
 Third, motor skills. A coding agent has precise building blocks, like writing files and running tests.
 
-`[click]` A robot's skills are continuous and contact-rich, and very few of them are mature yet. That is why our agent had to build its own geometry helpers, and why it never solved the bowl task with the original tools.
+`[click]` A robot's skills are continuous and contact-rich, and very few of them are mature yet.
 
-## 23 · Also different: input and checking — 0:20 (clock 15:05)
+## 23 · Also different: input and checking — 0:20 (clock 12:45)
 
 A coding agent also reads exact text, while a robot reads noisy sensors.
 
 `[click]` And a coding agent has tests to know when it's done, while a robot has no such signal.
 
-## 24 · We need an AI-native robot system — 0:30 (clock 15:35)
+## 24 · We need an AI-native robot system — 0:30 (clock 13:15)
 
 So a large model alone is not enough. By an AI-native robot system, I mean that we build a robotics system to support the large model, so that the entire robot agent, the model together with this system, can drive the robot to finish tasks reliably and efficiently.
 
-## 25 · An AI-native robot system — 1:10 (clock 16:45)
+## 25 · An AI-native robot system — 1:10 (clock 14:25)
 
 *(Diagram builds top-down: the robot brain in the cloud with its contents and rate; then each device level with its purpose, contents and rate: task execution & grounding, primitive skills, robot service (with the brain's direct-access links); then memory is highlighted.)*
 
@@ -193,21 +193,21 @@ This is the system we are building at Dexmate to support the large model. In the
 
 `[click]` We have started studying parts of this system, beginning with memory.
 
-## 26 · What should a robot remember? — 0:55 (clock 17:40)
+## 26 · What should a robot remember? — 0:50 (clock 15:15)
 
 *(Video: real robot, memory demo, with two captions: what the robot saw earlier, and what it is asked later. Reference on the slide.)*
 
-In MeMoREval, the robot sees things happen before it knows the question, like moving a lemon and later being asked for the apple that was next to it. Later, a fresh agent has to answer and act using only its memory. We found that keeping camera frames works clearly better than text descriptions, and adding a scene graph helps a bit more. The reason is that a description has to decide what matters before the question is known, and it often drops exactly the detail you need later.
+In MeMoREval, the robot sees things happen before it knows the question, like moving a lemon and later being asked for the apple that was next to it. We found that keeping camera frames works clearly better than text descriptions, and adding a scene graph helps a bit more. The reason is that a description has to decide what matters before the question is known, and it often drops exactly the detail you need later.
 
 *(Notes: MeMoREval, arXiv 2610.12561; Gemini 3.7 Flash, 53 simulated tasks, 5 memory backends × 3 seeds; descriptions 56 / 59 / 60% at 64 / 256 / 1024 tokens; write cost $9.30 vs $11.08–12.09 per 1,000 steps. Mostly simulation; real robot: two demonstrations.)*
 
-## 27 · An AI-native robot system — 0:15 (clock 17:55)
+## 27 · An AI-native robot system — 0:15 (clock 15:30)
 
 *(The same diagram, settled; now task tracking and the subtask monitor are highlighted.)*
 
 The second part we studied is task tracking, which decides when the task is done.
 
-## 28 · How does a robot know it’s done? — 1:05 (clock 19:00)
+## 28 · How does a robot know it’s done? — 1:05 (clock 16:35)
 
 *(Video: red mug at 2×; the track marks when the task is first done and when the robot undoes it. Reference on the slide.)*
 
@@ -215,19 +215,19 @@ Today's robot models don't know when to stop. Here the policy puts the mug uprig
 
 `[click]` So we tested how well current models can judge completion. The best one was right most of the time, but each check took several seconds and was expensive, while the fast, cheap models were close to guessing.
 
-`[click]` Interestingly, when we gave the model the simulator's facts instead of camera images, it became almost perfect. So the hard part is not the judgment itself, but seeing the scene correctly, which brings us back to perception.
+`[click]` We also gave the models the simulator's facts instead of camera images. With these facts, Astra became almost perfect, but the fast, cheap models did not improve and stayed close to guessing.
 
-*(Notes: The Unstoppable Robot; RoboLab with π0.5, 500 moments from 150 runs; balanced accuracy. GPT-6 Astra direct 86.0% at 4.01 s, $22.54 per 1,000 checks (50-case subset); Gemini 3.8 Flash 81.4% at 5.50 s, $4.50/1k; DeepSeek V4.1 Flash 51.2% at 2.13 s; GPT-6 Luna 49.8% at 0.28 s; Jev 1.14 59.2% at 0.49 s; Perplexity Decider 64.2% at 0.77 s. With simulator facts instead of images, Astra 98.0%, Gemini 94.8%: a changed-evidence diagnostic, not a deployable judge. Offline, in simulation.)*
+*(Notes: The Unstoppable Robot; RoboLab with π0.5, 500 moments from 150 runs; balanced accuracy. GPT-6 Astra direct 86.0% at 4.01 s, $22.54 per 1,000 checks (50-case subset); Gemini 3.8 Flash 81.4% at 5.50 s, $4.50/1k; DeepSeek V4.1 Flash 51.2% at 2.13 s; GPT-6 Luna 49.8% at 0.28 s; Jev 1.14 59.2% at 0.49 s; Perplexity Decider 64.2% at 0.77 s. With simulator facts instead of images: Astra 98.0%, Gemini 94.8%, DeepSeek V4.1 Flash 50.6% (−1.0 pp), Jev 68.2% (−3.6 pp vs Gemini descriptions), Qwen3.5-9B 50.0%: a changed-evidence diagnostic, not a deployable judge. Offline, in simulation.)*
 
-## 29 · A renaissance of robotics problems — 1:05 (clock 20:05)
+## 29 · A renaissance of robotics problems — 0:45 (clock 17:20)
 
 *(Discussion slide. Two sides: what large models now take on, and the robotics problems that come back.)*
 
-Let me end with a feeling rather than a result. For many years, much of the excitement in our field was about getting robots to understand language, tasks, and scenes. Large models now handle much of that semantic side, like understanding requests, planning, and judging what to do next.
+To close, large models now handle much of the semantic side of robotics, like understanding requests and planning.
 
-`[click]` That brings us back to the classic problems: how to build reliable systems around slow models, how to perceive the scene correctly, how to design clear interfaces between modules, and how to get dependable motor skills and fast, safe execution. So I think we are seeing a renaissance of robotics problems, where the model handles the semantics, and the hard work is, once again, robotics.
+`[click]` That brings us back to the classic problems: how to build reliable systems around slow models, how to perceive the scene correctly, how to design clear interfaces between modules, and how to get dependable motor skills and fast, safe execution. So I think this is a renaissance of robotics problems.
 
-## 30 · Thanks — 0:10 (clock 20:15)
+## 30 · Thanks — 0:10 (clock 17:30)
 
 Thank you to all my collaborators on these studies. I'm happy to continue the discussion after the talk.
 
@@ -235,23 +235,23 @@ Thank you to all my collaborators on these studies. I'm happy to continue the di
 
 ## Timing summary
 
-Computed at a calm 130 words/min, plus ~4 s per slide change or click and short pauses inside videos: **20:15**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.
+Computed at a calm 130 words/min, plus ~4 s per slide change or click and short pauses inside videos: **17:30**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.
 
 | Part | Slides | Time | Clock at end |
 |---|---|---:|---:|
-| Open: can tackle, but unreliable | 1–3 | 1:50 | 1:50 |
-| Anatomy: setup + results | 4–5 | 2:10 | 4:00 |
-| Agent behavior | 6–10 | 4:20 | 8:20 |
-| What we learned so far | 11–11 | 0:30 | 8:50 |
-| More tools | 12–15 | 1:35 | 10:25 |
-| Simulation | 16–18 | 2:00 | 12:25 |
-| Three issues, compared with coding → need an AI-native system | 19–24 | 3:10 | 15:35 |
-| AI-native system + memory + task tracking | 25–28 | 3:25 | 19:00 |
-| Discussion + thanks | 29–30 | 1:15 | 20:15 |
+| Open: can tackle, but unreliable | 1–3 | 1:25 | 1:25 |
+| Anatomy: setup + results | 4–5 | 1:40 | 3:05 |
+| Agent behavior | 6–10 | 3:45 | 6:50 |
+| What we learned so far | 11–11 | 0:20 | 7:10 |
+| More tools | 12–15 | 1:35 | 8:45 |
+| Simulation | 16–18 | 1:50 | 10:35 |
+| Three issues, compared with coding → need an AI-native system | 19–24 | 2:40 | 13:15 |
+| AI-native system + memory + task tracking | 25–28 | 3:20 | 16:35 |
+| Discussion + thanks | 29–30 | 0:55 | 17:30 |
 
 ## Cut plan
 
-- **Cut A — to about 19:45 (−0:30):** hide slide 17 (scene building).
+- **Cut A — to about 17:10 (−0:20):** hide slide 17 (scene building).
 - **Cut B — not needed:** the full script fits the 20-minute slot with room for pauses and a few questions.
 - **Never cut:** 2, 3, 4, 7, 8 (first part), 10 (first part), 11, 14, 15, 18, 19, 20, 21, 22, 24, 25, 26, 28, 29.
 - In presenter view, press `H` to hide/unhide the current slide. Hidden slides are skipped.
@@ -260,10 +260,10 @@ Computed at a calm 130 words/min, plus ~4 s per slide change or click and short 
 
 | Reach slide | Full | Cut A | If late by > 45 s |
 |---|---:|---:|---|
-| 4 Setup | 1:50 | 1:50 | Skip slide 5's click (scale table) |
-| 12 More tools | 8:50 | 8:50 | Skip slide 14's click (tool usage) |
-| 19 What our experiments show | 12:25 | 11:55 | Skip slide 23 |
-| 25 AI-native robot system | 15:35 | 15:05 | Keep 26 and 28 to the TL;DR line each |
+| 4 Setup | 1:25 | 1:25 | Skip slide 5's click (scale table) |
+| 12 More tools | 7:10 | 7:10 | Skip slide 14's click (tool usage) |
+| 19 What our experiments show | 10:35 | 10:15 | Skip slide 23 |
+| 25 AI-native robot system | 13:15 | 12:55 | Keep 26 and 28 to the TL;DR line each |
 
 ## Rehearsal plan (talk is Thu Nov 12)
 
@@ -271,4 +271,4 @@ Computed at a calm 130 words/min, plus ~4 s per slide change or click and short 
 - **Tue Nov 10:** two full runs standing up, with the presenter timer. Run 1 full length. Run 2 with cut A. Note where you speed up; add a pause mark there.
 - **Wed Nov 11:** confirm with the organizers whether Q&A is inside the 20 minutes. One full run on the laptop and display adapter you'll use. Check videos play from the local folder with Wi-Fi off. Then one run of only slides 19–28 (the densest part; practise slide 26 top-down, one level per click).
 - **Thu Nov 12 morning:** one relaxed run with the cut that matches the slot. Don't change content after this run.
-- **On stage:** if you're nervous, you'll speak faster. The full version at nervous speed runs about 10% shorter, so even at nervous speed the calm 20-minute version still fits the slot with a little room. Watch the timer at slide 19; that's the decision point.
+- **On stage:** if you're nervous, you'll speak faster. The full version at nervous speed runs about 10% shorter, which is why the calm target is 18 minutes. Watch the timer at slide 19; that's the decision point.
