@@ -63,7 +63,7 @@
  }
  function toolsAndSimulation(slide){
   const n=slide.dataset.slide;
-  if(n==='12'||n==='19'||n==='24'){
+  if(n==='12'||n==='19'||n==='23'){
    if(played.has(slide))return;played.add(slide);
    slide.querySelectorAll('.numbered-item,.finding-item,.system-statement').forEach((el,i)=>animate(el,[{opacity:0,transform:'translateY(24px)'},{opacity:1,transform:'translateY(0)'}],i*100));
   }
@@ -86,8 +86,8 @@
  }
  function architectureFocus(slide,step){
   const n=slide.dataset.slide;
-  if(!((n==='25'&&step===4)||n==='27'))return;
-  if(n==='27'){if(played.has(slide))return;played.add(slide);}
+  if(!((n==='24'&&step===4)||n==='26'))return;
+  if(n==='26'){if(played.has(slide))return;played.add(slide);}
   const svg=slide.querySelector('.ai-architecture'),target=getComputedStyle(svg).color;
   const ink=getComputedStyle(document.documentElement).getPropertyValue('--ds-ink').trim();
   animate(svg,[{color:ink},{color:target}]);
@@ -135,7 +135,7 @@
   if(slide.dataset.slide==='8')slide.querySelectorAll('.replay-state').forEach(p=>paint(p,reduce));
   slide.querySelectorAll('.mug-player').forEach(p=>paintMug(p,['render','preview','presenter'].some(k=>query.get(k)==='1')));
  }
- function frame(){const panel=document.querySelector('#slide-8.active .replay-state[data-visible="true"]');if(panel)paint(panel,settled());const mug=document.querySelector('#slide-28.active .mug-player');if(mug)paintMug(mug,['render','preview','presenter'].some(k=>query.get(k)==='1'));requestAnimationFrame(frame);}
+ function frame(){const panel=document.querySelector('#slide-8.active .replay-state[data-visible="true"]');if(panel)paint(panel,settled());const mug=document.querySelector('#slide-27.active .mug-player');if(mug)paintMug(mug,['render','preview','presenter'].some(k=>query.get(k)==='1'));requestAnimationFrame(frame);}
  mq.addEventListener('change',()=>{const slide=document.querySelector('.slide.active');if(slide)apply(slide,Number(slide.dataset.currentStep),settled(),true);});
  window.DECK_MOTION={apply,settleClone,paint,options};requestAnimationFrame(frame);
 })();

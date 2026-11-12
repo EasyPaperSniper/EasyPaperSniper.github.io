@@ -39,9 +39,9 @@
 .study-bar{fill:var(--ds-ink)}
 
 /* Only the named chip boxes grow; labels keep their native glyph geometry. */
-.slide[data-slide="25"][data-current-step="4"] .ai-memory-callout,.ai-architecture.ai-task-callout{color:color-mix(in srgb,var(--ds-ink) 35%,var(--ds-paper))}
-.slide[data-slide="25"][data-current-step="4"] .ai-highlight,.ai-task-callout .ai-highlight{color:var(--ds-ink)}
-.slide[data-slide="25"][data-current-step="4"] .ai-highlight .ai-module-box,.ai-task-callout .ai-highlight .ai-module-box{stroke-width:2.6;stroke-opacity:1;transform-box:fill-box;transform-origin:center;transform:scale(1.04)}
+.slide[data-slide="24"][data-current-step="4"] .ai-memory-callout,.ai-architecture.ai-task-callout{color:color-mix(in srgb,var(--ds-ink) 35%,var(--ds-paper))}
+.slide[data-slide="24"][data-current-step="4"] .ai-highlight,.ai-task-callout .ai-highlight{color:var(--ds-ink)}
+.slide[data-slide="24"][data-current-step="4"] .ai-highlight .ai-module-box,.ai-task-callout .ai-highlight .ai-module-box{stroke-width:2.6;stroke-opacity:1;transform-box:fill-box;transform-origin:center;transform:scale(1.04)}
 .study-reference{font-size:16px;line-height:1.5;color:var(--ds-muted);white-space:nowrap}
 .task-check-tldr{font-size:32px;line-height:1.65;letter-spacing:-.025em;white-space:nowrap}
 .task-check-table{width:100%;border-collapse:collapse;font-size:26px;line-height:1.5;letter-spacing:-.02em}
@@ -103,8 +103,8 @@
 .mug-time{display:flex;align-items:baseline;gap:16px}
 .mug-speed{font-size:20px;color:var(--ds-muted)}
 
-/* Slide 26: success and read cost, matching the slide-28 hairline tables. */
-#slide-26 .memory-tldr{white-space:normal;color:var(--ds-ink)}
+/* Slide 25: success and read cost, matching the slide-27 hairline tables. */
+#slide-25 .memory-tldr{white-space:normal;color:var(--ds-ink)}
 .memory-cost-table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:24px;line-height:1.4;letter-spacing:-.02em}
 .memory-cost-table tr{border-top:1px solid var(--ds-line-strong);height:80px}
 .memory-cost-table thead tr{height:90px}

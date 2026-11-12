@@ -2,7 +2,7 @@
 
 Speaker: Tianyu Li (Dexmate). Slot: Nov 12, 2026, 15:45–16:05 (20 min, listed as a 20-minute invited talk; Q&A not stated). Last talk before the coffee break.
 
-Target: about 17:55 at a calm pace (~130 words/min), video time included; timing is a guide, not a hard limit. Cut plan and rehearsal plan at the end.
+Target: about 17:35 at a calm pace (~130 words/min), video time included; timing is a guide, not a hard limit. Cut plan and rehearsal plan at the end.
 
 Markers: **[CUT-A]** = first to cut. **[CUT-B]** = cut next if Q&A must fit inside 20 min. `[click]` = advance a build step inside the slide.
 
@@ -169,17 +169,11 @@ Third, motor skills. A coding agent has precise building blocks, like writing fi
 
 `[click]` A robot's skills are continuous and contact-rich, and very few of them are mature yet.
 
-## 23 · Also different: input and checking — 0:20 (clock 12:45)
-
-A coding agent also reads exact text, while a robot reads noisy sensors.
-
-`[click]` And a coding agent has tests to know when it's done, while a robot has no such signal.
-
-## 24 · We need an AI-native robot system — 0:30 (clock 13:15)
+## 23 · We need an AI-native robot system — 0:30 (clock 12:55)
 
 So a large model alone is not enough. By an AI-native robot system, I mean that we build a robotics system to support the large model, so that the entire robot agent, the model together with this system, can drive the robot to finish tasks reliably and efficiently.
 
-## 25 · An AI-native robot system — 1:10 (clock 14:25)
+## 24 · An AI-native robot system — 1:10 (clock 14:05)
 
 *(Diagram builds top-down: the robot brain in the cloud with its contents and rate; then each device level with its purpose, contents and rate: task execution & grounding, primitive skills, robot service (with the brain's direct-access links); then memory is highlighted.)*
 
@@ -193,7 +187,7 @@ This is the system we are building at Dexmate to support the large model. In the
 
 `[click]` We have started studying parts of this system, beginning with memory.
 
-## 26 · What should a robot remember? — 1:15 (clock 15:40)
+## 25 · What should a robot remember? — 1:15 (clock 15:20)
 
 *(Video: real robot, memory demo, with two captions: what the robot saw earlier, and what it is asked later. Reference on the slide.)*
 
@@ -203,13 +197,13 @@ And saving images also saves token cost. The images make the input larger, but w
 
 *(Notes: MeMoREval Table 2, Gemini 3.7 Flash, five backends × three seeds, $0.75/M input, $3.75/M output. Task success: no descriptions 39%, descriptions 56/59/60% (64/256/1024 tokens), frames 70%, frames + scene graph 75%. Write $ per 1k steps: text 9.30, desc@1024 12.09, frames 9.30. Read $ per success (info / action): text 0.031/0.055, desc@1024 0.030/0.051, frames 0.026/0.047, frames+graph 0.028/0.049. Reasoning tokens per request: text 4.2k, desc@1024 3.3k, frames 3.1k, frames+graph 3.1k. Paper: 'retaining less evidence does not necessarily reduce downstream reasoning'. Scene-graph-only comparison: from Tianyu's newer results (Nov 12), not in the MeMoREval paper.)*
 
-## 27 · An AI-native robot system — 0:15 (clock 15:55)
+## 26 · An AI-native robot system — 0:15 (clock 15:35)
 
 *(The same diagram, settled; now task tracking and the subtask monitor are highlighted.)*
 
 The second part we studied is task tracking, which decides when the task is done.
 
-## 28 · How does a robot know it’s done? — 1:05 (clock 17:00)
+## 27 · How does a robot know it’s done? — 1:05 (clock 16:40)
 
 *(Video: red mug at 2×; the track marks when the task is first done and when the robot undoes it. Reference on the slide.)*
 
@@ -221,7 +215,7 @@ Today's robot models don't know when to stop. Here the policy puts the mug uprig
 
 *(Notes: The Unstoppable Robot; RoboLab with π0.5, 500 moments from 150 runs; balanced accuracy. GPT-6 Astra direct 86.0% at 4.01 s, $22.54 per 1,000 checks (50-case subset); Gemini 3.8 Flash 81.4% at 5.50 s, $4.50/1k; DeepSeek V4.1 Flash 51.2% at 2.13 s; GPT-6 Luna 49.8% at 0.28 s; Jev 1.14 59.2% at 0.49 s; Perplexity Decider 64.2% at 0.77 s. With simulator facts instead of images: Astra 98.0%, Gemini 94.8%, DeepSeek V4.1 Flash 50.6% (−1.0 pp), Jev 68.2% (−3.6 pp vs Gemini descriptions), Qwen3.5-9B 50.0%: a changed-evidence diagnostic, not a deployable judge. Offline, in simulation.)*
 
-## 29 · A renaissance of robotics problems — 0:45 (clock 17:45)
+## 28 · A renaissance of robotics problems — 0:45 (clock 17:25)
 
 *(Discussion slide. Two sides: what large models now take on, and the robotics problems that come back.)*
 
@@ -229,7 +223,7 @@ To close, large models now handle much of the semantic side of robotics, like un
 
 `[click]` That brings us back to the classic problems: how to build reliable systems around slow models, how to perceive the scene correctly, how to design clear interfaces between modules, and how to get dependable motor skills and fast, safe execution. So I think this is a renaissance of robotics problems.
 
-## 30 · Thanks — 0:10 (clock 17:55)
+## 29 · Thanks — 0:10 (clock 17:35)
 
 Thank you to all my collaborators on these studies. I'm happy to continue the discussion after the talk.
 
@@ -237,7 +231,7 @@ Thank you to all my collaborators on these studies. I'm happy to continue the di
 
 ## Timing summary
 
-Computed at a calm 130 words/min, plus ~4 s per slide change or click and short pauses inside videos: **17:55**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.
+Computed at a calm 130 words/min, plus ~4 s per slide change or click and short pauses inside videos: **17:35**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.
 
 | Part | Slides | Time | Clock at end |
 |---|---|---:|---:|
@@ -247,15 +241,15 @@ Computed at a calm 130 words/min, plus ~4 s per slide change or click and short 
 | What we learned so far | 11–11 | 0:20 | 7:10 |
 | More tools | 12–15 | 1:35 | 8:45 |
 | Simulation | 16–18 | 1:50 | 10:35 |
-| Three issues, compared with coding → need an AI-native system | 19–24 | 2:40 | 13:15 |
-| AI-native system + memory + task tracking | 25–28 | 3:45 | 17:00 |
-| Discussion + thanks | 29–30 | 0:55 | 17:55 |
+| Three issues, compared with coding → need an AI-native system | 19–23 | 2:20 | 12:55 |
+| AI-native system + memory + task tracking | 24–27 | 3:45 | 16:40 |
+| Discussion + thanks | 28–29 | 0:55 | 17:35 |
 
 ## Cut plan
 
-- **Cut A — to about 17:35 (−0:20):** hide slide 17 (scene building).
+- **Cut A — to about 17:15 (−0:20):** hide slide 17 (scene building).
 - **Cut B — not needed:** the full script fits the 20-minute slot with room for pauses and a few questions.
-- **Never cut:** 2, 3, 4, 7, 8 (first part), 10 (first part), 11, 14, 15, 18, 19, 20, 21, 22, 24, 25, 26, 28, 29.
+- **Never cut:** 2, 3, 4, 7, 8 (first part), 10 (first part), 11, 14, 15, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28.
 - In presenter view, press `H` to hide/unhide the current slide. Hidden slides are skipped.
 
 ## Checkpoints (presenter timer)
@@ -264,13 +258,13 @@ Computed at a calm 130 words/min, plus ~4 s per slide change or click and short 
 |---|---:|---:|---|
 | 4 Setup | 1:25 | 1:25 | Skip slide 5's click (scale table) |
 | 12 More tools | 7:10 | 7:10 | Skip slide 14's click (tool usage) |
-| 19 What our experiments show | 10:35 | 10:15 | Skip slide 23 |
-| 25 AI-native robot system | 13:15 | 12:55 | Keep 26 and 28 to the TL;DR line each |
+| 19 What our experiments show | 10:35 | 10:15 | Skip slide 22's click |
+| 24 AI-native robot system | 12:55 | 12:35 | Keep 25 and 27 to the TL;DR line each |
 
 ## Rehearsal plan (talk is Thu Nov 12)
 
 - **Mon Nov 9 evening:** read the full script aloud once with the deck. Record the time at each checkpoint. Mark any sentence that feels unnatural and rewrite it in your own words.
 - **Tue Nov 10:** two full runs standing up, with the presenter timer. Run 1 full length. Run 2 with cut A. Note where you speed up; add a pause mark there.
-- **Wed Nov 11:** confirm with the organizers whether Q&A is inside the 20 minutes. One full run on the laptop and display adapter you'll use. Check videos play from the local folder with Wi-Fi off. Then one run of only slides 19–28 (the densest part; practise slide 26 top-down, one level per click).
+- **Wed Nov 11:** confirm with the organizers whether Q&A is inside the 20 minutes. One full run on the laptop and display adapter you'll use. Check videos play from the local folder with Wi-Fi off. Then one run of only slides 19–27 (the densest part; practise slide 26 top-down, one level per click).
 - **Thu Nov 12 morning:** one relaxed run with the cut that matches the slot. Don't change content after this run.
 - **On stage:** if you're nervous, you'll speak faster. The full version at nervous speed runs about 10% shorter, which is why the calm target is 18 minutes. Watch the timer at slide 19; that's the decision point.

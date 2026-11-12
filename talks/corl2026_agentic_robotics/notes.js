@@ -178,76 +178,68 @@ window.DECK_NOTES = {
       "builds": 1
     },
     "23": {
-      "title": "Also different: input and checking",
-      "target": "0:20",
-      "clock": "12:45",
-      "tags": "",
-      "markdown": "A coding agent also reads exact text, while a robot reads noisy sensors.\n\n`[click]` And a coding agent has tests to know when it's done, while a robot has no such signal.",
-      "builds": 1
-    },
-    "24": {
       "title": "We need an AI-native robot system",
       "target": "0:30",
-      "clock": "13:15",
+      "clock": "12:55",
       "tags": "",
       "markdown": "So a large model alone is not enough. By an AI-native robot system, I mean that we build a robotics system to support the large model, so that the entire robot agent, the model together with this system, can drive the robot to finish tasks reliably and efficiently.",
       "builds": 0
     },
-    "25": {
+    "24": {
       "title": "An AI-native robot system",
       "target": "1:10",
-      "clock": "14:25",
+      "clock": "14:05",
       "tags": "",
       "markdown": "*(Diagram builds top-down: the robot brain in the cloud with its contents and rate; then each device level with its purpose, contents and rate: task execution & grounding, primitive skills, robot service (with the brain's direct-access links); then memory is highlighted.)*\n\nThis is the system we are building at Dexmate to support the large model. In the cloud, the robot brain is an agent system with a large model at its core and a harness for memory, context, and task tracking, and it turns the user's task into a plan at less than 0.5 hertz.\n\n`[click]` On the device, task execution and grounding turns each subtask into motor-skill commands at 1 to 10 hertz, using VLAs and planners, while a subtask monitor tracks progress.\n\n`[click]` Below it, primitive skills solve local tasks such as motion tracking at 20 to 100 hertz.\n\n`[click]` And the robot service keeps the hardware safe, with collision avoidance at 200 to 1000 hertz.\n\n`[click]` We have started studying parts of this system, beginning with memory.",
       "builds": 4
     },
-    "26": {
+    "25": {
       "title": "What should a robot remember?",
       "target": "1:15",
-      "clock": "15:40",
+      "clock": "15:20",
       "tags": "",
       "markdown": "*(Video: real robot, memory demo, with two captions: what the robot saw earlier, and what it is asked later. Reference on the slide.)*\n\nIn MeMoREval, the robot sees things happen before it knows the question, like moving a lemon and later being asked for the apple that was next to it. We found that saving camera frames gives a clearly higher success rate than saving text descriptions, because more information is retained. We also found that the scene graph helps the large model understand the images better, but the scene graph by itself does not help the large model as much as the images do.\n\nAnd saving images also saves token cost. The images make the input larger, but with more information, the model needs much less reasoning and thinking to answer, so the cost per successful request goes down, and frames are also cheaper to write than descriptions.\n\n*(Notes: MeMoREval Table 2, Gemini 3.7 Flash, five backends × three seeds, $0.75/M input, $3.75/M output. Task success: no descriptions 39%, descriptions 56/59/60% (64/256/1024 tokens), frames 70%, frames + scene graph 75%. Write $ per 1k steps: text 9.30, desc@1024 12.09, frames 9.30. Read $ per success (info / action): text 0.031/0.055, desc@1024 0.030/0.051, frames 0.026/0.047, frames+graph 0.028/0.049. Reasoning tokens per request: text 4.2k, desc@1024 3.3k, frames 3.1k, frames+graph 3.1k. Paper: 'retaining less evidence does not necessarily reduce downstream reasoning'. Scene-graph-only comparison: from Tianyu's newer results (Nov 12), not in the MeMoREval paper.)*",
       "builds": 0
     },
-    "27": {
+    "26": {
       "title": "An AI-native robot system",
       "target": "0:15",
-      "clock": "15:55",
+      "clock": "15:35",
       "tags": "",
       "markdown": "*(The same diagram, settled; now task tracking and the subtask monitor are highlighted.)*\n\nThe second part we studied is task tracking, which decides when the task is done.",
       "builds": 0
     },
-    "28": {
+    "27": {
       "title": "How does a robot know it’s done?",
       "target": "1:05",
-      "clock": "17:00",
+      "clock": "16:40",
       "tags": "",
       "markdown": "*(Video: red mug at 2×; the track marks when the task is first done and when the robot undoes it. Reference on the slide.)*\n\nToday's robot models don't know when to stop. Here the policy puts the mug upright, which finishes the task, but then keeps moving and knocks it over.\n\n`[click]` So we tested how well current models can judge completion. The best one was right most of the time, but each check took several seconds and was expensive, while the fast, cheap models were close to guessing.\n\n`[click]` We also gave the models the simulator's facts instead of camera images. With these facts, Astra became almost perfect, but the fast, cheap models did not improve and stayed close to guessing.\n\n*(Notes: The Unstoppable Robot; RoboLab with π0.5, 500 moments from 150 runs; balanced accuracy. GPT-6 Astra direct 86.0% at 4.01 s, $22.54 per 1,000 checks (50-case subset); Gemini 3.8 Flash 81.4% at 5.50 s, $4.50/1k; DeepSeek V4.1 Flash 51.2% at 2.13 s; GPT-6 Luna 49.8% at 0.28 s; Jev 1.14 59.2% at 0.49 s; Perplexity Decider 64.2% at 0.77 s. With simulator facts instead of images: Astra 98.0%, Gemini 94.8%, DeepSeek V4.1 Flash 50.6% (−1.0 pp), Jev 68.2% (−3.6 pp vs Gemini descriptions), Qwen3.5-9B 50.0%: a changed-evidence diagnostic, not a deployable judge. Offline, in simulation.)*",
       "builds": 2
     },
-    "29": {
+    "28": {
       "title": "A renaissance of robotics problems",
       "target": "0:45",
-      "clock": "17:45",
+      "clock": "17:25",
       "tags": "",
       "markdown": "*(Discussion slide. Two sides: what large models now take on, and the robotics problems that come back.)*\n\nTo close, large models now handle much of the semantic side of robotics, like understanding requests and planning.\n\n`[click]` That brings us back to the classic problems: how to build reliable systems around slow models, how to perceive the scene correctly, how to design clear interfaces between modules, and how to get dependable motor skills and fast, safe execution. So I think this is a renaissance of robotics problems.",
       "builds": 1
     },
-    "30": {
+    "29": {
       "title": "Thanks",
       "target": "0:10",
-      "clock": "17:55",
+      "clock": "17:35",
       "tags": "",
       "markdown": "Thank you to all my collaborators on these studies. I'm happy to continue the discussion after the talk.",
       "builds": 0
     }
   },
   "panels": {
-    "Timing summary": "Computed at a calm 130 words/min, plus ~4 s per slide change or click and short pauses inside videos: **17:55**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.\n\n| Part | Slides | Time | Clock at end |\n|---|---|---:|---:|\n| Open: can tackle, but unreliable | 1–3 | 1:25 | 1:25 |\n| Anatomy: setup + results | 4–5 | 1:40 | 3:05 |\n| Agent behavior | 6–10 | 3:45 | 6:50 |\n| What we learned so far | 11–11 | 0:20 | 7:10 |\n| More tools | 12–15 | 1:35 | 8:45 |\n| Simulation | 16–18 | 1:50 | 10:35 |\n| Three issues, compared with coding → need an AI-native system | 19–24 | 2:40 | 13:15 |\n| AI-native system + memory + task tracking | 25–28 | 3:45 | 17:00 |\n| Discussion + thanks | 29–30 | 0:55 | 17:55 |",
-    "Cut plan": "- **Cut A — to about 17:35 (−0:20):** hide slide 17 (scene building).\n- **Cut B — not needed:** the full script fits the 20-minute slot with room for pauses and a few questions.\n- **Never cut:** 2, 3, 4, 7, 8 (first part), 10 (first part), 11, 14, 15, 18, 19, 20, 21, 22, 24, 25, 26, 28, 29.\n- In presenter view, press `H` to hide/unhide the current slide. Hidden slides are skipped.",
-    "Checkpoints (presenter timer)": "| Reach slide | Full | Cut A | If late by > 45 s |\n|---|---:|---:|---|\n| 4 Setup | 1:25 | 1:25 | Skip slide 5's click (scale table) |\n| 12 More tools | 7:10 | 7:10 | Skip slide 14's click (tool usage) |\n| 19 What our experiments show | 10:35 | 10:15 | Skip slide 23 |\n| 25 AI-native robot system | 13:15 | 12:55 | Keep 26 and 28 to the TL;DR line each |",
-    "Rehearsal plan (talk is Thu Nov 12)": "- **Mon Nov 9 evening:** read the full script aloud once with the deck. Record the time at each checkpoint. Mark any sentence that feels unnatural and rewrite it in your own words.\n- **Tue Nov 10:** two full runs standing up, with the presenter timer. Run 1 full length. Run 2 with cut A. Note where you speed up; add a pause mark there.\n- **Wed Nov 11:** confirm with the organizers whether Q&A is inside the 20 minutes. One full run on the laptop and display adapter you'll use. Check videos play from the local folder with Wi-Fi off. Then one run of only slides 19–28 (the densest part; practise slide 26 top-down, one level per click).\n- **Thu Nov 12 morning:** one relaxed run with the cut that matches the slot. Don't change content after this run.\n- **On stage:** if you're nervous, you'll speak faster. The full version at nervous speed runs about 10% shorter, which is why the calm target is 18 minutes. Watch the timer at slide 19; that's the decision point."
+    "Timing summary": "Computed at a calm 130 words/min, plus ~4 s per slide change or click and short pauses inside videos: **17:35**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.\n\n| Part | Slides | Time | Clock at end |\n|---|---|---:|---:|\n| Open: can tackle, but unreliable | 1–3 | 1:25 | 1:25 |\n| Anatomy: setup + results | 4–5 | 1:40 | 3:05 |\n| Agent behavior | 6–10 | 3:45 | 6:50 |\n| What we learned so far | 11–11 | 0:20 | 7:10 |\n| More tools | 12–15 | 1:35 | 8:45 |\n| Simulation | 16–18 | 1:50 | 10:35 |\n| Three issues, compared with coding → need an AI-native system | 19–23 | 2:20 | 12:55 |\n| AI-native system + memory + task tracking | 24–27 | 3:45 | 16:40 |\n| Discussion + thanks | 28–29 | 0:55 | 17:35 |",
+    "Cut plan": "- **Cut A — to about 17:15 (−0:20):** hide slide 17 (scene building).\n- **Cut B — not needed:** the full script fits the 20-minute slot with room for pauses and a few questions.\n- **Never cut:** 2, 3, 4, 7, 8 (first part), 10 (first part), 11, 14, 15, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28.\n- In presenter view, press `H` to hide/unhide the current slide. Hidden slides are skipped.",
+    "Checkpoints (presenter timer)": "| Reach slide | Full | Cut A | If late by > 45 s |\n|---|---:|---:|---|\n| 4 Setup | 1:25 | 1:25 | Skip slide 5's click (scale table) |\n| 12 More tools | 7:10 | 7:10 | Skip slide 14's click (tool usage) |\n| 19 What our experiments show | 10:35 | 10:15 | Skip slide 22's click |\n| 24 AI-native robot system | 12:55 | 12:35 | Keep 25 and 27 to the TL;DR line each |",
+    "Rehearsal plan (talk is Thu Nov 12)": "- **Mon Nov 9 evening:** read the full script aloud once with the deck. Record the time at each checkpoint. Mark any sentence that feels unnatural and rewrite it in your own words.\n- **Tue Nov 10:** two full runs standing up, with the presenter timer. Run 1 full length. Run 2 with cut A. Note where you speed up; add a pause mark there.\n- **Wed Nov 11:** confirm with the organizers whether Q&A is inside the 20 minutes. One full run on the laptop and display adapter you'll use. Check videos play from the local folder with Wi-Fi off. Then one run of only slides 19–27 (the densest part; practise slide 26 top-down, one level per click).\n- **Thu Nov 12 morning:** one relaxed run with the cut that matches the slot. Don't change content after this run.\n- **On stage:** if you're nervous, you'll speak faster. The full version at nervous speed runs about 10% shorter, which is why the calm target is 18 minutes. Watch the timer at slide 19; that's the decision point."
   },
   "source": "../script.md",
-  "sha256": "63c34e85149e531c3823a9687e5fb6e3ff3addcee3d60860b1eb8a53b96a72a9"
+  "sha256": "a4fd511132c28cad83faab24c2fea003bc73491377f9195d6b9f549c45a139b1"
 };
