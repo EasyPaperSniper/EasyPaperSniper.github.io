@@ -2,7 +2,7 @@
 
 Speaker: Tianyu Li (Dexmate). Slot: Nov 12, 2026, 15:45–16:05 (20 min, listed as a 20-minute invited talk; Q&A not stated). Last talk before the coffee break.
 
-Target: about 17:00 at a calm pace (~130 words/min), video time included; timing is a guide, not a hard limit. Cut plan and rehearsal plan at the end.
+Target: about 17:05 at a calm pace (~130 words/min), video time included; timing is a guide, not a hard limit. Cut plan and rehearsal plan at the end.
 
 Markers: **[CUT-A]** = first to cut. **[CUT-B]** = cut next if Q&A must fit inside 20 min. `[click]` = advance a build step inside the slide.
 
@@ -175,15 +175,15 @@ A coding agent also reads exact text, while a robot reads noisy sensors.
 
 `[click]` And a coding agent has tests to know when it's done, while a robot has no such signal.
 
-## 24 · We need an AI-native robot system — 0:25 (clock 12:55)
+## 24 · We need an AI-native robot system — 0:30 (clock 13:00)
 
-So a large model alone is not enough, and we need an AI-native robot system around it. Its goal is to let the large model drive the robot to finish tasks reliably and efficiently.
+So a large model alone is not enough. By an AI-native robot system, I mean that we build a robotics system to support the large model, so that the entire robot agent, the model together with this system, can drive the robot to finish tasks reliably and efficiently.
 
-## 25 · An AI-native robot system — 1:10 (clock 14:05)
+## 25 · An AI-native robot system — 1:10 (clock 14:10)
 
 *(Diagram builds top-down: the robot brain in the cloud with its contents and rate; then each device level with its purpose, contents and rate: task execution & grounding, primitive skills, robot service (with the brain's direct-access links); then memory is highlighted.)*
 
-This is the system we are building at Dexmate. In the cloud, the robot brain is an agent system with a large model at its core and a harness for memory, context, and task tracking, and it turns the user's task into a plan at less than 0.5 hertz.
+This is the system we are building at Dexmate to support the large model. In the cloud, the robot brain is an agent system with a large model at its core and a harness for memory, context, and task tracking, and it turns the user's task into a plan at less than 0.5 hertz.
 
 `[click]` On the device, task execution and grounding turns each subtask into motor-skill commands at 1 to 10 hertz, using VLAs and planners, while a subtask monitor tracks progress.
 
@@ -193,7 +193,7 @@ This is the system we are building at Dexmate. In the cloud, the robot brain is 
 
 `[click]` We have started studying parts of this system, beginning with memory.
 
-## 26 · What should a robot remember? — 0:50 (clock 14:55)
+## 26 · What should a robot remember? — 0:50 (clock 15:00)
 
 *(Video: real robot, memory demo, with two captions: what the robot saw earlier, and what it is asked later. Reference on the slide.)*
 
@@ -201,13 +201,13 @@ In MeMoREval, the robot sees things happen before it knows the question, like mo
 
 *(Notes: MeMoREval, arXiv 2610.12561; Gemini 3.7 Flash, 53 simulated tasks, 5 memory backends × 3 seeds; descriptions 56 / 59 / 60% at 64 / 256 / 1024 tokens; write cost $9.30 vs $11.08–12.09 per 1,000 steps. Mostly simulation; real robot: two demonstrations.)*
 
-## 27 · An AI-native robot system — 0:15 (clock 15:10)
+## 27 · An AI-native robot system — 0:15 (clock 15:15)
 
 *(The same diagram, settled; now task tracking and the subtask monitor are highlighted.)*
 
 The second part we studied is task tracking, which decides when the task is done.
 
-## 28 · How does a robot know it’s done? — 1:00 (clock 16:10)
+## 28 · How does a robot know it’s done? — 1:00 (clock 16:15)
 
 *(Video: red mug at 2×; the track marks when the task is first done and when the robot undoes it. Reference on the slide.)*
 
@@ -219,7 +219,7 @@ Today's robot models don't know when to stop. Here the policy puts the mug uprig
 
 *(Notes: The Unstoppable Robot; RoboLab with π0.5, 500 moments from 150 runs; balanced accuracy. GPT-6 Astra direct 86.0% at 4.01 s, $22.54 per 1,000 checks (50-case subset); Gemini 3.8 Flash 81.4% at 5.50 s, $4.50/1k; DeepSeek V4.1 Flash 51.2% at 2.13 s; GPT-6 Luna 49.8% at 0.28 s; Jev 1.14 59.2% at 0.49 s; Perplexity Decider 64.2% at 0.77 s. With simulator facts instead of images, Astra 98.0%, Gemini 94.8%: a changed-evidence diagnostic, not a deployable judge. Offline, in simulation.)*
 
-## 29 · A renaissance of robotics problems — 0:40 (clock 16:50)
+## 29 · A renaissance of robotics problems — 0:40 (clock 16:55)
 
 *(Discussion slide. Two sides: what large models now take on, and the robotics problems that come back.)*
 
@@ -227,7 +227,7 @@ To close, large models now handle much of the semantic side of robotics, like un
 
 `[click]` That brings us back to the classic problems: how to build reliable systems around slow models, how to perceive the scene correctly, how to design clear interfaces between modules, and how to get dependable motor skills and fast, safe execution.
 
-## 30 · Thanks — 0:10 (clock 17:00)
+## 30 · Thanks — 0:10 (clock 17:05)
 
 Thank you to all my collaborators on these studies. I'm happy to continue the discussion after the talk.
 
@@ -235,7 +235,7 @@ Thank you to all my collaborators on these studies. I'm happy to continue the di
 
 ## Timing summary
 
-Computed at a calm 130 words/min, plus ~4 s per slide change or click and short pauses inside videos: **17:00**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.
+Computed at a calm 130 words/min, plus ~4 s per slide change or click and short pauses inside videos: **17:05**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.
 
 | Part | Slides | Time | Clock at end |
 |---|---|---:|---:|
@@ -245,13 +245,13 @@ Computed at a calm 130 words/min, plus ~4 s per slide change or click and short 
 | What we learned so far | 11–11 | 0:20 | 7:00 |
 | More tools | 12–15 | 1:35 | 8:35 |
 | Simulation | 16–18 | 1:50 | 10:25 |
-| Three issues, compared with coding → need an AI-native system | 19–24 | 2:30 | 12:55 |
-| AI-native system + memory + task tracking | 25–28 | 3:15 | 16:10 |
-| Discussion + thanks | 29–30 | 0:50 | 17:00 |
+| Three issues, compared with coding → need an AI-native system | 19–24 | 2:35 | 13:00 |
+| AI-native system + memory + task tracking | 25–28 | 3:15 | 16:15 |
+| Discussion + thanks | 29–30 | 0:50 | 17:05 |
 
 ## Cut plan
 
-- **Cut A — to about 16:40 (−0:20):** hide slide 17 (scene building).
+- **Cut A — to about 16:45 (−0:20):** hide slide 17 (scene building).
 - **Cut B — not needed:** the full script fits the 20-minute slot with room for pauses and a few questions.
 - **Never cut:** 2, 3, 4, 7, 8 (first part), 10 (first part), 11, 14, 15, 18, 19, 20, 21, 22, 24, 25, 26, 28, 29.
 - In presenter view, press `H` to hide/unhide the current slide. Hidden slides are skipped.
@@ -263,7 +263,7 @@ Computed at a calm 130 words/min, plus ~4 s per slide change or click and short 
 | 4 Setup | 1:25 | 1:25 | Skip slide 5's click (scale table) |
 | 12 More tools | 7:00 | 7:00 | Skip slide 14's click (tool usage) |
 | 19 What our experiments show | 10:25 | 10:05 | Skip slide 23 |
-| 25 AI-native robot system | 12:55 | 12:35 | Keep 26 and 28 to the TL;DR line each |
+| 25 AI-native robot system | 13:00 | 12:40 | Keep 26 and 28 to the TL;DR line each |
 
 ## Rehearsal plan (talk is Thu Nov 12)
 
