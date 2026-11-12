@@ -39,9 +39,9 @@
 .study-bar{fill:var(--ds-ink)}
 
 /* Only the named chip boxes grow; labels keep their native glyph geometry. */
-.slide[data-slide="26"][data-current-step="6"] .ai-memory-callout,.ai-architecture.ai-task-callout{color:color-mix(in srgb,var(--ds-ink) 35%,var(--ds-paper))}
-.slide[data-slide="26"][data-current-step="6"] .ai-highlight,.ai-task-callout .ai-highlight{color:var(--ds-ink)}
-.slide[data-slide="26"][data-current-step="6"] .ai-highlight .ai-module-box,.ai-task-callout .ai-highlight .ai-module-box{stroke-width:2.6;stroke-opacity:1;transform-box:fill-box;transform-origin:center;transform:scale(1.04)}
+.slide[data-slide="26"][data-current-step="4"] .ai-memory-callout,.ai-architecture.ai-task-callout{color:color-mix(in srgb,var(--ds-ink) 35%,var(--ds-paper))}
+.slide[data-slide="26"][data-current-step="4"] .ai-highlight,.ai-task-callout .ai-highlight{color:var(--ds-ink)}
+.slide[data-slide="26"][data-current-step="4"] .ai-highlight .ai-module-box,.ai-task-callout .ai-highlight .ai-module-box{stroke-width:2.6;stroke-opacity:1;transform-box:fill-box;transform-origin:center;transform:scale(1.04)}
 .study-reference{font-size:16px;line-height:1.5;color:var(--ds-muted);white-space:nowrap}
 .task-check-tldr{font-size:32px;line-height:1.65;letter-spacing:-.025em;white-space:nowrap}
 .task-check-table{width:100%;border-collapse:collapse;font-size:26px;line-height:1.5;letter-spacing:-.02em}
@@ -92,18 +92,8 @@
 .task-check-diagnostic{font-size:28px;line-height:1.4;letter-spacing:-.025em}
 .task-diagnostic-claim{white-space:nowrap}
 .task-diagnostic-reading{margin-top:18px;color:var(--ds-muted)}
-.renaissance-thesis{font-size:36px;line-height:1.4;letter-spacing:-.025em;color:var(--ds-ink)}
 
-/* Click 5 replays one failure; the original diagram geometry stays fixed. */
-#slide-26[data-current-step="5"] .ai-architecture{color:color-mix(in srgb,var(--ds-ink) 35%,var(--ds-paper))}
-#slide-26[data-current-step="5"] :is([data-module="avoidance"],[data-module="selector"],[data-module="monitor"],#system-brain>.ai-band,#system-brain>.ai-title,.ai-failure-marker){color:var(--ds-ink)}
-#slide-26[data-current-step="5"] :is([data-module="avoidance"],[data-module="selector"],[data-module="monitor"]) .ai-module-box,
-#slide-26[data-current-step="5"] #system-brain>.ai-band{stroke-opacity:1;stroke-width:2.6}
-#slide-26[data-current-step="5"] :is(#system-service,#system-grounding,#system-brain)>.ai-purpose{visibility:hidden}
-#slide-26[data-current-step="5"] .ai-arrow-pair[data-step="1"] :is(path:nth-of-type(2),text:last-child){color:var(--ds-ink);stroke-dasharray:none}
-#slide-26[data-current-step="5"] .ai-arrow-pair[data-step="1"] path:nth-of-type(2){stroke-width:2.6}
-#slide-26[data-current-step="5"] #system-escalation-arrow path{color:var(--ds-ink)}
-.ai-architecture .ai-failure-context{color:var(--ds-muted)}
-/* Its children own the explicit 500 ms sequence, avoiding a second group reveal. */
-.ai-failure-path.revealing{animation:none}
-@media(prefers-reduced-motion:reduce){#slide-18 .sim-pane{transition:none}}
+/* Reveal the dashed rail from the brain downward in the house 0.6s beat. */
+.ai-direct-access.revealing{animation-name:ai-rail-draw}
+@keyframes ai-rail-draw{from{opacity:0;clip-path:inset(-8px -8px 100% -8px)}to{opacity:1;clip-path:inset(-8px -8px -8px -8px)}}
+@media(prefers-reduced-motion:reduce){.ai-direct-access.revealing{animation:none}}
