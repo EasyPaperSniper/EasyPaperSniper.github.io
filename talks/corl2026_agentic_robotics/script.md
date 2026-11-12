@@ -2,7 +2,7 @@
 
 Speaker: Tianyu Li (Dexmate). Slot: Nov 12, 2026, 15:45–16:05 (20 min, listed as a 20-minute invited talk; Q&A not stated). Last talk before the coffee break.
 
-Target: about 17:30 at a calm pace (~130 words/min), video time included; timing is a guide, not a hard limit. Cut plan and rehearsal plan at the end.
+Target: about 17:55 at a calm pace (~130 words/min), video time included; timing is a guide, not a hard limit. Cut plan and rehearsal plan at the end.
 
 Markers: **[CUT-A]** = first to cut. **[CUT-B]** = cut next if Q&A must fit inside 20 min. `[click]` = advance a build step inside the slide.
 
@@ -193,21 +193,23 @@ This is the system we are building at Dexmate to support the large model. In the
 
 `[click]` We have started studying parts of this system, beginning with memory.
 
-## 26 · What should a robot remember? — 0:50 (clock 15:15)
+## 26 · What should a robot remember? — 1:15 (clock 15:40)
 
 *(Video: real robot, memory demo, with two captions: what the robot saw earlier, and what it is asked later. Reference on the slide.)*
 
-In MeMoREval, the robot sees things happen before it knows the question, like moving a lemon and later being asked for the apple that was next to it. We found that keeping camera frames works clearly better than text descriptions, and adding a scene graph helps a bit more. The reason is that a description has to decide what matters before the question is known, and it often drops exactly the detail you need later.
+In MeMoREval, the robot sees things happen before it knows the question, like moving a lemon and later being asked for the apple that was next to it. We found that saving camera frames gives a clearly higher success rate than saving text descriptions, because more information is retained. We also found that the scene graph helps the large model understand the images better, but the scene graph by itself does not help the large model as much as the images do.
 
-*(Notes: MeMoREval, arXiv 2610.12561; Gemini 3.7 Flash, 53 simulated tasks, 5 memory backends × 3 seeds; descriptions 56 / 59 / 60% at 64 / 256 / 1024 tokens; write cost $9.30 vs $11.08–12.09 per 1,000 steps. Mostly simulation; real robot: two demonstrations.)*
+And saving images also saves token cost. The images make the input larger, but with more information, the model needs much less reasoning and thinking to answer, so the cost per successful request goes down, and frames are also cheaper to write than descriptions.
 
-## 27 · An AI-native robot system — 0:15 (clock 15:30)
+*(Notes: MeMoREval Table 2, Gemini 3.7 Flash, five backends × three seeds, $0.75/M input, $3.75/M output. Task success: no descriptions 39%, descriptions 56/59/60% (64/256/1024 tokens), frames 70%, frames + scene graph 75%. Write $ per 1k steps: text 9.30, desc@1024 12.09, frames 9.30. Read $ per success (info / action): text 0.031/0.055, desc@1024 0.030/0.051, frames 0.026/0.047, frames+graph 0.028/0.049. Reasoning tokens per request: text 4.2k, desc@1024 3.3k, frames 3.1k, frames+graph 3.1k. Paper: 'retaining less evidence does not necessarily reduce downstream reasoning'. Scene-graph-only comparison: from Tianyu's newer results (Nov 12), not in the MeMoREval paper.)*
+
+## 27 · An AI-native robot system — 0:15 (clock 15:55)
 
 *(The same diagram, settled; now task tracking and the subtask monitor are highlighted.)*
 
 The second part we studied is task tracking, which decides when the task is done.
 
-## 28 · How does a robot know it’s done? — 1:05 (clock 16:35)
+## 28 · How does a robot know it’s done? — 1:05 (clock 17:00)
 
 *(Video: red mug at 2×; the track marks when the task is first done and when the robot undoes it. Reference on the slide.)*
 
@@ -219,7 +221,7 @@ Today's robot models don't know when to stop. Here the policy puts the mug uprig
 
 *(Notes: The Unstoppable Robot; RoboLab with π0.5, 500 moments from 150 runs; balanced accuracy. GPT-6 Astra direct 86.0% at 4.01 s, $22.54 per 1,000 checks (50-case subset); Gemini 3.8 Flash 81.4% at 5.50 s, $4.50/1k; DeepSeek V4.1 Flash 51.2% at 2.13 s; GPT-6 Luna 49.8% at 0.28 s; Jev 1.14 59.2% at 0.49 s; Perplexity Decider 64.2% at 0.77 s. With simulator facts instead of images: Astra 98.0%, Gemini 94.8%, DeepSeek V4.1 Flash 50.6% (−1.0 pp), Jev 68.2% (−3.6 pp vs Gemini descriptions), Qwen3.5-9B 50.0%: a changed-evidence diagnostic, not a deployable judge. Offline, in simulation.)*
 
-## 29 · A renaissance of robotics problems — 0:45 (clock 17:20)
+## 29 · A renaissance of robotics problems — 0:45 (clock 17:45)
 
 *(Discussion slide. Two sides: what large models now take on, and the robotics problems that come back.)*
 
@@ -227,7 +229,7 @@ To close, large models now handle much of the semantic side of robotics, like un
 
 `[click]` That brings us back to the classic problems: how to build reliable systems around slow models, how to perceive the scene correctly, how to design clear interfaces between modules, and how to get dependable motor skills and fast, safe execution. So I think this is a renaissance of robotics problems.
 
-## 30 · Thanks — 0:10 (clock 17:30)
+## 30 · Thanks — 0:10 (clock 17:55)
 
 Thank you to all my collaborators on these studies. I'm happy to continue the discussion after the talk.
 
@@ -235,7 +237,7 @@ Thank you to all my collaborators on these studies. I'm happy to continue the di
 
 ## Timing summary
 
-Computed at a calm 130 words/min, plus ~4 s per slide change or click and short pauses inside videos: **17:30**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.
+Computed at a calm 130 words/min, plus ~4 s per slide change or click and short pauses inside videos: **17:55**. Expect a little more with natural pauses. Timing is a guide for rehearsal, not a hard target.
 
 | Part | Slides | Time | Clock at end |
 |---|---|---:|---:|
@@ -246,12 +248,12 @@ Computed at a calm 130 words/min, plus ~4 s per slide change or click and short 
 | More tools | 12–15 | 1:35 | 8:45 |
 | Simulation | 16–18 | 1:50 | 10:35 |
 | Three issues, compared with coding → need an AI-native system | 19–24 | 2:40 | 13:15 |
-| AI-native system + memory + task tracking | 25–28 | 3:20 | 16:35 |
-| Discussion + thanks | 29–30 | 0:55 | 17:30 |
+| AI-native system + memory + task tracking | 25–28 | 3:45 | 17:00 |
+| Discussion + thanks | 29–30 | 0:55 | 17:55 |
 
 ## Cut plan
 
-- **Cut A — to about 17:10 (−0:20):** hide slide 17 (scene building).
+- **Cut A — to about 17:35 (−0:20):** hide slide 17 (scene building).
 - **Cut B — not needed:** the full script fits the 20-minute slot with room for pauses and a few questions.
 - **Never cut:** 2, 3, 4, 7, 8 (first part), 10 (first part), 11, 14, 15, 18, 19, 20, 21, 22, 24, 25, 26, 28, 29.
 - In presenter view, press `H` to hide/unhide the current slide. Hidden slides are skipped.

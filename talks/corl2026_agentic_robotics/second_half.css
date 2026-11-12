@@ -102,3 +102,21 @@
 .comparison-speed{font-size:24px;color:var(--ds-muted);margin-left:16px}
 .mug-time{display:flex;align-items:baseline;gap:16px}
 .mug-speed{font-size:20px;color:var(--ds-muted)}
+
+/* Slide 26: success and read cost, matching the slide-28 hairline tables. */
+#slide-26 .memory-tldr{white-space:normal;color:var(--ds-ink)}
+.memory-cost-table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:24px;line-height:1.4;letter-spacing:-.02em}
+.memory-cost-table tr{border-top:1px solid var(--ds-line-strong);height:80px}
+.memory-cost-table thead tr{height:90px}
+.memory-cost-table tbody tr:last-child{border-bottom:1px solid var(--ds-line-strong)}
+.memory-cost-table th,.memory-cost-table td{padding:14px 12px 14px 0;text-align:left;vertical-align:middle}
+.memory-cost-table thead th{font-size:22px;font-weight:500;line-height:1.35;color:var(--ds-muted)}
+.memory-cost-table tbody th{font-weight:400}
+.memory-cost-table td{font-size:22px;white-space:nowrap}
+.memory-cost-table th:last-child,.memory-cost-table td:last-child{padding-right:0}
+.memory-cost-table .memory-budget{display:block;font-size:22px}
+.memory-cost-table .memory-cost-scope{font-size:20px;font-weight:400}
+.memory-cost-table .memory-text{color:var(--ds-muted)}
+.memory-cost-table .memory-frames{color:var(--ds-ink)}
+.memory-interpretation{font-size:22px;line-height:1.4;letter-spacing:-.02em;color:var(--ds-muted);white-space:nowrap}
+.memory-footnote{font-size:16px;line-height:1.5;color:var(--ds-muted);white-space:nowrap}
