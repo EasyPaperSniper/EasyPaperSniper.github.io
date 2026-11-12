@@ -52,6 +52,15 @@
    });
   }
  }
+ function safetyExamples(slide,step,previous){
+  if(slide.dataset.slide!=='10'||step!==1)return;
+  const exiting=previous==='10:0',delay=exiting?300:0;
+  if(exiting)slide.querySelectorAll('.safety-intro').forEach(el=>animate(el,[{visibility:'visible',opacity:1,transform:'translateY(0)'},{visibility:'hidden',opacity:0,transform:'translateY(-24px)'}],0,300));
+  slide.querySelectorAll('.safety-examples').forEach(el=>{
+   el.classList.remove('revealing');
+   animate(el,[{opacity:0,transform:'translateY(24px)'},{opacity:1,transform:'translateY(0)'}],delay);
+  });
+ }
  function toolsAndSimulation(slide){
   const n=slide.dataset.slide;
   if(n==='12'||n==='20'||n==='25'){
@@ -121,7 +130,7 @@
  function settleClone(container){if(container.dataset.slide==='7')setBarLayout(container,+container.dataset.currentStep===1);finalNumbers(container);container.querySelectorAll('.replay-state').forEach(p=>paint(p,true));container.querySelectorAll('.mug-player').forEach(p=>paintMug(p,true));}
  function apply(slide,step,reduce=false,force=false){
   const next=slide.dataset.slide+':'+step,previous=position;
-  if(next!==position||force){cancel();position=next;if(slide.dataset.slide==='7'){if(reduce)setBarLayout(slide,step===1);else chart(slide,step,previous);}else if(!reduce){toolsAndSimulation(slide);architectureFocus(slide,step);}}
+  if(next!==position||force){cancel();position=next;if(slide.dataset.slide==='7'){if(reduce)setBarLayout(slide,step===1);else chart(slide,step,previous);}else if(!reduce){toolsAndSimulation(slide);architectureFocus(slide,step);safetyExamples(slide,step,previous);}}
   if(reduce){owned.forEach(a=>a.finish());finalNumbers(slide);}
   if(slide.dataset.slide==='8')slide.querySelectorAll('.replay-state').forEach(p=>paint(p,reduce));
   slide.querySelectorAll('.mug-player').forEach(p=>paintMug(p,['render','preview','presenter'].some(k=>query.get(k)==='1')));
