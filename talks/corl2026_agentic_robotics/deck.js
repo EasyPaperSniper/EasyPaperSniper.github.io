@@ -14,7 +14,7 @@
   const safeRead = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } };
   const safeWrite = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch {} };
   // An explicit cut preset replaces prior saved hides, including all earlier presets.
-  const initialHidden = params.get('cut') === 'A' ? [17, 19] : safeRead(storeKey + ':hidden', []);
+  const initialHidden = params.get('cut') === 'A' ? [17] : safeRead(storeKey + ':hidden', []);
   let state = { slide: +(params.get('slide') || 1), step: +(params.get('step') || 0), hidden: [...new Set(initialHidden)], theme: params.get('theme') || 'light', startedAt: null, revision: 0 };
   let presenterWindow = null;
   let channel = null;
@@ -64,10 +64,10 @@
   function revealStates(slide, step, animate) {
     slide.dataset.currentStep = step;
     slide.querySelectorAll('[data-step], [data-only]').forEach(el => {
-      const show = el.hasAttribute('data-only') ? Number(el.dataset.only) === step : Number(el.dataset.step) <= step;
+      const show = (el.hasAttribute('data-only') ? Number(el.dataset.only) === step : Number(el.dataset.step) <= step) && (!el.hasAttribute('data-until') || step <= Number(el.dataset.until));
       const wasVisible = el.dataset.visible === 'true';
       el.dataset.visible = show ? 'true' : 'false';
-      if (show && !wasVisible && animate && !reduced() && !['7','8'].includes(slide.dataset.slide) && !el.closest('.media')) {
+      if (show && !wasVisible && !el.hasAttribute('data-until') && animate && !reduced() && !['7','8'].includes(slide.dataset.slide) && !el.closest('.media')) {
         el.classList.remove('revealing');
         // SVG groups animate opacity/rise without transforming the SVG canvas.
         void el.getBoundingClientRect(); el.classList.add('revealing');
