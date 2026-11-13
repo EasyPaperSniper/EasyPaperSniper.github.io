@@ -4,3 +4,8 @@ projects/blog_post/*/experiment_data.md
 projects/blog_post/*/experiment_data_media/
 projects/blog_post/*/full_version.md
 projects/blog_post/*/full_version_media/
+
+# CoRL 2026 talk: speaker notes and scripts stay local (the deck works without them).
+talks/corl2026_agentic_robotics/notes.js
+talks/corl2026_agentic_robotics/script.md
+talks/corl2026_agentic_robotics/script_short.md

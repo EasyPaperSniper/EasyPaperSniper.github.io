@@ -24,6 +24,9 @@
   const videoStarts = new WeakMap();
   let toastTimeout;
   try { channel = new BroadcastChannel(storeKey); } catch {}
+  // Speaker notes (notes.js) are kept out of the public site; fall back to slide labels.
+  const hasNotes = !!(window.DECK_NOTES && window.DECK_NOTES.slides);
+  const titleOf = n => (hasNotes && window.DECK_NOTES.slides[n]?.title) || (slides[n - 1]?.getAttribute('aria-label') || '').replace(/^Slide \d+:\s*/, '') || `Slide ${n}`;
 
   // Wrap only result figures, never dates, model names, axis ticks or source text.
   document.querySelectorAll('.metric:not([data-count]),.metric-pair b,.evidence-rail strong,.success-change').forEach(el => {
@@ -148,7 +151,7 @@
     updateVideos(slides[state.slide - 1]);
     window.DECK_MOTION?.apply(slides[state.slide - 1],state.step,reduced());
     scale();
-    document.title = `${state.slide} · ${window.DECK_NOTES.slides[state.slide].title} — CoRL 2026`;
+    document.title = `${state.slide} · ${titleOf(state.slide)} — CoRL 2026`;
   }
   function dispatch(message) {
     const packet = { ...message, sender, id: `${sender}:${Date.now()}:${Math.random()}` };
@@ -203,6 +206,7 @@
   });
   function openPresenter() {
     if (presenter) return;
+    if (!hasNotes) { toast('Speaker notes are not available here'); return; }
     const url = new URL(location.href); url.search = ''; url.searchParams.set('presenter','1');
     presenterWindow = window.open(url.href, 'corl2026-presenter', 'width=1500,height=1000');
     if (!presenterWindow) toast('Allow this local file to open the presenter window');
@@ -282,12 +286,13 @@
     document.getElementById('notes-meta').textContent=`Target ${note.target} · clock ${note.clock}${note.tags?' · '+note.tags:''}`;
     document.getElementById('notes-body').innerHTML=markdown(note.markdown);
     const strip=document.getElementById('slide-strip');strip.innerHTML='';
-    for(const slide of slides){const n=+slide.dataset.slide;const b=document.createElement('button');b.textContent=n;b.title=window.DECK_NOTES.slides[n].title;b.className=`${isHidden(n)?'is-hidden ':''}${n===state.slide?'is-current':''}`;b.addEventListener('click',()=>action('goto',{slide:n,step:0}));strip.append(b);}
+    for(const slide of slides){const n=+slide.dataset.slide;const b=document.createElement('button');b.textContent=n;b.title=titleOf(n);b.className=`${isHidden(n)?'is-hidden ':''}${n===state.slide?'is-current':''}`;b.addEventListener('click',()=>action('goto',{slide:n,step:0}));strip.append(b);}
     updateTimer();
   }
   function updateTimer(){const e=document.getElementById('elapsed');if(e){const seconds=state.startedAt===null?0:Math.max(0,Math.floor((Date.now()-state.startedAt)/1000));e.textContent=`${String(Math.floor(seconds/60)).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`;}}
 
   document.body.classList.toggle('render-mode',rendering);document.body.classList.toggle('preview-mode',preview);
+  if(presenter&&!hasNotes){location.replace(location.pathname);return;}
   if(presenter)setupPresenter();
   else if(!rendering&&!preview&&isHidden(state.slide)){state.slide=visibleSlides()[0];state.step=0;}
   addEventListener('keydown',keyboard);addEventListener('resize',scale);
