@@ -24,8 +24,10 @@
   const videoStarts = new WeakMap();
   let toastTimeout;
   try { channel = new BroadcastChannel(storeKey); } catch {}
-  // Speaker notes (notes.js) are kept out of the public site; fall back to slide labels.
-  const hasNotes = !!(window.DECK_NOTES && window.DECK_NOTES.slides);
+  // Presenter view (speaker notes) is only offered when the deck runs locally,
+  // never on the public site. To re-enable it publicly, drop the `local` check.
+  const local = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+  const hasNotes = local && !!(window.DECK_NOTES && window.DECK_NOTES.slides);
   const titleOf = n => (hasNotes && window.DECK_NOTES.slides[n]?.title) || (slides[n - 1]?.getAttribute('aria-label') || '').replace(/^Slide \d+:\s*/, '') || `Slide ${n}`;
 
   // Wrap only result figures, never dates, model names, axis ticks or source text.
